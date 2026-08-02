@@ -1261,6 +1261,13 @@ return [
             'verify-email' => 'Vérifiez votre compte e-mail',
         ],
 
+        'hero' => [
+            'title' => 'Découvrez une mode élégante faite pour vous',
+            'description' => 'Découvrez notre collection de vêtements, accessoires et produits premium conçus pour apporter élégance et confiance à votre quotidien.',
+            'shop_now' => 'Acheter maintenant',
+            'discover_more' => 'Découvrir plus',
+        ],
+
         'thanks-for-contact' => 'Merci de nous contacter avec vos commentaires et questions. Nous vous répondrons très bientôt.',
     ],
 

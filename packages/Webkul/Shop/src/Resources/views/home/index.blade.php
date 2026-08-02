@@ -34,6 +34,50 @@
         {{  $channel->home_seo['meta_title'] ?? '' }}
     </x-slot>
 
+    <!-- Hero Section -->
+    <section class="bg-[#F1EADF] px-[60px] py-30 max-md:px-5">
+        <div class="mx-auto flex max-w-[1200px] items-center justify-between gap-10 max-md:flex-col mt-6">
+
+            <!-- Text Content -->
+            <div class="max-w-xl">
+                <h1 class="text-5xl font-bold leading-tight text-zinc-800 max-md:text-3xl">
+                    @lang('shop::app.home.hero.title')
+                </h1>
+
+                <p class="mt-5 text-lg text-zinc-600">
+                    @lang('shop::app.home.hero.description')
+                </p>
+
+                <div class="flex gap-4 mt-8 mb-8">
+                    <a
+                        href="{{ route('shop.search.index') }}"
+                        class="px-8 py-3 text-white transition bg-black rounded-lg hover:opacity-80"
+                    >
+                        @lang('shop::app.home.hero.shop_now')
+                    </a>
+
+                    <a
+                        href="#categories"
+                        class="px-8 py-3 text-black border border-black rounded-lg"
+                    >
+                        @lang('shop::app.home.hero.discover_more')
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Hero Image -->
+            <div class="max-w-lg">
+                <img
+                    src="{{ asset('themes/shop/default/assets/images/hero.jpg') }}"
+                    alt="Lady Nouby Collection"
+                    class="object-cover rounded-xl"
+                >
+            </div>
+
+        </div>
+    </section>
+
     <!-- Loop over the theme customization -->
     @foreach ($customizations as $customization)
         @php ($data = $customization->options) @endphp

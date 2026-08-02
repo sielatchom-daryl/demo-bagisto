@@ -1261,6 +1261,13 @@ return [
             'verify-email' => 'Verify your email account',
         ],
 
+        'hero' => [
+            'title' => 'Discover Elegant Fashion Made For You',
+            'description' => 'Explore our collection of stylish outfits, accessories and premium products designed to bring confidence and elegance to your everyday life.',
+            'shop_now' => 'Shop Now',
+            'discover_more' => 'Discover More',
+        ],
+
         'thanks-for-contact' => 'Thanks for contacting us with your comments and questions. We all respond to you very soon.',
     ],
 
