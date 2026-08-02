@@ -1160,6 +1160,7 @@ return [
                 'company-name' => 'Firmenname',
                 'confirm' => 'Bestätigen',
                 'country' => 'Land',
+                'delivery-restriction' => 'Wir liefern nur innerhalb Gabuns.',
                 'email' => 'E-Mail',
                 'first-name' => 'Vorname',
                 'last-name' => 'Nachname',

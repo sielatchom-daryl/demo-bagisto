@@ -1160,6 +1160,7 @@ return [
                 'company-name' => 'Company Name',
                 'confirm' => 'Confirm',
                 'country' => 'Country',
+                'delivery-restriction' => 'We only deliver within Gabon.',
                 'email' => 'Email',
                 'first-name' => 'First Name',
                 'last-name' => 'Last Name',
