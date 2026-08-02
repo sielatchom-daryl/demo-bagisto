@@ -178,6 +178,12 @@
                             @{{ country.name }}
                         </option>
                     </x-shop::form.control-group.control>
+                    <div 
+                        v-if="selectedCountry && selectedCountry !== 'GA'"
+                        class="mt-2 text-sm text-red-600"
+                    >
+                        @lang('shop::app.checkout.onepage.address.delivery-restriction')
+                    </div>
 
                     <x-shop::form.control-group.error ::name="controlName + '.country'" />
                 </x-shop::form.control-group>
@@ -315,18 +321,20 @@
                         last_name: '',
                         email: '',
                         address: [],
-                        country: '',
+                        country: 'GA',
                         state: '',
-                        city: '',
+                        city: 'Libreville',
                         postcode: '',
                         phone: '',
                     }),
                 },
             },
 
+            emits: ['country-changed'],
+
             data() {
                 return {
-                    selectedCountry: this.address.country,
+                    selectedCountry: this.address.country || 'GA',
 
                     countries: [],
 
@@ -338,6 +346,16 @@
                 haveStates() {
                     return !! this.states[this.selectedCountry]?.length;
                 },
+                
+                isDeliveryAllowed() {
+                    return this.selectedCountry === 'GA';
+                },
+            },
+
+            watch: {
+                selectedCountry(newValue) {
+                    this.$emit('country-changed', newValue);
+                }
             },
 
             mounted() {
