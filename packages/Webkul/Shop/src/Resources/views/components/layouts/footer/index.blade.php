@@ -145,11 +145,15 @@
         {!! view_render_event('bagisto.shop.layout.footer.footer_text.before') !!}
 
         <p class="text-sm text-zinc-600 max-md:text-center">
-            @if (core()->getConfigData('general.content.footer.copyright_content'))
-                {!! core()->getConfigData('general.content.footer.copyright_content') !!}
-            @else
-                @lang('shop::app.components.layouts.footer.footer-text', ['current_year'=> date('Y') ])
-            @endif
+            &copy; {{ date('Y') }} Lady Nouby. All Rights Reserved. Powered by
+            <a
+                href="https://laahtech.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-medium hover:underline text-[#1aad21]"
+            >
+                Laahtech
+            </a>
         </p>
 
         {!! view_render_event('bagisto.shop.layout.footer.footer_text.after') !!}
