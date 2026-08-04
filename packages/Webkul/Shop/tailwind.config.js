@@ -34,6 +34,18 @@ module.exports = {
                 darkGreen: '#40994A',
                 darkBlue: '#0044F2',
                 darkPink: '#F85156',
+                
+                primary: '#C9A227',     // Gold
+                secondary: '#1A1A1A',   // Black
+                surface: '#111111',     // Cards/Navbar
+                background: '#000000',  // Main background
+                foreground: '#FFFFFF',  // Main text
+                muted: '#B3B3B3',       // Secondary text
+                border: '#333333',
+                accent: '#D4AF37',
+                danger: '#FF1C24',
+
+                laahtech: '#1AAD21',
             },
 
             fontFamily: {

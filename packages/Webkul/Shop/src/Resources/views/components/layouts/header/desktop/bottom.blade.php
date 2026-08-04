@@ -1,6 +1,6 @@
 {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.before') !!}
 
-<div class="flex min-h-[78px] w-full justify-between border border-b border-l-0 border-r-0 border-t-0 px-[60px] max-1180:px-8">
+<div class="flex min-h-[78px] w-full justify-between border-b border-border bg-surface px-[60px] max-1180:px-8">
     <!--
         This section will provide categories for the first, second, and third levels. If
         additional levels are required, users can customize them according to their needs.
@@ -69,14 +69,14 @@
                     @lang('shop::app.components.layouts.header.desktop.bottom.search')
                 </label>
 
-                <div class="icon-search pointer-events-none absolute top-2.5 flex items-center text-xl ltr:left-3 rtl:right-3"></div>
+                <div class="icon-search pointer-events-none absolute top-2.5 flex items-center text-xl text-muted ltr:left-3 rtl:right-3"></div>
 
                 <input
                     type="text"
                     name="query"
                     value="{{ request('query') }}"
                     toolparamdescription="{{ trans('shop::app.components.layouts.webmcp.search-products-query') }}"
-                    class="block w-full py-3 text-xs font-medium text-gray-900 transition-all border border-transparent rounded-lg bg-zinc-100 px-11 hover:border-gray-400 focus:border-gray-400"
+                    class="block w-full py-3 text-xs font-medium transition-all border rounded-lg border-border bg-background px-11 text-foreground placeholder:text-muted hover:border-primary focus:border-primary"
                     minlength="{{ core()->getConfigData('catalog.products.search.min_query_length') }}"
                     maxlength="{{ core()->getConfigData('catalog.products.search.max_query_length') }}"
                     placeholder="@lang('shop::app.components.layouts.header.desktop.bottom.search-text')"
@@ -113,7 +113,7 @@
                     aria-label="@lang('shop::app.components.layouts.header.desktop.bottom.compare')"
                 >
                     <span
-                        class="inline-block text-2xl cursor-pointer icon-compare"
+                        class="inline-block text-2xl transition cursor-pointer icon-compare text-foreground hover:text-primary"
                         role="presentation"
                     ></span>
                 </a>
@@ -136,7 +136,7 @@
             <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'right' : 'left' }}">
                 <x-slot:toggle>
                     <span
-                        class="inline-block text-2xl cursor-pointer icon-users"
+                        class="inline-block text-2xl transition cursor-pointer icon-users text-foreground hover:text-primary"
                         role="button"
                         aria-label="@lang('shop::app.components.layouts.header.desktop.bottom.profile')"
                         tabindex="0"
@@ -147,16 +147,16 @@
                 @guest('customer')
                     <x-slot:content>
                         <div class="grid gap-2.5">
-                            <p class="text-xl font-dmserif">
+                            <p class="text-xl font-dmserif text-foreground">
                                 @lang('shop::app.components.layouts.header.desktop.bottom.welcome-guest')
                             </p>
 
-                            <p class="text-sm">
+                            <p class="text-sm text-muted">
                                 @lang('shop::app.components.layouts.header.desktop.bottom.dropdown-text')
                             </p>
                         </div>
 
-                        <p class="w-full mt-3 border border-zinc-200"></p>
+                        <p class="w-full mt-3 border border-border"></p>
 
                         {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.customers_action.before') !!}
 
@@ -183,7 +183,7 @@
                         @if (core()->getConfigData('sales.eu_withdrawal.general.enabled', core()->getCurrentChannelCode()))
                             <a
                                 href="{{ route('shop.eu-withdrawal.guest.lookup') }}"
-                                class="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-navyBlue hover:underline"
+                                class="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-accent hover:underline"
                             >
                                 @lang('shop::app.eu_withdrawal.guest_dropdown.link')
                             </a>
@@ -197,30 +197,30 @@
                 @auth('customer')
                     <x-slot:content class="!p-0">
                         <div class="grid gap-2.5 p-5 pb-0">
-                            <p class="text-xl font-dmserif" v-pre>
+                            <p class="text-xl font-dmserif text-foreground" v-pre>
                                 @lang('shop::app.components.layouts.header.desktop.bottom.welcome')’
                                 {{ auth()->guard('customer')->user()->first_name }}
                             </p>
 
-                            <p class="text-sm">
+                            <p class="text-sm text-muted">
                                 @lang('shop::app.components.layouts.header.desktop.bottom.dropdown-text')
                             </p>
                         </div>
 
-                        <p class="w-full mt-3 border border-zinc-200"></p>
+                        <p class="w-full mt-3 border-border"></p>
 
                         <div class="mt-2.5 grid gap-1 pb-2.5">
                             {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.profile_dropdown.links.before') !!}
 
                             <a
-                                class="px-5 py-2 text-base cursor-pointer hover:bg-gray-100"
+                                class="px-5 py-2 text-base transition cursor-pointer text-foreground hover:bg-background hover:text-primary"
                                 href="{{ route('shop.customers.account.profile.index') }}"
                             >
                                 @lang('shop::app.components.layouts.header.desktop.bottom.profile')
                             </a>
 
                             <a
-                                class="px-5 py-2 text-base cursor-pointer hover:bg-gray-100"
+                                class="px-5 py-2 text-base transition cursor-pointer text-foreground hover:bg-background hover:text-primary"
                                 href="{{ route('shop.customers.account.orders.index') }}"
                             >
                                 @lang('shop::app.components.layouts.header.desktop.bottom.orders')
@@ -228,7 +228,7 @@
 
                             @if (core()->getConfigData('customer.settings.wishlist.wishlist_option'))
                                 <a
-                                    class="px-5 py-2 text-base cursor-pointer hover:bg-gray-100"
+                                    class="px-5 py-2 text-base transition cursor-pointer text-foreground hover:bg-background hover:text-primary"
                                     href="{{ route('shop.customers.account.wishlist.index') }}"
                                 >
                                     @lang('shop::app.components.layouts.header.desktop.bottom.wishlist')
@@ -244,7 +244,7 @@
                                 />
 
                                 <a
-                                    class="px-5 py-2 text-base cursor-pointer hover:bg-gray-100"
+                                    class="px-5 py-2 text-base transition cursor-pointer text-foreground hover:bg-background hover:text-danger"
                                     href="{{ route('shop.customer.session.destroy') }}"
                                     onclick="event.preventDefault(); document.getElementById('customerLogout').submit();"
                                 >
@@ -295,13 +295,13 @@
             v-else-if="'{{ core()->getConfigData('general.design.categories.category_view') }}' !== 'sidebar'"
         >
             <div
-                class="group relative flex h-[77px] items-center border-b-4 border-transparent hover:border-b-4 hover:border-navyBlue"
+                class="group relative flex h-[77px] items-center border-b-4 border-transparent hover:border-b-4 hover:border-primary"
                 v-for="category in categories"
             >
                 <span>
                     <a
                         :href="category.url"
-                        class="inline-block px-5 uppercase"
+                        class="inline-block px-5 uppercase transition text-foreground hover:text-primary"
                     >
                         @{{ category.name }}
                     </a>
@@ -317,7 +317,7 @@
                             v-for="pairCategoryChildren in pairCategoryChildren(category)"
                         >
                             <template v-for="secondLevelCategory in pairCategoryChildren">
-                                <p class="font-medium text-navyBlue">
+                                <p class="font-medium text-primary">
                                     <a :href="secondLevelCategory.url">
                                         @{{ secondLevelCategory.name }}
                                     </a>
@@ -328,7 +328,7 @@
                                     v-if="secondLevelCategory.children && secondLevelCategory.children.length"
                                 >
                                     <li
-                                        class="text-sm font-medium text-zinc-500"
+                                        class="text-sm font-medium text-muted hover:text-primary"
                                         v-for="thirdLevelCategory in secondLevelCategory.children"
                                     >
                                         <a :href="thirdLevelCategory.url">
@@ -349,7 +349,7 @@
             <div class="flex items-center">
                 <!-- "All" button for opening the category drawer -->
                 <div
-                    class="flex h-[77px] cursor-pointer items-center border-b-4 border-transparent hover:border-b-4 hover:border-navyBlue"
+                    class="flex h-[77px] cursor-pointer items-center border-b-4 border-transparent hover:border-b-4 hover:border-primary"
                     @click="toggleCategoryDrawer"
                 >
                     <span class="flex items-center gap-1 px-5 uppercase">
