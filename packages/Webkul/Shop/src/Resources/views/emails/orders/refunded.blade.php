@@ -1,6 +1,6 @@
 @component('shop::emails.layout')
     <div style="margin-bottom: 34px;">
-        <span style="font-size: 22px;font-weight: 600;color: #121A26">
+        <span style="font-size: 22px;font-weight: 600;color: #C9A227">
             @lang('shop::app.emails.orders.refunded.title')
         </span> <br>
 
@@ -17,14 +17,14 @@
         </p>
     </div>
 
-    <div style="font-size: 20px;font-weight: 600;color: #121A26">
+    <div style="font-size: 20px;font-weight: 600;color: #C9A227">
         @lang('shop::app.emails.orders.refunded.summary')
     </div>
 
     <div style="display: flex;flex-direction: row;margin-top: 20px;justify-content: space-between;margin-bottom: 40px;">
         @if ($refund->order->shipping_address)
             <div style="line-height: 25px;">
-                <div style="font-size: 16px;font-weight: 600;color: #121A26;">
+                <div style="font-size: 16px;font-weight: 600;color: #C9A227;">
                     @lang('shop::app.emails.orders.shipping-address')
                 </div>
 
@@ -44,7 +44,7 @@
                     @lang('shop::app.emails.orders.contact') : {{ $refund->order->billing_address->phone }}
                 </div>
 
-                <div style="font-size: 16px;font-weight: 600;color: #121A26;">
+                <div style="font-size: 16px;font-weight: 600;color: #C9A227;">
                     @lang('shop::app.emails.orders.shipping')
                 </div>
 
@@ -56,7 +56,7 @@
 
         @if ($refund->order->billing_address)
             <div style="line-height: 25px;">
-                <div style="font-size: 16px;font-weight: 600;color: #121A26;">
+                <div style="font-size: 16px;font-weight: 600;color: #C9A227;">
                     @lang('shop::app.emails.orders.billing-address')
                 </div>
 
@@ -76,7 +76,7 @@
                     @lang('shop::app.emails.orders.contact') : {{ $refund->order->billing_address->phone }}
                 </div>
 
-                <div style="font-size: 16px;font-weight: 600;color: #121A26;">
+                <div style="font-size: 16px;font-weight: 600;color: #C9A227;">
                     @lang('shop::app.emails.orders.payment')
                 </div>
 
@@ -100,7 +100,7 @@
         <table style="overflow-x: auto; border-collapse: collapse;
         border-spacing: 0;width: 100%">
             <thead>
-                <tr style="color: #121A26;border-top: 1px solid #CBD5E1;border-bottom: 1px solid #CBD5E1;">
+                <tr style="color: #C9A227;border-top: 1px solid #CBD5E1;border-bottom: 1px solid #CBD5E1;">
                     @foreach (['name', 'price', 'qty'] as $item)
                         <th style="text-align: left;padding: 15px">
                             @lang('shop::app.emails.orders.' . $item)
@@ -128,7 +128,7 @@
 
                                             <a
                                                 href="{{ Storage::url($attribute['option_label']) }}"
-                                                class="text-blue-600 hover:underline"
+                                                class="text-muted hover:underline"
                                                 download="{{ File::basename($attribute['option_label']) }}"
                                             >
                                                 {{ File::basename($attribute['option_label']) }}

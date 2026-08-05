@@ -2,8 +2,8 @@
     {!! view_render_event('bagisto.shop.products.view.downloadable.before', ['product' => $product]) !!}
 
     @if ($product->downloadable_samples->count())
-        <div class="sample-list mb-6 mt-8">
-            <label class="mb-3 flex font-medium">
+        <div class="mt-8 mb-6 sample-list">
+            <label class="flex mb-3 font-medium">
                 @lang('shop::app.products.view.type.downloadable.samples')
             </label>
 
@@ -12,7 +12,7 @@
                     <li class="mb-2">
                         <a 
                             href="{{ route('shop.downloadable.download_sample', ['type' => 'sample', 'id' => $sample->id]) }}" 
-                            class="text-blue-700"
+                            class="text-primary"
                             target="_blank"
                             v-pre
                         >
@@ -31,21 +31,21 @@
 
         <div class="grid gap-4 max-sm:gap-1">
             @foreach ($product->downloadable_links as $link)
-                <div class="flex select-none items-center gap-x-4">
+                <div class="flex items-center select-none gap-x-4">
                     <div class="flex items-center">
                         <v-field
                             type="checkbox"
                             name="links[]"
                             value="{{ $link->id }}"
                             id="{{ $link->id }}"
-                            class="peer hidden"
+                            class="hidden peer"
                             rules="required"
                             label="@lang('shop::app.products.view.type.downloadable.links')"
                         >
                         </v-field>
                         
                         <label
-                            class="icon-uncheck peer-checked:icon-check-box cursor-pointer text-2xl text-navyBlue peer-checked:text-navyBlue"
+                            class="text-2xl cursor-pointer icon-uncheck peer-checked:icon-check-box text-primary peer-checked:text-primary"
                             for="{{ $link->id }}"
                         ></label>
                         
@@ -65,7 +65,7 @@
                         <a 
                             href="{{ route('shop.downloadable.download_sample', ['type' => 'link', 'id' => $link->id]) }}"
                             target="_blank"
-                            class="text-blue-700 max-sm:text-sm"
+                            class="text-primary max-sm:text-sm"
                         >
                             @lang('shop::app.products.view.type.downloadable.sample')
                         </a>

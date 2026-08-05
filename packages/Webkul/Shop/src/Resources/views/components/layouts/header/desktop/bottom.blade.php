@@ -195,8 +195,8 @@
 
                 <!-- Customers Dropdown -->
                 @auth('customer')
-                    <x-slot:content class="!p-0">
-                        <div class="grid gap-2.5 p-5 pb-0">
+                    <x-slot:content class="!p-0  bg-surface">
+                        <div class="grid gap-2.5 p-5 pb-0 bg-secondary">
                             <p class="text-xl font-dmserif text-foreground" v-pre>
                                 @lang('shop::app.components.layouts.header.desktop.bottom.welcome')’
                                 {{ auth()->guard('customer')->user()->first_name }}
@@ -308,7 +308,7 @@
                 </span>
 
                 <div
-                    class="pointer-events-none absolute top-[78px] z-[1] max-h-[580px] w-max max-w-[1260px] translate-y-1 overflow-auto overflow-x-auto border border-b-0 border-l-0 border-r-0 border-t border-[#F3F3F3] bg-white p-9 opacity-0 shadow-[0_6px_6px_1px_rgba(0,0,0,.3)] transition duration-300 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-hover:duration-200 group-hover:ease-in ltr:-left-9 rtl:-right-9"
+                    class="pointer-events-none absolute top-[78px] z-[1] max-h-[580px] w-max max-w-[1260px] translate-y-1 overflow-auto overflow-x-auto border border-b-0 border-l-0 border-r-0 border-t border-border bg-surface p-9 opacity-0 shadow-[0_6px_6px_1px_rgba(0,0,0,.3)] transition duration-300 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-hover:duration-200 group-hover:ease-in ltr:-left-9 rtl:-right-9"
                     v-if="category.children && category.children.length"
                 >
                     <div class="flex justify-between gap-x-[70px]">
@@ -352,7 +352,7 @@
                     class="flex h-[77px] cursor-pointer items-center border-b-4 border-transparent hover:border-b-4 hover:border-primary"
                     @click="toggleCategoryDrawer"
                 >
-                    <span class="flex items-center gap-1 px-5 uppercase">
+                    <span class="flex items-center gap-1 px-5 uppercase text-foreground hover:text-primary">
                         <span class="text-xl icon-hamburger"></span>
 
                         @lang('shop::app.components.layouts.header.desktop.bottom.all')
@@ -361,13 +361,13 @@
 
                 <!-- Show only first 4 categories in main navigation -->
                 <div
-                    class="group relative flex h-[77px] items-center border-b-4 border-transparent hover:border-b-4 hover:border-navyBlue"
+                    class="group relative flex h-[77px] items-center border-b-4 border-transparent hover:border-b-4 hover:border-primary"
                     v-for="category in categories.slice(0, 4)"
                 >
                     <span>
                         <a
                             :href="category.url"
-                            class="inline-block px-5 uppercase"
+                            class="inline-block px-5 uppercase transition text-foreground hover:text-primary"
                         >
                             @{{ category.name }}
                         </a>
@@ -375,7 +375,7 @@
 
                     <!-- Dropdown for each category -->
                     <div
-                        class="pointer-events-none absolute top-[78px] z-[1] max-h-[580px] w-max max-w-[1260px] translate-y-1 overflow-auto overflow-x-auto border border-b-0 border-l-0 border-r-0 border-t border-[#F3F3F3] bg-white p-9 opacity-0 shadow-[0_6px_6px_1px_rgba(0,0,0,.3)] transition duration-300 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-hover:duration-200 group-hover:ease-in ltr:-left-9 rtl:-right-9"
+                        class="pointer-events-none absolute top-[78px] z-[1] max-h-[580px] w-max max-w-[1260px] translate-y-1 overflow-auto overflow-x-auto border border-b-0 border-l-0 border-r-0 border-t border-border bg-surface p-9 opacity-0 shadow-[0_6px_6px_1px_rgba(0,0,0,.3)] transition duration-300 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-hover:duration-200 group-hover:ease-in ltr:-left-9 rtl:-right-9"
                         v-if="category.children && category.children.length"
                     >
                         <div class="flex justify-between gap-x-[70px]">
@@ -384,7 +384,7 @@
                                 v-for="pairCategoryChildren in pairCategoryChildren(category)"
                             >
                                 <template v-for="secondLevelCategory in pairCategoryChildren">
-                                    <p class="font-medium text-navyBlue">
+                                    <p class="font-medium text-primary">
                                         <a :href="secondLevelCategory.url">
                                             @{{ secondLevelCategory.name }}
                                         </a>
@@ -395,7 +395,7 @@
                                         v-if="secondLevelCategory.children && secondLevelCategory.children.length"
                                     >
                                         <li
-                                            class="text-sm font-medium text-zinc-500"
+                                            class="text-sm font-medium text-muted hover:text-primary"
                                             v-for="thirdLevelCategory in secondLevelCategory.children"
                                         >
                                             <a :href="thirdLevelCategory.url">
@@ -417,12 +417,13 @@
                 ::is-active="isDrawerActive"
                 @toggle="onDrawerToggle"
                 @close="onDrawerClose"
+                class="bg-background"
             >
                 <x-slot:toggle></x-slot>
 
-                <x-slot:header class="border-b border-gray-200">
+                <x-slot:header class="border-b border-border bg-surface">
                     <div class="flex items-center justify-between w-full">
-                        <p class="text-xl font-medium">
+                        <p class="text-xl font-medium text-foreground">
                             @lang('shop::app.components.layouts.header.desktop.bottom.categories')
                         </p>
                     </div>
@@ -433,7 +434,7 @@
                     <div class="relative h-full overflow-hidden">
                         <!-- Sliding container -->
                         <div
-                            class="flex h-full transition-transform duration-300"
+                            class="flex h-full transition-transform duration-300 bg-background"
                             :class="{
                                 'ltr:translate-x-0 rtl:translate-x-0': currentViewLevel !== 'third',
                                 'ltr:-translate-x-full rtl:translate-x-full': currentViewLevel === 'third'
@@ -447,10 +448,10 @@
                                         :key="category.id"
                                         :class="{'mb-2': category.children && category.children.length}"
                                     >
-                                        <div class="flex items-center justify-between px-6 py-2 transition-colors duration-200 cursor-pointer hover:bg-gray-100">
+                                        <div class="flex items-center justify-between px-6 py-2 transition-colors duration-200 cursor-pointer hover:bg-background">
                                             <a
                                                 :href="category.url"
-                                                class="text-base font-medium text-black"
+                                                class="text-base font-medium text-foreground"
                                             >
                                                 @{{ category.name }}
                                             </a>
@@ -463,12 +464,12 @@
                                                 :key="secondLevelCategory.id"
                                             >
                                                 <div
-                                                    class="flex items-center justify-between px-6 py-2 transition-colors duration-200 cursor-pointer hover:bg-gray-100"
+                                                    class="flex items-center justify-between px-6 py-2 transition-colors duration-200 cursor-pointer hover:bg-background"
                                                     @click="showThirdLevel(secondLevelCategory, category, $event)"
                                                 >
                                                     <a
                                                         :href="secondLevelCategory.url"
-                                                        class="text-sm font-normal"
+                                                        class="text-sm font-normal text-muted hover:text-primary"
                                                     >
                                                         @{{ secondLevelCategory.name }}
                                                     </a>
@@ -497,7 +498,7 @@
                                     >
                                         <span class="text-lg icon-arrow-left rtl:icon-arrow-right"></span>
 
-                                        <p class="text-base font-medium text-black">
+                                        <p class="text-base font-medium text-foreground">
                                             @lang('shop::app.components.layouts.header.desktop.bottom.back-button')
                                         </p>
                                     </button>
@@ -512,7 +513,7 @@
                                     >
                                         <a
                                             :href="thirdLevelCategory.url"
-                                            class="block px-6 py-2 text-sm transition-colors duration-200 hover:bg-gray-100"
+                                            class="block px-6 py-2 text-sm transition-colors duration-200 hover:bg-background"
                                         >
                                             @{{ thirdLevelCategory.name }}
                                         </a>

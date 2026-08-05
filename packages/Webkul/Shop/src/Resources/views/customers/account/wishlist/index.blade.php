@@ -15,7 +15,7 @@
         <x-shop::layouts.account.navigation />
     </div>
 
-    <div class="mx-4 flex-auto">
+    <div class="flex-auto mx-4">
         <!-- Wishlist Vue Component -->
         <v-wishlist-products>
             <!-- Wishlist Shimmer Effect -->
@@ -45,7 +45,7 @@
                                 class="grid md:hidden"
                                 href="{{ route('shop.customers.account.index') }}"
                             >
-                                <span class="icon-arrow-left rtl:icon-arrow-right text-2xl"></span>
+                                <span class="text-2xl icon-arrow-left rtl:icon-arrow-right"></span>
                             </a>
 
                             <h2 class="text-2xl font-medium max-md:text-xl max-sm:text-base ltr:ml-2.5 md:ltr:ml-0 rtl:mr-2.5 md:rtl:mr-0">
@@ -56,7 +56,7 @@
                         {!! view_render_event('bagisto.shop.customers.account.wishlist.delete_all.before') !!}
 
                         <div
-                            class="secondary-button border-zinc-200 px-5 py-3 font-normal max-md:rounded-lg max-md:py-2 max-sm:py-1.5 max-sm:text-sm"
+                            class="secondary-button border-muted px-5 py-3 font-normal max-md:rounded-lg max-md:py-2 max-sm:py-1.5 max-sm:text-sm"
                             @click="removeAll"
                             v-if="wishlistItems.length"
                         >
@@ -80,7 +80,7 @@
 
                     <!-- Empty Wishlist -->
                     <template v-else>
-                        <div class="m-auto grid w-full place-content-center items-center justify-items-center py-32 text-center">
+                        <div class="grid items-center w-full py-32 m-auto text-center place-content-center justify-items-center">
                             <img
                                 class="max-md:h-[100px] max-md:w-[100px]"
                                 src="{{ bagisto_asset('images/wishlist.png') }}"
@@ -105,11 +105,11 @@
             type="text/x-template"
             id="v-wishlist-products-item-template"
         >
-            <div class="mt-8 flex flex-wrap gap-20 max-1060:flex-col max-md:my-5 max-md:last:mb-0">
+            <div class="flex flex-wrap gap-20 mt-8 max-1060:flex-col max-md:my-5 max-md:last:mb-0">
                 <div class="grid flex-1 gap-8 max-md:flex-none">
                     <div class="grid gap-y-6 max-md:gap-y-0">
                         <!-- Wishlist item -->
-                        <div class="flex justify-between gap-x-2.5 border-b border-zinc-200 pb-5">
+                        <div class="flex justify-between gap-x-2.5 border-b border-muted pb-5">
                             <div class="flex gap-x-5 max-md:w-full max-md:gap-x-5">
                                 <div>
                                     {!! view_render_event('bagisto.shop.customers.account.wishlist.image.before') !!}
@@ -134,7 +134,7 @@
 
                                         <span
                                             @click="remove"
-                                            class="icon-bin hidden text-2xl max-md:block"
+                                            class="hidden text-2xl icon-bin max-md:block"
                                         ></span>
                                     </div>
 
@@ -146,7 +146,7 @@
                                         <div class="grid gap-2">
                                             <div>
                                                 <p
-                                                    class="flex cursor-pointer items-center gap-x-4 text-base"
+                                                    class="flex items-center text-base cursor-pointer gap-x-4"
                                                     @click="wishlist.option_show = ! wishlist.option_show"
                                                 >
                                                     @lang('shop::app.customers.account.wishlist.see-details')
@@ -174,7 +174,7 @@
                                                         <template v-if="option?.attribute_type === 'file'">
                                                             <a
                                                                 :href="option.file_url"
-                                                                class="text-blue-700"
+                                                                class="text-primary"
                                                                 target="_blank"
                                                                 :download="option.file_name"
                                                             >
@@ -201,7 +201,7 @@
 
                                         <!--Wishlist Item removed button-->
                                         <a
-                                            class="flex cursor-pointer justify-end text-base text-blue-700 max-md:hidden"
+                                            class="flex justify-end text-base cursor-pointer text-primary max-md:hidden"
                                             @click="remove"
                                         >
                                             @lang('shop::app.customers.account.wishlist.remove')
@@ -216,7 +216,7 @@
                                         <x-shop::quantity-changer
                                             name="quantity"
                                             ::value="wishlist.options.quantity ?? 1"
-                                            class="flex max-h-10 items-center gap-x-2.5 rounded-[54px] border border-navyBlue px-3.5 py-1.5 max-md:gap-x-1 max-md:px-1.5 max-md:py-1"
+                                            class="flex max-h-10 items-center gap-x-2.5 rounded-[54px] border border-primary px-3.5 py-1.5 max-md:gap-x-1 max-md:px-1.5 max-md:py-1"
                                             :removable="true"
                                             @change="(qty) => wishlist.quantity = qty"
                                             @remove="remove"
@@ -246,7 +246,7 @@
                                 </p>
 
                                 <a
-                                    class="flex cursor-pointer justify-end text-base text-blue-700"
+                                    class="flex justify-end text-base cursor-pointer text-primary"
                                     @click="remove"
                                 >
                                     @lang('shop::app.customers.account.wishlist.remove')

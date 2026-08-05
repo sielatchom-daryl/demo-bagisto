@@ -74,7 +74,7 @@
                                     class="block p-5 cursor-pointer rounded-xl max-sm:rounded-lg"
                                     :for="`billing_address_id_${address.id}`"
                                 >
-                                    <span class="text-6xl icon-checkout-address text-navyBlue max-sm:text-5xl"></span>
+                                    <span class="text-6xl icon-checkout-address text-primary max-sm:text-5xl"></span>
 
                                     <div class="flex items-center justify-between">
                                         <p class="text-base font-medium">
@@ -110,7 +110,7 @@
                                     tabindex="0"
                                 >
                                     <span
-                                        class="icon-plus rounded-full border border-black p-2.5 text-3xl max-sm:p-2"
+                                        class="icon-plus rounded-full border border-border p-2.5 text-3xl max-sm:p-2"
                                         role="presentation"
                                     ></span>
 
@@ -137,7 +137,7 @@
                                 />
 
                                 <label
-                                    class="text-base cursor-pointer select-none text-zinc-500 max-md:text-sm max-sm:text-xs ltr:pl-0 rtl:pr-0"
+                                    class="text-base cursor-pointer select-none text-muted max-md:text-sm max-sm:text-xs ltr:pl-0 rtl:pr-0"
                                     for="use_for_shipping"
                                 >
                                     @lang('shop::app.checkout.onepage.address.same-as-billing')
@@ -160,7 +160,7 @@
                                 <!-- Saved Customer Addresses Cards -->
                                 <div class="mb-2 grid grid-cols-2 gap-5 max-1060:grid-cols-[1fr] max-lg:grid-cols-2 max-md:mt-4 max-md:grid-cols-1">
                                     <div
-                                        class="relative max-w-[414px] cursor-pointer select-none rounded-xl border border-zinc-200 p-0 max-md:flex-wrap max-md:rounded-lg"
+                                        class="relative max-w-[414px] cursor-pointer select-none rounded-xl border border-border p-0 max-md:flex-wrap max-md:rounded-lg"
                                         v-for="address in customerSavedAddresses.shipping"
                                     >
                                         <!-- Actions -->
@@ -194,7 +194,7 @@
                                             class="block p-5 cursor-pointer rounded-xl max-md:rounded-lg"
                                             :for="`shipping_address_id_${address.id}`"
                                         >
-                                            <span class="text-6xl icon-checkout-address text-navyBlue max-sm:text-5xl"></span>
+                                            <span class="text-6xl icon-checkout-address text-ptimary max-sm:text-5xl"></span>
 
                                             <div class="flex items-center justify-between">
                                                 <p class="text-base font-medium">

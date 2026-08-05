@@ -8,7 +8,7 @@
 
 @component('shop::emails.layout')
     <div style="margin-bottom: 34px;">
-        <span style="font-size: 22px;font-weight: 600;color: #121A26;">
+        <span style="font-size: 22px;font-weight: 600;color: #C9A227;">
             @lang($titleKey)
         </span> <br>
 
@@ -23,7 +23,7 @@
         </p>
     </div>
 
-    <div style="font-size: 20px;font-weight: 600;color: #121A26;">
+    <div style="font-size: 20px;font-weight: 600;color: #C9A227;">
         @lang('shop::app.eu_withdrawal.emails.confirmation.summary')
     </div>
 
@@ -34,7 +34,7 @@
         style="width: 100%;margin-top: 20px;margin-bottom: 40px;border-collapse: collapse;"
     >
         <tr>
-            <td style="padding: 8px 12px 8px 0;font-size: 14px;font-weight: 600;color: #121A26;width: 180px;vertical-align: top;white-space: nowrap;">
+            <td style="padding: 8px 12px 8px 0;font-size: 14px;font-weight: 600;color: #C9A227;width: 180px;vertical-align: top;white-space: nowrap;">
                 @lang('shop::app.eu_withdrawal.emails.confirmation.reference')
             </td>
 
@@ -44,7 +44,7 @@
         </tr>
 
         <tr>
-            <td style="padding: 8px 12px 8px 0;font-size: 14px;font-weight: 600;color: #121A26;width: 180px;vertical-align: top;white-space: nowrap;">
+            <td style="padding: 8px 12px 8px 0;font-size: 14px;font-weight: 600;color: #C9A227;width: 180px;vertical-align: top;white-space: nowrap;">
                 @lang('shop::app.eu_withdrawal.emails.confirmation.received_at')
             </td>
 
@@ -54,7 +54,7 @@
         </tr>
 
         <tr>
-            <td style="padding: 8px 12px 8px 0;font-size: 14px;font-weight: 600;color: #121A26;width: 180px;vertical-align: top;white-space: nowrap;">
+            <td style="padding: 8px 12px 8px 0;font-size: 14px;font-weight: 600;color: #C9A227;width: 180px;vertical-align: top;white-space: nowrap;">
                 @lang('shop::app.eu_withdrawal.emails.confirmation.order')
             </td>
 
@@ -64,7 +64,7 @@
         </tr>
 
         <tr>
-            <td style="padding: 8px 12px 8px 0;font-size: 14px;font-weight: 600;color: #121A26;width: 180px;vertical-align: top;white-space: nowrap;">
+            <td style="padding: 8px 12px 8px 0;font-size: 14px;font-weight: 600;color: #C9A227;width: 180px;vertical-align: top;white-space: nowrap;">
                 @lang('shop::app.eu_withdrawal.emails.confirmation.email')
             </td>
 
@@ -75,7 +75,7 @@
 
         @if ($withdrawal->reason_text)
             <tr>
-                <td style="padding: 8px 12px 8px 0;font-size: 14px;font-weight: 600;color: #121A26;width: 180px;vertical-align: top;white-space: nowrap;">
+                <td style="padding: 8px 12px 8px 0;font-size: 14px;font-weight: 600;color: #C9A227;width: 180px;vertical-align: top;white-space: nowrap;">
                     @lang('shop::app.eu_withdrawal.emails.confirmation.reason')
                 </td>
 

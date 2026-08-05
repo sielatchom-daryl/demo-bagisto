@@ -3,7 +3,7 @@
         {{ $address->company_name ?? '' }}
     </p>
 
-    <p class="font-semibold leading-6 text-gray-800">
+    <p class="font-semibold leading-6 text-muted">
         {{ $address->name }}
     </p>
     

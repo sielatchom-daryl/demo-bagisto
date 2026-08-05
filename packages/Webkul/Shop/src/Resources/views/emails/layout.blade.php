@@ -36,7 +36,7 @@
                             />
                         @else
                             <img
-                                src="{{ bagisto_asset('images/logo.svg', 'shop') }}"
+                                src="{{ bagisto_asset('images/logo.png', 'shop') }}"
                                 alt="{{ config('app.name') }}"
                                 width="131"
                                 height="29"
@@ -54,7 +54,7 @@
                     @lang('shop::app.emails.thanks', [
                         'link' => 'mailto:' . core()->getContactEmailDetails()['email'],
                         'email' => core()->getContactEmailDetails()['email'],
-                        'style' => 'color: #2969FF;'
+                        'style' => 'color: #C9A227;'
                     ])
                 </p>
             </div>

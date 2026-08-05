@@ -1,4 +1,4 @@
-<x-shop::layouts.account>
+<x-shop::layouts.account class="bg-background">
     <!-- Page Title -->
     <x-slot:title>
         @lang('shop::app.customers.account.addresses.create.add-address')
@@ -15,17 +15,17 @@
         <x-shop::layouts.account.navigation />
     </div>
 
-    <div class="mx-4 flex-auto max-md:mx-6 max-sm:mx-4">
-        <div class="mb-8 flex items-center max-md:mb-5">
+    <div class="flex-auto mx-4 text-foreground max-md:mx-6 max-sm:mx-4">
+        <div class="flex items-center mb-8 max-md:mb-5">
             <!-- Back Button -->
             <a
                 class="grid md:hidden"
                 href="{{ route('shop.customers.account.addresses.index') }}"
             >
-                <span class="icon-arrow-left rtl:icon-arrow-right text-2xl"></span>
+                <span class="text-2xl icon-arrow-left rtl:icon-arrow-right"></span>
             </a>
 
-            <h2 class="text-2xl font-medium max-md:text-xl max-sm:text-base ltr:ml-2.5 md:ltr:ml-0 rtl:mr-2.5 md:rtl:mr-0">
+            <h2 class="text-2xl font-medium text-foreground max-md:text-xl max-sm:text-base ltr:ml-2.5 md:ltr:ml-0 rtl:mr-2.5 md:rtl:mr-0">
                 @lang('shop::app.customers.account.addresses.create.add-address')
             </h2>
         </div>
@@ -198,6 +198,7 @@
                             name="country"
                             rules="{{ core()->isCountryRequired() ? 'required' : '' }}"
                             v-model="country"
+                            class="bg-surface text-muted"
                             :aria-label="trans('shop::app.customers.account.addresses.create.country')"
                             :label="trans('shop::app.customers.account.addresses.create.country')"
                         >
@@ -315,23 +316,23 @@
                     {!! view_render_event('bagisto.shop.customers.account.addresses.create_form_controls.phone.after') !!}
 
                     <!-- Set As Default -->
-                    <div class="text-md mb-4 flex select-none items-center gap-x-1.5 text-zinc-500">
+                    <div class="text-md mb-4 flex select-none items-center gap-x-1.5 text-muted">
                         <input
                             type="checkbox"
                             name="default_address"
                             value="1"
                             id="default_address"
-                            class="peer hidden cursor-pointer"
+                            class="hidden cursor-pointer peer"
                         >
 
                         <label
-                            class="icon-uncheck peer-checked:icon-check-box cursor-pointer text-2xl text-navyBlue peer-checked:text-navyBlue"
+                            class="text-2xl transition-all duration-300 cursor-pointer icon-uncheck peer-checked:icon-check-box text-primary peer-checked:text-accent"
                             for="default_address"
                         >
                         </label>
 
                         <label 
-                            class="block cursor-pointer text-base max-md:text-sm"
+                            class="block text-base cursor-pointer max-md:text-sm"
                             for="default_address"
                         >
                             @lang('shop::app.customers.account.addresses.create.set-as-default')

@@ -1,8 +1,8 @@
-<div class="mt-7 flex items-center justify-between gap-4 max-md:block">
+<div class="flex items-center justify-between gap-4 mt-7 max-md:block bg-background">
     <!-- Left Toolbar -->
     <div class="flex gap-x-1">
         <!-- Search Panel -->
-        <div class="flex w-full items-center gap-x-1">
+        <div class="flex items-center w-full gap-x-1">
             <div class="shimmer h-[42px] w-[356px] rounded-lg max-md:w-[250px]"></div>
         </div>
     </div>

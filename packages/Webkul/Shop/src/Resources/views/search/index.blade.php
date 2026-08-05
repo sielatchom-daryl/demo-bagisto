@@ -27,8 +27,8 @@
             @include('shop::search.images.results')
         @endif
 
-        <div class="mt-8 flex items-center justify-between max-md:mt-5">
-            <h2 class="break-all text-2xl font-medium max-sm:text-base">
+        <div class="flex items-center justify-between mt-8 max-md:mt-5">
+            <h2 class="text-2xl font-medium break-all max-sm:text-base">
                 <span v-text="'{{ preg_replace('/[,\\"\\\']+/', '', $title) }}'" ></span>
             </h2>
         </div>
@@ -54,14 +54,14 @@
                 >
 
                 <p
-                    class="mt-1 text-sm text-gray-600"
+                    class="mt-1 text-sm text-forground"
                     v-pre
                 >
                     {{ trans('shop::app.search.suggest') }}
 
                     <button
                         type="submit"
-                        class="text-blue-600 hover:text-blue-800 hover:underline"
+                        class="text-primary hover:text-primary hover:underline"
                         aria-label="{{ trans('shop::app.components.layouts.header.desktop.bottom.submit') }}"
                     >
                         {{ $searchInstead }}
@@ -95,7 +95,7 @@
 
                         <!-- Product List Card Container -->
                         <div
-                            class="mt-8 grid grid-cols-1 gap-6"
+                            class="grid grid-cols-1 gap-6 mt-8"
                             v-if="(filters.toolbar.applied.mode ?? filters.toolbar.default.mode) === 'list'"
                         >
                             <!-- Product Card Shimmer Effect -->
@@ -114,7 +114,7 @@
 
                                 <!-- Empty Products Container -->
                                 <template v-else>
-                                    <div class="m-auto grid w-full place-content-center items-center justify-items-center py-32 text-center">
+                                    <div class="grid items-center w-full py-32 m-auto text-center place-content-center justify-items-center">
                                         <img
                                             class="max-sm:h-[100px] max-sm:w-[100px]"
                                             src="{{ bagisto_asset('images/thank-you.png') }}"
@@ -138,7 +138,7 @@
                         <div v-else>
                             <!-- Product Card Shimmer Effect -->
                             <template v-if="isLoading">
-                                <div class="mt-8 grid grid-cols-3 gap-8 max-1060:grid-cols-2 max-md:gap-x-4 max-sm:mt-5 max-sm:justify-items-center max-sm:gap-y-5">
+                                <div class="grid grid-cols-3 gap-8 mt-8 max-1060:grid-cols-2 max-md:gap-x-4 max-sm:mt-5 max-sm:justify-items-center max-sm:gap-y-5">
                                     <x-shop::shimmer.products.cards.grid count="12" />
                                 </div>
                             </template>
@@ -146,7 +146,7 @@
                             <!-- Product Card Listing -->
                             <template v-else>
                                 <template v-if="products.length">
-                                    <div class="mt-8 grid grid-cols-3 gap-8 max-1060:grid-cols-2 max-md:mt-5 max-md:justify-items-center max-md:gap-x-4 max-md:gap-y-5">
+                                    <div class="grid grid-cols-3 gap-8 mt-8 max-1060:grid-cols-2 max-md:mt-5 max-md:justify-items-center max-md:gap-x-4 max-md:gap-y-5">
                                         <x-shop::products.card
                                             ::mode="'grid'"
                                             v-for="product in products"
@@ -157,7 +157,7 @@
 
                                 <!-- Empty Products Container -->
                                 <template v-else>
-                                    <div class="m-auto grid w-full place-content-center items-center justify-items-center py-32 text-center">
+                                    <div class="grid items-center w-full py-32 m-auto text-center place-content-center justify-items-center">
                                         <img
                                             class="max-sm:h-[100px] max-sm:w-[100px]"
                                             src="{{ bagisto_asset('images/thank-you.png') }}"

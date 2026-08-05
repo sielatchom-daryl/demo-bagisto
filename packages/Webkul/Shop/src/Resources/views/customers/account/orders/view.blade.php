@@ -16,7 +16,7 @@
         <x-shop::layouts.account.navigation />
     </div>
 
-    <div class="mx-4 flex-auto max-md:mx-6 max-sm:mx-4">
+    <div class="flex-auto mx-4 max-md:mx-6 max-sm:mx-4">
 
         <!-- Cancel and Reorder buttons -->
         <div class="flex items-center justify-between">
@@ -26,7 +26,7 @@
                     class="grid md:hidden"
                     href="{{ route('shop.customers.account.orders.index') }}"
                 >
-                    <span class="icon-arrow-left rtl:icon-arrow-right text-2xl"></span>
+                    <span class="text-2xl icon-arrow-left rtl:icon-arrow-right"></span>
                 </a>
 
                 <h2 class="text-2xl font-medium ltr:ml-2.5 rtl:mr-2.5 max-md:text-xl max-sm:text-base md:ltr:ml-0 md:rtl:mr-0">
@@ -43,7 +43,7 @@
                 )
                     <a
                         href="{{ route('shop.customers.account.orders.reorder', $order->id) }}"
-                        class="secondary-button border-zinc-200 px-5 py-3 font-normal max-md:hidden"
+                        class="px-5 py-3 font-normal secondary-button border-border max-md:hidden"
                     >
                         @lang('shop::app.customers.account.orders.view.reorder-btn-title')
                     </a>
@@ -63,7 +63,7 @@
                     </form>
 
                     <a
-                        class="secondary-button border-zinc-200 px-5 py-3 font-normal max-md:hidden"
+                        class="px-5 py-3 font-normal secondary-button border-border max-md:hidden"
                         href="javascript:void(0);"
                         @click="$emitter.emit('open-confirm-modal', {
                             message: '@lang('shop::app.customers.account.orders.view.cancel-confirm-msg')',
@@ -90,7 +90,7 @@
         @endphp
 
         @if ($hasCustomerRestrictedItem)
-            <div class="mt-4 flex items-start gap-3 rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+            <div class="flex items-start gap-3 p-3 mt-4 text-sm border rounded-md border-amber-300 bg-amber-50 text-amber-900">
                 <span class="icon-warning mt-0.5 text-lg"></span>
 
                 <div>
@@ -127,9 +127,9 @@
                         </div>
 
                         <!-- Order Details -->
-                        <div class="relative mt-8 overflow-x-auto rounded-xl border">
+                        <div class="relative mt-8 overflow-x-auto border rounded-xl">
                             <table class="w-full text-left">
-                                <thead class="border-b border-zinc-200 bg-zinc-100 text-sm text-black">
+                                <thead class="text-sm border-b text-foreground border-border bg-zinc-100">
                                     <tr class="[&>*]:font-medium [&>*]:px-6 [&>*]:py-4">
                                         <th scope="col">
                                             @lang('shop::app.customers.account.orders.view.information.sku')
@@ -155,7 +155,7 @@
 
                                 <tbody>
                                     @foreach ($order->items as $item)
-                                        <tr class="border-b bg-white align-top font-medium [&>*]:px-6 [&>*]:py-4">
+                                        <tr class="border-b bg-background align-top font-medium [&>*]:px-6 [&>*]:py-4">
                                             <td data-value="@lang('shop::app.customers.account.orders.view.information.sku')">
                                                 {{ $item->getTypeInstance()->getOrderedItem($item)->sku }}
                                             </td>
@@ -176,7 +176,7 @@
 
                                                                 <a
                                                                     href="{{ Storage::url($attribute['option_label']) }}"
-                                                                    class="text-blue-600 hover:underline"
+                                                                    class="text-primary hover:underline"
                                                                     download="{{ File::basename($attribute['option_label']) }}"
                                                                 >
                                                                     {{ File::basename($attribute['option_label']) }}
@@ -198,7 +198,7 @@
                                                 @elseif (core()->getConfigData('sales.taxes.sales.display_prices') == 'both')
                                                     {{ core()->formatPrice($item->price_incl_tax, $order->order_currency_code) }}
 
-                                                    <span class="whitespace-nowrap text-xs font-normal">
+                                                    <span class="text-xs font-normal whitespace-nowrap">
                                                         @lang('shop::app.customers.account.orders.view.information.excl-tax')
 
                                                         <span class="font-medium">
@@ -241,7 +241,7 @@
                                                 @elseif (core()->getConfigData('sales.taxes.sales.display_prices') == 'both')
                                                     {{ core()->formatPrice($item->total_incl_tax, $order->order_currency_code) }}
 
-                                                    <span class="whitespace-nowrap text-xs font-normal">
+                                                    <span class="text-xs font-normal whitespace-nowrap">
                                                         @lang('shop::app.customers.account.orders.view.information.excl-tax')
 
                                                         {{ core()->formatPrice($item->total, $order->order_currency_code) }}
@@ -257,15 +257,15 @@
                         </div>
 
                         <!-- Payment Details -->
-                        <div class="mt-8 flex items-start gap-10 max-lg:gap-5">
+                        <div class="flex items-start gap-10 mt-8 max-lg:gap-5">
                             <div class="flex-auto">
                                 <div class="flex justify-end">
-                                    <div class="grid max-w-max gap-2 text-sm">
+                                    <div class="grid gap-2 text-sm max-w-max">
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.information.subtotal.before') !!}
 
                                         <!-- Sub Total -->
                                         @if (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'including_tax')
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.information.subtotal')
 
                                                 <p>
@@ -273,7 +273,7 @@
                                                 </p>
                                             </div>
                                         @elseif (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'both')
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.information.subtotal-excl-tax')
 
                                                 <p>
@@ -281,7 +281,7 @@
                                                 </p>
                                             </div>
 
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.information.subtotal-incl-tax')
 
                                                 <p>
@@ -289,7 +289,7 @@
                                                 </p>
                                             </div>
                                         @else
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.information.subtotal')
 
                                                 <p>
@@ -305,7 +305,7 @@
                                         <!-- Shipping And Handling -->
                                         @if ($order->haveStockableItems())
                                             @if (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'including_tax')
-                                                <div class="flex w-full justify-between gap-x-5">
+                                                <div class="flex justify-between w-full gap-x-5">
                                                     @lang('shop::app.customers.account.orders.view.information.shipping-handling')
 
                                                     <p>
@@ -313,7 +313,7 @@
                                                     </p>
                                                 </div>
                                             @elseif (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'both')
-                                                <div class="flex w-full justify-between gap-x-5">
+                                                <div class="flex justify-between w-full gap-x-5">
                                                     @lang('shop::app.customers.account.orders.view.information.shipping-handling-excl-tax')
 
                                                     <p>
@@ -321,7 +321,7 @@
                                                     </p>
                                                 </div>
 
-                                                <div class="flex w-full justify-between gap-x-5">
+                                                <div class="flex justify-between w-full gap-x-5">
                                                     @lang('shop::app.customers.account.orders.view.information.shipping-handling-incl-tax')
 
                                                     <p>
@@ -329,7 +329,7 @@
                                                     </p>
                                                 </div>
                                             @else
-                                                <div class="flex w-full justify-between gap-x-5">
+                                                <div class="flex justify-between w-full gap-x-5">
                                                     @lang('shop::app.customers.account.orders.view.information.shipping-handling')
 
                                                     <p>
@@ -344,7 +344,7 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.information.tax-amount.before') !!}
 
                                         <!-- Tax Amount -->
-                                        <div class="flex w-full justify-between gap-x-5">
+                                        <div class="flex justify-between w-full gap-x-5">
                                             @lang('shop::app.customers.account.orders.view.information.tax')
 
                                             <p>
@@ -358,7 +358,7 @@
 
                                         <!-- Discount Details -->
                                         @if ($order->base_discount_amount > 0)
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 <p>
                                                     @lang('shop::app.customers.account.orders.view.information.discount')
 
@@ -378,7 +378,7 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.information.grand-total.before') !!}
 
                                         <!-- Grand Total -->
-                                        <div class="flex w-full justify-between gap-x-5 font-semibold">
+                                        <div class="flex justify-between w-full font-semibold gap-x-5">
                                             @lang('shop::app.customers.account.orders.view.information.grand-total')
 
                                             <p>
@@ -391,7 +391,7 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.information.total-paid.before') !!}
 
                                         <!-- Total Paid -->
-                                        <div class="flex w-full justify-between gap-x-5">
+                                        <div class="flex justify-between w-full gap-x-5">
                                             @lang('shop::app.customers.account.orders.view.information.total-paid')
 
                                             <p>
@@ -404,7 +404,7 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.information.total-refunded.before') !!}
 
                                         <!-- Total Refunded -->
-                                        <div class="flex w-full justify-between gap-x-5">
+                                        <div class="flex justify-between w-full gap-x-5">
                                             @lang('shop::app.customers.account.orders.view.information.total-refunded')
 
                                             <p>
@@ -417,7 +417,7 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.information.total-due.before') !!}
 
                                         <!-- Total Due -->
-                                        <div class="flex w-full justify-between gap-x-5">
+                                        <div class="flex justify-between w-full gap-x-5">
                                             @lang('shop::app.customers.account.orders.view.information.total-due')
 
                                             @php
@@ -449,18 +449,18 @@
                     <!-- For Mobile View -->
                     <div class="grid gap-4 md:hidden">
 
-                        <div class="rounded-lg border">
-                            <div class="grid gap-1.5 px-4 py-2.5 text-xs font-medium text-zinc-500 [&>*]:flex [&>*]:justify-between">
+                        <div class="border rounded-lg">
+                            <div class="grid gap-1.5 px-4 py-2.5 text-xs font-medium text-muted [&>*]:flex [&>*]:justify-between">
                                 <div>
                                     @lang('shop::app.customers.account.orders.view.order-id'):
 
-                                    <p class="text-black">#{{ $order->increment_id }}</p>
+                                    <p class="text-foreground">#{{ $order->increment_id }}</p>
                                 </div>
 
                                 <div>
                                     @lang('shop::app.customers.account.orders.view.information.placed-on'):
 
-                                    <p class="text-black">{{ core()->formatDate($order->created_at, 'd M Y') }}</p>
+                                    <p class="text-foreground">{{ core()->formatDate($order->created_at, 'd M Y') }}</p>
                                 </div>
 
                                 <div class="items-center">
@@ -494,11 +494,11 @@
                             </div>
 
                             <!-- Reorder and Cancel Button -->
-                            <div class="flex w-full justify-center rounded-b-lg border-t text-center">
+                            <div class="flex justify-center w-full text-center border-t rounded-b-lg">
                                 @if ($order->canReorder())
                                     <a
                                         href="{{ route('shop.customers.account.orders.reorder', $order->id) }}"
-                                        class="mx-auto w-full py-3 text-sm font-medium text-navyBlue hover:bg-zinc-100 max-sm:py-2"
+                                        class="w-full py-3 mx-auto text-sm font-medium text-primary hover:bg-zinc-100 max-sm:py-2"
                                     >
                                         @lang('shop::app.customers.account.orders.view.reorder-btn-title')
                                     </a>
@@ -518,7 +518,7 @@
 
                                     <a
                                         href="javascript:void(0);"
-                                        class="mx-auto w-full py-3 text-sm font-medium hover:bg-zinc-100 max-sm:py-2"
+                                        class="w-full py-3 mx-auto text-sm font-medium hover:bg-zinc-100 max-sm:py-2"
                                         @click="$emitter.emit('open-confirm-modal', {
                                             message: '@lang('shop::app.customers.account.orders.view.cancel-confirm-msg')',
 
@@ -533,7 +533,7 @@
 
                                 @include('shop::customers.account.eu-withdrawals.button', [
                                     'order' => $order,
-                                    'variant' => 'mx-auto w-full py-3 text-sm font-medium text-navyBlue hover:bg-zinc-100 max-sm:py-2',
+                                    'variant' => 'mx-auto w-full py-3 text-sm font-medium text-primary hover:bg-zinc-100 max-sm:py-2',
                                 ])
                             </div>
                         </div>
@@ -547,9 +547,9 @@
                                @lang('shop::app.customers.account.orders.view.item-ordered')
                             </x-slot>
 
-                            <x-slot:content class="grid gap-2.5 !bg-gray-100 !p-0">
+                            <x-slot:content class="grid gap-2.5 !bg-surface !p-0">
                                 @foreach ($order->items as $item)
-                                    <div class="rounded-md rounded-t-none border border-t-0 bg-white px-4 py-2">
+                                    <div class="px-4 py-2 border border-t-0 rounded-md rounded-t-none bg-background">
                                         <p class="pb-2 text-sm font-medium">
                                             {{ $item->name }}
 
@@ -565,7 +565,7 @@
                                         <div class="grid gap-1.5 text-xs font-medium">
                                             <!-- SKU -->
                                             <div class="flex justify-between">
-                                                <span class="text-zinc-500">
+                                                <span class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.information.sku'):
                                                 </span>
 
@@ -576,7 +576,7 @@
 
                                             <!-- Quantity -->
                                             <div class="flex justify-between">
-                                                <span class="text-zinc-500">
+                                                <span class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.information.item-status')
                                                 </span>
 
@@ -616,7 +616,7 @@
 
                                             <!-- Price -->
                                             <div class="flex justify-between">
-                                                <span class="text-zinc-500">
+                                                <span class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.information.price'):
                                                 </span>
 
@@ -628,7 +628,7 @@
                                                             {{ core()->formatPrice($item->price_incl_tax, $order->order_currency_code) }}
                                                         </p>
 
-                                                        <p class="whitespace-nowrap text-xs font-normal">
+                                                        <p class="text-xs font-normal whitespace-nowrap">
                                                             @lang('shop::app.customers.account.orders.view.information.excl-tax')
 
                                                             <span class="font-medium">
@@ -643,7 +643,7 @@
 
                                             <!-- Sub Total -->
                                             <div class="flex justify-between">
-                                                <span class="text-zinc-500">
+                                                <span class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.invoices.subtotal'):
                                                 </span>
 
@@ -655,7 +655,7 @@
                                                             {{ core()->formatPrice($item->total_incl_tax, $order->order_currency_code) }}
                                                         </p>
 
-                                                        <p class="whitespace-nowrap text-xs font-normal">
+                                                        <p class="text-xs font-normal whitespace-nowrap">
                                                             @lang('shop::app.customers.account.orders.view.invoices.excl-tax')
 
                                                             <span class="font-medium">
@@ -670,7 +670,7 @@
 
                                             <!-- Tax Percent -->
                                             <div class="flex justify-between">
-                                                <span class="text-zinc-500">
+                                                <span class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.information.tax-percent')
                                                 </span>
 
@@ -681,7 +681,7 @@
 
                                             <!-- Tax Amount -->
                                             <div class="flex justify-between">
-                                                <span class="text-zinc-500">
+                                                <span class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.information.tax-amount')
                                                 </span>
 
@@ -692,7 +692,7 @@
 
                                             <!-- Grand Total -->
                                             <div class="flex justify-between">
-                                                <span class="text-zinc-500">
+                                                <span class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.information.grand-total')
                                                 </span>
 
@@ -708,20 +708,20 @@
 
                         <!--Summary -->
                         <div 
-                            class="w-full rounded-md bg-gray-100"
+                            class="w-full bg-gray-100 rounded-md"
                             v-pre
                         >
                             <div class="rounded-t-md border-none !px-4 py-3 text-sm font-medium max-sm:py-2">
                                 @lang('shop::app.customers.account.orders.view.information.order-summary')
                             </div>
 
-                            <div class="grid gap-1.5 rounded-md rounded-t-none border border-t-0 bg-white px-4 py-3 text-xs font-medium">
+                            <div class="grid gap-1.5 rounded-md rounded-t-none border border-t-0 bg-background px-4 py-3 text-xs font-medium">
 
                                 {!! view_render_event('bagisto.shop.customers.account.orders.view.information.subtotal.before') !!}
 
                                 @if (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'including_tax')
-                                    <div class="flex w-full justify-between gap-x-5">
-                                        <p class="text-zinc-500">
+                                    <div class="flex justify-between w-full gap-x-5">
+                                        <p class="text-muted">
                                             @lang('shop::app.customers.account.orders.view.information.subtotal')
                                         </p>
 
@@ -730,8 +730,8 @@
                                         </p>
                                     </div>
                                 @elseif (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'both')
-                                    <div class="flex w-full justify-between gap-x-5">
-                                        <p class="text-zinc-500">
+                                    <div class="flex justify-between w-full gap-x-5">
+                                        <p class="text-muted">
                                             @lang('shop::app.customers.account.orders.view.information.subtotal-excl-tax')
                                         </p>
 
@@ -740,8 +740,8 @@
                                         </p>
                                     </div>
 
-                                    <div class="flex w-full justify-between gap-x-5">
-                                        <p class="text-zinc-500">
+                                    <div class="flex justify-between w-full gap-x-5">
+                                        <p class="text-muted">
 
                                             @lang('shop::app.customers.account.orders.view.information.subtotal-incl-tax')
                                         </p>
@@ -751,8 +751,8 @@
                                         </p>
                                     </div>
                                 @else
-                                    <div class="flex w-full justify-between gap-x-5">
-                                        <p class="text-zinc-500">
+                                    <div class="flex justify-between w-full gap-x-5">
+                                        <p class="text-muted">
                                             @lang('shop::app.customers.account.orders.view.information.subtotal')
                                         </p>
 
@@ -768,8 +768,8 @@
 
                                 @if ($order->haveStockableItems())
                                     @if (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'including_tax')
-                                        <div class="flex w-full justify-between gap-x-5">
-                                            <p class="text-zinc-500">
+                                        <div class="flex justify-between w-full gap-x-5">
+                                            <p class="text-muted">
                                                 @lang('shop::app.customers.account.orders.view.information.shipping-handling')
                                             </p>
 
@@ -778,8 +778,8 @@
                                             </p>
                                         </div>
                                     @elseif (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'both')
-                                        <div class="flex w-full justify-between gap-x-5">
-                                            <p class="text-zinc-500">
+                                        <div class="flex justify-between w-full gap-x-5">
+                                            <p class="text-muted">
                                                 @lang('shop::app.customers.account.orders.view.information.shipping-handling-excl-tax')
                                             </p>
 
@@ -788,8 +788,8 @@
                                             </p>
                                         </div>
 
-                                        <div class="flex w-full justify-between gap-x-5">
-                                            <p class="text-zinc-500">
+                                        <div class="flex justify-between w-full gap-x-5">
+                                            <p class="text-muted">
                                                 @lang('shop::app.customers.account.orders.view.information.shipping-handling-incl-tax')
                                             </p>
 
@@ -798,8 +798,8 @@
                                             </p>
                                         </div>
                                     @else
-                                        <div class="flex w-full justify-between gap-x-5">
-                                            <p class="text-zinc-500">
+                                        <div class="flex justify-between w-full gap-x-5">
+                                            <p class="text-muted">
                                                 @lang('shop::app.customers.account.orders.view.information.shipping-handling')
                                             </p>
 
@@ -815,8 +815,8 @@
                                 {!! view_render_event('bagisto.shop.customers.account.orders.view.information.tax-amount.before') !!}
 
                                 <!-- Tax Informations -->
-                                <div class="flex w-full justify-between gap-x-5">
-                                    <p class="text-zinc-500">
+                                <div class="flex justify-between w-full gap-x-5">
+                                    <p class="text-muted">
                                         @lang('shop::app.customers.account.orders.view.information.tax')
                                     </p>
 
@@ -830,8 +830,8 @@
                                 {!! view_render_event('bagisto.shop.customers.account.orders.view.information.discount.before') !!}
 
                                 @if ($order->base_discount_amount > 0)
-                                    <div class="flex w-full justify-between gap-x-5">
-                                        <p class="text-zinc-500">
+                                    <div class="flex justify-between w-full gap-x-5">
+                                        <p class="text-muted">
                                             @lang('shop::app.customers.account.orders.view.information.discount')
 
                                             @if ($order->coupon_code)
@@ -850,8 +850,8 @@
                                 {!! view_render_event('bagisto.shop.customers.account.orders.view.information.grand-total.before') !!}
 
                                 <!-- Grand Total -->
-                                <div class="flex w-full justify-between gap-x-5 font-semibold">
-                                    <p class="text-zinc-500">
+                                <div class="flex justify-between w-full font-semibold gap-x-5">
+                                    <p class="text-muted">
                                         @lang('shop::app.customers.account.orders.view.information.grand-total')
                                     </p>
 
@@ -865,8 +865,8 @@
                                 {!! view_render_event('bagisto.shop.customers.account.orders.view.information.total-paid.before') !!}
 
                                 <!-- Total Paid -->
-                                <div class="flex w-full justify-between gap-x-5">
-                                    <p class="text-zinc-500">
+                                <div class="flex justify-between w-full gap-x-5">
+                                    <p class="text-muted">
                                         @lang('shop::app.customers.account.orders.view.information.total-paid')
                                     </p>
 
@@ -880,8 +880,8 @@
                                 {!! view_render_event('bagisto.shop.customers.account.orders.view.information.total-refunded.before') !!}
 
                                 <!-- Total Refunded -->
-                                <div class="flex w-full justify-between gap-x-5">
-                                    <p class="text-zinc-500">
+                                <div class="flex justify-between w-full gap-x-5">
+                                    <p class="text-muted">
                                         @lang('shop::app.customers.account.orders.view.information.total-refunded')
                                     </p>
 
@@ -895,8 +895,8 @@
                                 {!! view_render_event('bagisto.shop.customers.account.orders.view.information.total-due.before') !!}
 
                                 <!-- Total Due -->
-                                <div class="flex w-full justify-between gap-x-5">
-                                    <p class="text-zinc-500">
+                                <div class="flex justify-between w-full gap-x-5">
+                                    <p class="text-muted">
                                         @lang('shop::app.customers.account.orders.view.information.total-due')
                                     </p>
 
@@ -937,16 +937,16 @@
                                 <!-- For Mobile View -->
                                 <div class="grid gap-4 md:hidden">
                                     <div
-                                        class="rounded-lg border"
+                                        class="border rounded-lg"
                                         v-pre
                                     >
-                                        <div class="grid gap-1.5 px-4 py-2.5 text-xs font-medium text-zinc-500 [&>*]:flex [&>*]:justify-between">
+                                        <div class="grid gap-1.5 px-4 py-2.5 text-xs font-medium text-muted [&>*]:flex [&>*]:justify-between">
                                             <div class="flex justify-between">
                                                 @lang('shop::app.customers.account.orders.view.invoices.individual-invoice', ['invoice_id' => $invoice->increment_id ?? $invoice->id])
 
                                                 <a href="{{ route('shop.customers.account.orders.print-invoice', $invoice->id) }}">
-                                                    <div class="flex items-center gap-1 font-medium text-black">
-                                                        <span class="icon-download text-sm font-semibold"></span>
+                                                    <div class="flex items-center gap-1 font-medium text-foreground">
+                                                        <span class="text-sm font-semibold icon-download"></span>
 
                                                         @lang('shop::app.customers.account.orders.view.invoices.print')
                                                     </div>
@@ -960,13 +960,13 @@
                                         :is-active="true"
                                         class="overflow-hidden rounded-lg !border-none !bg-gray-100"
                                     >
-                                        <x-slot:header class="!mb-0 rounded-t-md bg-gray-100 !px-4 py-3 text-sm font-medium max-sm:py-2">
+                                        <x-slot:header class="!mb-0 rounded-t-md bg-surface !px-4 py-3 text-sm font-medium max-sm:py-2">
                                             @lang('shop::app.customers.account.orders.view.item-invoiced')
                                         </x-slot>
 
                                         <x-slot:content class="grid gap-2.5 !bg-gray-100 !p-0">
                                             @foreach ($invoice->items as $item)
-                                                <div class="rounded-md rounded-t-none border border-t-0 bg-white px-4 py-2">
+                                                <div class="px-4 py-2 border border-t-0 rounded-md rounded-t-none bg-background">
                                                     <p class="pb-2 text-sm font-medium">
                                                         {{ $item->name }}
                                                     </p>
@@ -982,7 +982,7 @@
                                                     <div class="grid gap-1.5 text-xs font-medium">
                                                         <!-- SKU -->
                                                         <div class="flex justify-between">
-                                                            <span class="text-zinc-500">
+                                                            <span class="text-muted">
                                                                 @lang('shop::app.customers.account.orders.view.invoices.sku'):
                                                             </span>
 
@@ -993,7 +993,7 @@
 
                                                         <!-- Price -->
                                                         <div class="flex justify-between">
-                                                            <span class="text-zinc-500">
+                                                            <span class="text-muted">
                                                                 @lang('shop::app.customers.account.orders.view.invoices.price'):
                                                             </span>
 
@@ -1005,7 +1005,7 @@
                                                                         {{ core()->formatPrice($item->price_incl_tax, $order->order_currency_code) }}
                                                                     </p>
 
-                                                                    <p class="whitespace-nowrap text-xs font-normal">
+                                                                    <p class="text-xs font-normal whitespace-nowrap">
                                                                         @lang('shop::app.customers.account.orders.view.information.excl-tax')
 
                                                                         <span class="font-medium">
@@ -1020,7 +1020,7 @@
 
                                                         <!-- Quantity -->
                                                         <div class="flex justify-between">
-                                                            <span class="text-zinc-500">
+                                                            <span class="text-muted">
                                                                 @lang('shop::app.customers.account.orders.view.invoices.qty')
                                                             </span>
 
@@ -1031,7 +1031,7 @@
 
                                                         <!-- Sub Total -->
                                                         <div class="flex justify-between">
-                                                            <span class="text-zinc-500">
+                                                            <span class="text-muted">
                                                                 @lang('shop::app.customers.account.orders.view.invoices.subtotal'):
                                                             </span>
 
@@ -1043,7 +1043,7 @@
                                                                         {{ core()->formatPrice($item->total_incl_tax, $order->order_currency_code) }}
                                                                     </p>
 
-                                                                    <p class="whitespace-nowrap text-xs font-normal">
+                                                                    <p class="text-xs font-normal whitespace-nowrap">
                                                                         @lang('shop::app.customers.account.orders.view.invoices.excl-tax')
 
                                                                         <span class="font-medium">
@@ -1063,20 +1063,20 @@
 
                                     <!--Summary -->
                                     <div
-                                        class="w-full rounded-md bg-gray-100"
+                                        class="w-full bg-gray-100 rounded-md"
                                         v-pre
                                     >
                                         <div class="rounded-t-md border-none !px-4 py-3 text-sm font-medium max-sm:py-2">
                                             @lang('Order Summary')
                                         </div>
 
-                                        <div class="grid gap-1.5 rounded-md rounded-t-none border border-t-0 bg-white px-4 py-3 text-xs font-medium">
+                                        <div class="grid gap-1.5 rounded-md rounded-t-none border border-t-0 bg-background px-4 py-3 text-xs font-medium">
 
                                             {!! view_render_event('bagisto.shop.customers.account.orders.view.invoices.subtotal.before') !!}
 
                                             @if (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'including_tax')
-                                                <div class="flex w-full justify-between gap-x-5">
-                                                    <p class="text-zinc-500">
+                                                <div class="flex justify-between w-full gap-x-5">
+                                                    <p class="text-muted">
                                                         @lang('shop::app.customers.account.orders.view.invoices.subtotal')
                                                     </p>
 
@@ -1085,8 +1085,8 @@
                                                     </p>
                                                 </div>
                                             @elseif (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'both')
-                                                <div class="flex w-full justify-between gap-x-5">
-                                                    <p class="text-zinc-500">
+                                                <div class="flex justify-between w-full gap-x-5">
+                                                    <p class="text-muted">
                                                         @lang('shop::app.customers.account.orders.view.invoices.subtotal-excl-tax')
                                                     </p>
 
@@ -1095,8 +1095,8 @@
                                                     </p>
                                                 </div>
                                             @else
-                                                <div class="flex w-full justify-between gap-x-5">
-                                                    <p class="text-zinc-500">
+                                                <div class="flex justify-between w-full gap-x-5">
+                                                    <p class="text-muted">
                                                         @lang('shop::app.customers.account.orders.view.invoices.subtotal')
                                                     </p>
 
@@ -1111,8 +1111,8 @@
                                             {!! view_render_event('bagisto.shop.customers.account.orders.view.invoices.shipping.before') !!}
 
                                             @if (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'including_tax')
-                                                <div class="flex w-full justify-between gap-x-5">
-                                                    <p class="text-zinc-500">
+                                                <div class="flex justify-between w-full gap-x-5">
+                                                    <p class="text-muted">
                                                         @lang('shop::app.customers.account.orders.view.information.shipping-handling')
                                                     </p>
 
@@ -1121,8 +1121,8 @@
                                                     </p>
                                                 </div>
                                             @elseif (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'both')
-                                                <div class="flex w-full justify-between gap-x-5">
-                                                    <p class="text-zinc-500">
+                                                <div class="flex justify-between w-full gap-x-5">
+                                                    <p class="text-muted">
                                                         @lang('shop::app.customers.account.orders.view.invoices.shipping-handling-excl-tax')
                                                     </p>
 
@@ -1131,8 +1131,8 @@
                                                     </p>
                                                 </div>
 
-                                                <div class="flex w-full justify-between gap-x-5">
-                                                    <p class="text-zinc-500">
+                                                <div class="flex justify-between w-full gap-x-5">
+                                                    <p class="text-muted">
                                                         @lang('shop::app.customers.account.orders.view.invoices.shipping-handling-incl-tax')
                                                     </p>
 
@@ -1141,8 +1141,8 @@
                                                     </p>
                                                 </div>
                                             @else
-                                                <div class="flex w-full justify-between gap-x-5">
-                                                    <p class="text-zinc-500">
+                                                <div class="flex justify-between w-full gap-x-5">
+                                                    <p class="text-muted">
                                                         @lang('shop::app.customers.account.orders.view.invoices.shipping-handling')
                                                     </p>
 
@@ -1157,8 +1157,8 @@
                                             {!! view_render_event('bagisto.shop.customers.account.orders.view.invoices.discount.before') !!}
 
                                             @if ($invoice->base_discount_amount > 0)
-                                                <div class="flex w-full justify-between gap-x-5">
-                                                    <p class="text-zinc-500">
+                                                <div class="flex justify-between w-full gap-x-5">
+                                                    <p class="text-muted">
                                                         @lang('shop::app.customers.account.orders.view.invoices.discount')
                                                     </p>
 
@@ -1173,8 +1173,8 @@
                                             {!! view_render_event('bagisto.shop.customers.account.orders.view.invoices.tax.before') !!}
 
                                             <!-- Tax Amount -->
-                                            <div class="flex w-full justify-between gap-x-5">
-                                                <p class="text-zinc-500">
+                                            <div class="flex justify-between w-full gap-x-5">
+                                                <p class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.invoices.tax')
                                                 </p>
 
@@ -1188,8 +1188,8 @@
                                             {!! view_render_event('bagisto.shop.customers.account.orders.view.invoices.grand-total.before') !!}
 
                                             <!-- Grand Total -->
-                                            <div class="flex w-full justify-between gap-x-5 font-semibold">
-                                                <p class="text-zinc-500">
+                                            <div class="flex justify-between w-full font-semibold gap-x-5">
+                                                <p class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.invoices.grand-total')
                                                 </p>
 
@@ -1216,16 +1216,16 @@
 
                                         <a href="{{ route('shop.customers.account.orders.print-invoice', $invoice->id) }}">
                                             <div class="flex items-center gap-1 font-semibold">
-                                                <span class="icon-download text-2xl"></span>
+                                                <span class="text-2xl icon-download"></span>
 
                                                 @lang('shop::app.customers.account.orders.view.invoices.print')
                                             </div>
                                         </a>
                                     </div>
 
-                                    <div class="relative mt-8 overflow-x-auto rounded-xl border">
+                                    <div class="relative mt-8 overflow-x-auto border rounded-xl">
                                         <table class="w-full text-left">
-                                            <thead class="border-b border-zinc-200 bg-zinc-100 text-sm text-black">
+                                            <thead class="text-sm border-b text-foreground border-border bg-zinc-100">
                                                 <tr class="[&>*]:font-medium [&>*]:px-6 [&>*]:py-4">
                                                     <th scope="col">
                                                         @lang('shop::app.customers.account.orders.view.invoices.sku')
@@ -1251,7 +1251,7 @@
 
                                             <tbody>
                                                 @foreach ($invoice->items as $item)
-                                                    <tr class="border-b bg-white text-black [&>*]:font-medium [&>*]:px-6 [&>*]:py-4">
+                                                    <tr class="border-b bg-background text-foreground [&>*]:font-medium [&>*]:px-6 [&>*]:py-4">
                                                         <td data-value="@lang('shop::app.customers.account.orders.view.invoices.sku')">
                                                             {{ $item->getTypeInstance()->getOrderedItem($item)->sku }}
                                                         </td>
@@ -1277,7 +1277,7 @@
                                                             @elseif (core()->getConfigData('sales.taxes.sales.display_prices') == 'both')
                                                                 {{ core()->formatPrice($item->price_incl_tax, $order->order_currency_code) }}
 
-                                                                <span class="whitespace-nowrap text-xs font-normal">
+                                                                <span class="text-xs font-normal whitespace-nowrap">
                                                                     @lang('shop::app.customers.account.orders.view.information.excl-tax')
 
                                                                     <span class="font-medium">
@@ -1302,7 +1302,7 @@
                                                             @elseif (core()->getConfigData('sales.taxes.sales.display_prices') == 'both')
                                                                 {{ core()->formatPrice($item->total_incl_tax, $order->order_currency_code) }}
 
-                                                                <span class="whitespace-nowrap text-xs font-normal">
+                                                                <span class="text-xs font-normal whitespace-nowrap">
                                                                     @lang('shop::app.customers.account.orders.view.invoices.excl-tax')
 
                                                                     <span class="font-medium">
@@ -1320,15 +1320,15 @@
                                     </div>
 
                                     <!-- Summary -->
-                                    <div class="mt-8 flex items-start gap-10 max-lg:gap-5">
-                                        <div class="flex flex-auto justify-end">
-                                            <div class="grid max-w-max gap-2 text-sm">
+                                    <div class="flex items-start gap-10 mt-8 max-lg:gap-5">
+                                        <div class="flex justify-end flex-auto">
+                                            <div class="grid gap-2 text-sm max-w-max">
 
                                                 {!! view_render_event('bagisto.shop.customers.account.orders.view.invoices.subtotal.before') !!}
 
                                                 <!-- Sub Total -->
                                                 @if (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'including_tax')
-                                                    <div class="flex w-full justify-between gap-x-5">
+                                                    <div class="flex justify-between w-full gap-x-5">
                                                         @lang('shop::app.customers.account.orders.view.invoices.subtotal')
 
                                                         <p>
@@ -1336,7 +1336,7 @@
                                                         </p>
                                                     </div>
                                                 @elseif (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'both')
-                                                    <div class="flex w-full justify-between gap-x-5">
+                                                    <div class="flex justify-between w-full gap-x-5">
                                                         @lang('shop::app.customers.account.orders.view.invoices.subtotal-excl-tax')
 
                                                         <p>
@@ -1344,7 +1344,7 @@
                                                         </p>
                                                     </div>
 
-                                                    <div class="flex w-full justify-between gap-x-5">
+                                                    <div class="flex justify-between w-full gap-x-5">
                                                         @lang('shop::app.customers.account.orders.view.invoices.subtotal-incl-tax')
 
                                                         <p>
@@ -1352,7 +1352,7 @@
                                                         </p>
                                                     </div>
                                                 @else
-                                                    <div class="flex w-full justify-between gap-x-5">
+                                                    <div class="flex justify-between w-full gap-x-5">
                                                         @lang('shop::app.customers.account.orders.view.invoices.subtotal')
 
                                                         <p>
@@ -1367,7 +1367,7 @@
 
                                                 <!-- Shipping -->
                                                 @if (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'including_tax')
-                                                    <div class="flex w-full justify-between gap-x-5">
+                                                    <div class="flex justify-between w-full gap-x-5">
                                                         @lang('shop::app.customers.account.orders.view.invoices.shipping-handling')
 
                                                         <p>
@@ -1375,7 +1375,7 @@
                                                         </p>
                                                     </div>
                                                 @elseif (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'both')
-                                                    <div class="flex w-full justify-between gap-x-5">
+                                                    <div class="flex justify-between w-full gap-x-5">
                                                         @lang('shop::app.customers.account.orders.view.invoices.shipping-handling-excl-tax')
 
                                                         <p>
@@ -1383,7 +1383,7 @@
                                                         </p>
                                                     </div>
 
-                                                    <div class="flex w-full justify-between gap-x-5">
+                                                    <div class="flex justify-between w-full gap-x-5">
                                                         @lang('shop::app.customers.account.orders.view.invoices.shipping-handling-incl-tax')
 
                                                         <p>
@@ -1391,7 +1391,7 @@
                                                         </p>
                                                     </div>
                                                 @else
-                                                    <div class="flex w-full justify-between gap-x-5">
+                                                    <div class="flex justify-between w-full gap-x-5">
                                                         @lang('shop::app.customers.account.orders.view.invoices.shipping-handling')
 
                                                         <p>
@@ -1406,7 +1406,7 @@
 
                                                 <!-- Discount Amount -->
                                                 @if ($invoice->base_discount_amount > 0)
-                                                    <div class="flex w-full justify-between gap-x-5">
+                                                    <div class="flex justify-between w-full gap-x-5">
                                                         @lang('shop::app.customers.account.orders.view.invoices.discount')
 
                                                         <p>
@@ -1420,7 +1420,7 @@
                                                 {!! view_render_event('bagisto.shop.customers.account.orders.view.invoices.tax-amount.before') !!}
 
                                                 <!-- Tax Amount -->
-                                                <div class="flex w-full justify-between gap-x-5">
+                                                <div class="flex justify-between w-full gap-x-5">
                                                     @lang('shop::app.customers.account.orders.view.invoices.tax')
 
                                                     <p>
@@ -1433,7 +1433,7 @@
                                                 {!! view_render_event('bagisto.shop.customers.account.orders.view.invoices.grand-total.before') !!}
 
                                                 <!-- Grand Total -->
-                                                <div class="flex w-full justify-between gap-x-5 font-semibold">
+                                                <div class="flex justify-between w-full font-semibold gap-x-5">
                                                     @lang('shop::app.customers.account.orders.view.invoices.grand-total')
 
                                                     <p>
@@ -1482,9 +1482,9 @@
                                     </div>
 
                                     <!-- Table of Contents -->
-                                    <div class="relative mt-5 overflow-x-auto rounded-xl border max-md:hidden">
-                                        <table class="w-full text-left text-sm">
-                                            <thead class="border-b border-zinc-200 bg-zinc-100 text-sm text-black">
+                                    <div class="relative mt-5 overflow-x-auto border rounded-xl max-md:hidden">
+                                        <table class="w-full text-sm text-left">
+                                            <thead class="text-sm border-b text-foreground border-border bg-zinc-100">
                                                 <tr class="[&>*]:font-medium [&>*]:px-6 [&>*]:py-4">
                                                     <th scope="col">
                                                         @lang('shop::app.customers.account.orders.view.shipments.sku')
@@ -1502,7 +1502,7 @@
 
                                             <tbody>
                                                 @foreach ($shipment->items as $item)
-                                                    <tr class="border-b bg-white [&>*]:font-medium [&>*]:px-6 [&>*]:py-4 [&>*]:text-black">
+                                                    <tr class="border-b bg-background [&>*]:font-medium [&>*]:px-6 [&>*]:py-4 [&>*]:text-foreground">
                                                         <td data-value="@lang('shop::app.customers.account.orders.view.shipments.sku')">
                                                             {{ $item->sku }}
                                                         </td>
@@ -1532,10 +1532,10 @@
                                 <!-- For Mobile view -->
                                 <div class="grid gap-4 md:hidden">
                                     <div
-                                        class="rounded-lg border"
+                                        class="border rounded-lg"
                                         v-pre
                                     >
-                                        <div class="grid gap-1.5 px-4 py-2.5 text-xs font-medium text-zinc-500 [&>*]:flex [&>*]:justify-between">
+                                        <div class="grid gap-1.5 px-4 py-2.5 text-xs font-medium text-muted [&>*]:flex [&>*]:justify-between">
                                             <div class="flex justify-between">
                                                 @lang('shop::app.customers.account.orders.view.shipments.tracking-number'):
 
@@ -1558,7 +1558,7 @@
 
                                         <x-slot:content class="grid gap-2.5 !bg-gray-100 !p-0">
                                             @foreach ($shipment->items as $item)
-                                                <div class="rounded-md rounded-t-none border border-t-0 bg-white px-4 py-2">
+                                                <div class="px-4 py-2 border border-t-0 rounded-md rounded-t-none bg-background">
                                                     <p class="pb-2 text-sm font-medium">
                                                         {{ $item->name }}
                                                     </p>
@@ -1566,7 +1566,7 @@
                                                     <div class="grid gap-1.5 text-xs font-medium">
                                                         <!-- SKU -->
                                                         <div class="flex justify-between">
-                                                            <span class="text-zinc-500">
+                                                            <span class="text-muted">
                                                                 @lang('shop::app.customers.account.orders.view.shipments.sku'):
                                                             </span>
 
@@ -1577,7 +1577,7 @@
 
                                                         <!-- Quantity -->
                                                         <div class="flex justify-between">
-                                                            <span class="text-zinc-500">
+                                                            <span class="text-muted">
                                                                 @lang('shop::app.customers.account.orders.view.shipments.qty'):
                                                             </span>
 
@@ -1612,9 +1612,9 @@
                                     </span>
                                 </div>
 
-                                <div class="relative mt-8 overflow-x-auto rounded-xl border">
-                                    <table class="w-full text-left text-sm">
-                                        <thead class="border-b border-zinc-200 bg-zinc-100 text-sm text-black">
+                                <div class="relative mt-8 overflow-x-auto border rounded-xl">
+                                    <table class="w-full text-sm text-left">
+                                        <thead class="text-sm border-b text-foreground border-border bg-zinc-100">
                                             <tr class="[&>*]:font-medium [&>*]:px-6 [&>*]:py-4">
                                                 <th scope="col">
                                                     @lang('shop::app.customers.account.orders.view.refunds.sku')
@@ -1640,7 +1640,7 @@
 
                                         <tbody>
                                             @foreach ($refund->items as $item)
-                                                <tr class="border-b bg-white [&>*]:font-medium [&>*]:px-6 [&>*]:py-4 [&>*]:text-black">
+                                                <tr class="border-b bg-background [&>*]:font-medium [&>*]:px-6 [&>*]:py-4 [&>*]:text-foreground">
                                                     <td data-value="@lang('shop::app.customers.account.orders.view.refunds.sku')">
                                                         {{ $item->getTypeInstance()->getOrderedItem($item)->sku }}
                                                     </td>
@@ -1666,7 +1666,7 @@
                                                         @elseif (core()->getConfigData('sales.taxes.sales.display_prices') == 'both')
                                                             {{ core()->formatPrice($item->price_incl_tax, $order->order_currency_code) }}
 
-                                                            <span class="whitespace-nowrap text-xs font-normal">
+                                                            <span class="text-xs font-normal whitespace-nowrap">
                                                                 @lang('shop::app.customers.account.orders.view.information.excl-tax')
 
                                                                 <span class="font-medium">
@@ -1691,7 +1691,7 @@
                                                         @elseif (core()->getConfigData('sales.taxes.sales.display_prices') == 'both')
                                                             {{ core()->formatPrice($item->total_incl_tax, $order->order_currency_code) }}
 
-                                                            <span class="whitespace-nowrap text-xs font-normal">
+                                                            <span class="text-xs font-normal whitespace-nowrap">
                                                                 @lang('shop::app.customers.account.orders.view.information.excl-tax')
 
                                                                 <span class="font-medium">
@@ -1719,10 +1719,10 @@
                             <div class="grid gap-4 md:hidden">
 
                                 <div
-                                    class="rounded-lg border"
+                                    class="border rounded-lg"
                                     v-pre
                                 >
-                                    <div class="grid gap-1.5 px-4 py-2.5 text-xs font-medium text-zinc-500 [&>*]:flex [&>*]:justify-between">
+                                    <div class="grid gap-1.5 px-4 py-2.5 text-xs font-medium text-muted [&>*]:flex [&>*]:justify-between">
                                         @lang('shop::app.customers.account.orders.view.refunds.individual-refund', ['refund_id' => $refund->id])
                                     </div>
                                 </div>
@@ -1737,7 +1737,7 @@
 
                                     <x-slot:content class="grid gap-2.5 !bg-gray-100 !p-0">
                                         @foreach ($invoice->items as $item)
-                                            <div class="rounded-md rounded-t-none border border-t-0 bg-white px-4 py-2">
+                                            <div class="px-4 py-2 border border-t-0 rounded-md rounded-t-none bg-backkground">
                                                 <p class="pb-2 text-sm font-medium">
                                                     {{ $item->name }}
                                                 </p>
@@ -1745,7 +1745,7 @@
                                                 <div class="grid gap-1.5 text-xs font-medium">
                                                     <!-- SKU -->
                                                     <div class="flex justify-between">
-                                                        <span class="text-zinc-500">
+                                                        <span class="text-muted">
                                                             @lang('shop::app.customers.account.orders.view.refunds.sku'):
                                                         </span>
 
@@ -1756,7 +1756,7 @@
 
                                                     <!-- Price -->
                                                     <div class="flex justify-between">
-                                                        <span class="text-zinc-500">
+                                                        <span class="text-muted">
                                                             @lang('shop::app.customers.account.orders.view.refunds.price'):
                                                         </span>
 
@@ -1768,7 +1768,7 @@
                                                                     {{ core()->formatPrice($item->price_incl_tax, $order->order_currency_code) }}
                                                                 </p>
 
-                                                                <p class="whitespace-nowrap text-xs font-normal">
+                                                                <p class="text-xs font-normal whitespace-nowrap">
                                                                     @lang('shop::app.customers.account.orders.view.information.excl-tax')
 
                                                                     <span class="font-medium">
@@ -1783,7 +1783,7 @@
 
                                                     <!-- Quantity -->
                                                     <div class="flex justify-between">
-                                                        <span class="text-zinc-500">
+                                                        <span class="text-muted">
                                                             @lang('shop::app.customers.account.orders.view.refunds.qty')
                                                         </span>
 
@@ -1794,7 +1794,7 @@
 
                                                     <!-- Sub Total -->
                                                     <div class="flex justify-between">
-                                                        <span class="text-zinc-500">
+                                                        <span class="text-muted">
                                                             @lang('shop::app.customers.account.orders.view.refunds.subtotal'):
                                                         </span>
 
@@ -1806,7 +1806,7 @@
                                                                     {{ core()->formatPrice($item->total_incl_tax, $order->order_currency_code) }}
                                                                 </p>
 
-                                                                <p class="whitespace-nowrap text-xs font-normal">
+                                                                <p class="text-xs font-normal whitespace-nowrap">
                                                                     @lang('shop::app.customers.account.orders.view.information.excl-tax')
 
                                                                     <span class="font-medium">
@@ -1826,20 +1826,20 @@
 
                                 <!-- Summary -->
                                 <div
-                                    class="w-full rounded-md bg-gray-100"
+                                    class="w-full bg-gray-100 rounded-md"
                                     v-pre
                                 >
                                     <div class="rounded-t-md border-none !px-4 py-3 text-sm font-medium max-sm:py-2">
                                         @lang('shop::app.customers.account.orders.view.refunds.order-summary')
                                     </div>
 
-                                    <div class="grid gap-1.5 rounded-md rounded-t-none border border-t-0 bg-white px-4 py-3 text-xs font-medium">
+                                    <div class="grid gap-1.5 rounded-md rounded-t-none border border-t-0 bg-background px-4 py-3 text-xs font-medium">
 
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.refunds.subtotal.before') !!}
 
                                         @if (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'including_tax')
-                                            <div class="flex w-full justify-between gap-x-5">
-                                                <p class="text-zinc-500">
+                                            <div class="flex justify-between w-full gap-x-5">
+                                                <p class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.refunds.subtotal')
                                                 </p>
 
@@ -1848,8 +1848,8 @@
                                                 </p>
                                             </div>
                                         @elseif (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'both')
-                                            <div class="flex w-full justify-between gap-x-5">
-                                                <p class="text-zinc-500">
+                                            <div class="flex justify-between w-full gap-x-5">
+                                                <p class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.refunds.subtotal-excl-tax')
                                                 </p>
 
@@ -1858,8 +1858,8 @@
                                                 </p>
                                             </div>
 
-                                            <div class="flex w-full justify-between gap-x-5">
-                                                <p class="text-zinc-500">
+                                            <div class="flex justify-between w-full gap-x-5">
+                                                <p class="text-muted">
 
                                                     @lang('shop::app.customers.account.orders.view.refunds.subtotal-incl-tax')
                                                 </p>
@@ -1869,8 +1869,8 @@
                                                 </p>
                                             </div>
                                         @else
-                                            <div class="flex w-full justify-between gap-x-5">
-                                                <p class="text-zinc-500">
+                                            <div class="flex justify-between w-full gap-x-5">
+                                                <p class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.refunds.subtotal')
                                                 </p>
 
@@ -1885,8 +1885,8 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.refunds.shipping.before') !!}
 
                                         @if (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'including_tax')
-                                            <div class="flex w-full justify-between gap-x-5">
-                                                <p class="text-zinc-500">
+                                            <div class="flex justify-between w-full gap-x-5">
+                                                <p class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.refunds.shipping-handling')
                                                 </p>
 
@@ -1895,8 +1895,8 @@
                                                 </p>
                                             </div>
                                         @elseif (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'both')
-                                            <div class="flex w-full justify-between gap-x-5">
-                                                <p class="text-zinc-500">
+                                            <div class="flex justify-between w-full gap-x-5">
+                                                <p class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.refunds.shipping-handling-excl-tax')
                                                 </p>
 
@@ -1905,8 +1905,8 @@
                                                 </p>
                                             </div>
 
-                                            <div class="flex w-full justify-between gap-x-5">
-                                                <p class="text-zinc-500">
+                                            <div class="flex justify-between w-full gap-x-5">
+                                                <p class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.refunds.shipping-handling-incl-tax')
                                                 </p>
 
@@ -1915,8 +1915,8 @@
                                                 </p>
                                             </div>
                                         @else
-                                            <div class="flex w-full justify-between gap-x-5">
-                                                <p class="text-zinc-500">
+                                            <div class="flex justify-between w-full gap-x-5">
+                                                <p class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.refunds.shipping-handling')
                                                 </p>
 
@@ -1932,7 +1932,7 @@
 
                                         <!-- Discount -->
                                         @if ($refund->discount_amount > 0)
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.refunds.discount')
 
                                                 <p>
@@ -1947,8 +1947,8 @@
 
                                         <!-- Tax Amount -->
                                         @if ($refund->tax_amount > 0)
-                                            <div class="flex w-full justify-between gap-x-5">
-                                                <p class="text-zinc-500">
+                                            <div class="flex justify-between w-full gap-x-5">
+                                                <p class="text-muted">
                                                     @lang('shop::app.customers.account.orders.view.refunds.tax')
                                                 </p>
 
@@ -1963,8 +1963,8 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.refunds.adjustment-refund.before') !!}
 
                                         <!-- Adjustments Refund -->
-                                        <div class="flex w-full justify-between gap-x-5">
-                                            <p class="text-zinc-500">
+                                        <div class="flex justify-between w-full gap-x-5">
+                                            <p class="text-muted">
                                                 @lang('shop::app.customers.account.orders.view.refunds.adjustment-refund')
                                             </p>
 
@@ -1978,8 +1978,8 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.refunds.adjustment-fee.before') !!}
 
                                         <!-- Adjustment fee -->
-                                        <div class="flex w-full justify-between gap-x-5">
-                                            <p class="text-zinc-500">
+                                        <div class="flex justify-between w-full gap-x-5">
+                                            <p class="text-muted">
                                                 @lang('shop::app.customers.account.orders.view.refunds.adjustment-fee')
                                             </p>
 
@@ -1993,8 +1993,8 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.refunds.grand-total.before') !!}
 
                                         <!-- Grand Total -->
-                                        <div class="flex w-full justify-between gap-x-5 font-semibold">
-                                            <p class="text-zinc-500">
+                                        <div class="flex justify-between w-full font-semibold gap-x-5">
+                                            <p class="text-muted">
                                                 @lang('shop::app.customers.account.orders.view.refunds.grand-total')
                                             </p>
 
@@ -2011,17 +2011,17 @@
 
                             <!-- Summary -->
                             <div
-                                class="mt-8 flex items-start gap-10 max-lg:gap-5 max-md:hidden"
+                                class="flex items-start gap-10 mt-8 max-lg:gap-5 max-md:hidden"
                                 v-pre
                             >
-                                <div class="flex flex-auto justify-end">
-                                    <div class="grid max-w-max gap-2 text-sm">
+                                <div class="flex justify-end flex-auto">
+                                    <div class="grid gap-2 text-sm max-w-max">
 
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.refunds.subtotal.before') !!}
 
                                         <!-- Sub Total -->
                                         @if (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'including_tax')
-                                            <div class="flex w-full justify-between gap-x-5 text-sm">
+                                            <div class="flex justify-between w-full text-sm gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.refunds.subtotal')
 
                                                 <p>
@@ -2029,7 +2029,7 @@
                                                 </p>
                                             </div>
                                         @elseif (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'both')
-                                            <div class="flex w-full justify-between gap-x-5 text-sm">
+                                            <div class="flex justify-between w-full text-sm gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.refunds.subtotal-excl-tax')
 
                                                 <p>
@@ -2037,7 +2037,7 @@
                                                 </p>
                                             </div>
 
-                                            <div class="flex w-full justify-between gap-x-5 text-sm">
+                                            <div class="flex justify-between w-full text-sm gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.refunds.subtotal-incl-tax')
 
                                                 <p>
@@ -2045,7 +2045,7 @@
                                                 </p>
                                             </div>
                                         @else
-                                            <div class="flex w-full justify-between gap-x-5 text-sm">
+                                            <div class="flex justify-between w-full text-sm gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.refunds.subtotal')
 
                                                 <p>
@@ -2060,7 +2060,7 @@
 
                                         <!-- Shipping And Handling -->
                                         @if (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'including_tax')
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.refunds.shipping-handling')
 
                                                 <p>
@@ -2068,7 +2068,7 @@
                                                 </p>
                                             </div>
                                         @elseif (core()->getConfigData('sales.taxes.sales.display_shipping_amount') == 'both')
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.refunds.shipping-handling-excl-tax')
 
                                                 <p>
@@ -2076,7 +2076,7 @@
                                                 </p>
                                             </div>
 
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.refunds.shipping-handling-incl-tax')
 
                                                 <p>
@@ -2084,7 +2084,7 @@
                                                 </p>
                                             </div>
                                         @else
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.refunds.shipping-handling')
 
                                                 <p>
@@ -2099,7 +2099,7 @@
 
                                         <!-- Discount -->
                                         @if ($refund->discount_amount > 0)
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.refunds.discount')
 
                                                 <p>
@@ -2114,7 +2114,7 @@
 
                                         <!-- Tax Amount -->
                                         @if ($refund->tax_amount > 0)
-                                            <div class="flex w-full justify-between gap-x-5">
+                                            <div class="flex justify-between w-full gap-x-5">
                                                 @lang('shop::app.customers.account.orders.view.refunds.tax')
 
                                                 <p>
@@ -2128,7 +2128,7 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.refunds.adjustment-refund.before') !!}
 
                                         <!-- Adjustments Refund -->
-                                        <div class="flex w-full justify-between gap-x-5">
+                                        <div class="flex justify-between w-full gap-x-5">
                                             @lang('shop::app.customers.account.orders.view.refunds.adjustment-refund')
 
                                             <p>
@@ -2141,7 +2141,7 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.refunds.adjustment-fee.before') !!}
 
                                         <!-- Adjustment fee -->
-                                        <div class="flex w-full justify-between gap-x-5">
+                                        <div class="flex justify-between w-full gap-x-5">
                                             @lang('shop::app.customers.account.orders.view.refunds.adjustment-fee')
 
                                             <p>
@@ -2154,7 +2154,7 @@
                                         {!! view_render_event('bagisto.shop.customers.account.orders.view.refunds.grand-total.before') !!}
 
                                         <!-- Grand Total -->
-                                        <div class="flex w-full justify-between gap-x-5 font-semibold">
+                                        <div class="flex justify-between w-full font-semibold gap-x-5">
                                             @lang('shop::app.customers.account.orders.view.refunds.grand-total')
 
                                             <p>
@@ -2174,20 +2174,20 @@
 
             <!-- Shipping Address and Payment methods for mobile view -->
             <div
-                class="w-full rounded-md bg-gray-100 md:hidden"
+                class="w-full bg-gray-100 rounded-md md:hidden"
                 v-pre
             >
                 <div class="rounded-t-md border-none !px-4 py-3 text-sm font-medium max-sm:py-2">
                     @lang('shop::app.customers.account.orders.view.shipping-and-payment')
                 </div>
 
-                <div class="grid gap-1.5 rounded-md rounded-t-none border border-t-0 bg-white px-4 py-3 text-xs font-medium">
+                <div class="grid gap-1.5 rounded-md rounded-t-none border border-t-0 bg-background px-4 py-3 text-xs font-medium">
                     <!-- Shipping Address -->
                     @if ($order->shipping_address)
-                        <div class="text-sm font-medium text-zinc-500">
+                        <div class="text-sm font-medium text-muted">
                             @lang('shop::app.customers.account.orders.view.shipping-address')
 
-                            <div class="mt-1 grid gap-2 text-xs text-black">
+                            <div class="grid gap-2 mt-1 text-xs text-foreground">
                                 <div class="grid gap-2.5 max-md:gap-0">
                                     @include ('shop::customers.account.orders.view.address', ['address' => $order->shipping_address])
                                 </div>
@@ -2202,10 +2202,10 @@
 
                     <!-- Billing Address -->
                     @if ($order->billing_address)
-                        <div class="text-sm font-medium text-zinc-500">
+                        <div class="text-sm font-medium text-muted">
                             @lang('shop::app.customers.account.orders.view.billing-address')
 
-                            <div class="mt-1 grid gap-2 text-xs text-gray-800">
+                            <div class="grid gap-2 mt-1 text-xs text-gray-800">
                                 <div class="grid gap-2.5 max-md:gap-0">
                                     @include ('shop::customers.account.orders.view.address', ['address' => $order->billing_address])
                                 </div>
@@ -2221,7 +2221,7 @@
 
                     <!-- Shipping Method -->
                     @if ($order->shipping_address)
-                        <div class="text-sm font-medium text-zinc-500">
+                        <div class="text-sm font-medium text-muted">
                             @lang('shop::app.customers.account.orders.view.shipping-method')
 
                             <div class="mt-1 grid gap-2.5 text-xs text-gray-800">
@@ -2236,10 +2236,10 @@
                     @endif
 
                     <!-- Payment Method -->
-                    <div class="text-sm font-medium text-zinc-500">
+                    <div class="text-sm font-medium text-muted">
                         @lang('shop::app.customers.account.orders.view.payment-method')
 
-                        <div class="mt-1 grid gap-2.5 text-xs text-black">
+                        <div class="mt-1 grid gap-2.5 text-xs text-foreground">
                             {{ core()->getConfigData('sales.payment_methods.' . $order->payment->method . '.title') }}
 
                             @if (! empty($additionalDetails))
@@ -2259,13 +2259,13 @@
 
             <!-- Desktop View -->
             <div
-                class="mt-11 flex flex-wrap justify-between gap-x-11 gap-y-8 border-t border-zinc-200 pt-7 max-md:hidden"
+                class="flex flex-wrap justify-between border-t mt-11 gap-x-11 gap-y-8 border-border pt-7 max-md:hidden"
                 v-pre
             >
                 <!-- Billing Address -->
                 @if ($order->billing_address)
                     <div class="grid max-w-[200px] gap-4 max-868:w-full max-868:max-w-full max-md:max-w-full max-md:gap-2">
-                        <p class="text-base text-zinc-500 max-md:text-lg max-md:text-black">
+                        <p class="text-base text-muted max-md:text-lg max-md:text-foreground">
                             @lang('shop::app.customers.account.orders.view.billing-address')
                         </p>
 
@@ -2285,7 +2285,7 @@
                 <!-- Shipping Address -->
                 @if ($order->shipping_address)
                     <div class="grid max-w-[200px] gap-4 max-868:w-full max-868:max-w-full max-md:max-w-full max-md:gap-2">
-                        <p class="text-base text-zinc-500 max-md:text-lg max-md:text-black">
+                        <p class="text-base text-muted max-md:text-lg max-md:text-foreground">
                             @lang('shop::app.customers.account.orders.view.shipping-address')
                         </p>
 
@@ -2302,7 +2302,7 @@
 
                     <!-- Shipping Method -->
                     <div class="grid max-w-[200px] place-content-baseline gap-4 max-868:w-full max-868:max-w-full max-md:max-w-full max-md:gap-2">
-                        <p class="text-base text-zinc-500 max-md:text-lg max-md:text-black">
+                        <p class="text-base text-muted max-md:text-lg max-md:text-foreground">
                             @lang('shop::app.customers.account.orders.view.shipping-method')
                         </p>
 
@@ -2319,7 +2319,7 @@
 
                 <!-- Payment Method -->
                 <div class="grid max-w-[200px] place-content-baseline gap-4 max-868:w-full max-868:max-w-full max-md:max-w-full max-md:gap-2">
-                    <p class="text-base text-zinc-500 max-md:text-lg max-md:text-black">
+                    <p class="text-base text-muted max-md:text-lg max-md:text-foreground">
                         @lang('shop::app.customers.account.orders.view.payment-method')
                     </p>
 

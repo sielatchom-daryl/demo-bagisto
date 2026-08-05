@@ -1,10 +1,10 @@
 <div class="grid grid-cols-1 gap-6">
     @if ($bookingProduct->table_slot)
         <div class="flex gap-3">
-            <span class="icon-calendar text-2xl"></span>
+            <span class="text-2xl icon-calendar"></span>
 
             <div class="grid grid-cols-1 gap-1.5 text-sm font-medium">
-                <p class="text-[#6E6E6E]">
+                <p class="text-muted">
                     @lang('shop::app.products.view.type.booking.table.slot-duration') :
                 </p>
 
@@ -18,11 +18,11 @@
             @inject ('bookingSlotHelper', 'Webkul\BookingProduct\Helpers\TableSlot')
 
             <div class="flex gap-3">
-                <span class="icon-calendar text-2xl"></span>
+                <span class="text-2xl icon-calendar"></span>
 
                 <div class="grid grid-cols-1 gap-4">
                     <div class="grid grid-cols-1 gap-1.5 text-sm font-medium">
-                        <p class="text-[#6E6E6E]">
+                        <p class="text-muted">
                             @lang('shop::app.products.view.type.booking.table.today-availability')
                         </p>
 
@@ -66,7 +66,7 @@
         type="text/x-template"
         id="v-toggler-template"
     >
-        <div class="grid w-max select-none gap-3">
+        <div class="grid gap-3 select-none w-max">
             <!-- Details Toggler -->
             <p
                 class="flex cursor-pointer items-center gap-x-[15px] text-sm font-medium text-blue-600"
@@ -88,7 +88,7 @@
                 v-for="day in days"
             >
                 <p
-                    class="text-gray text-sm font-medium"
+                    class="text-sm font-medium text-gray"
                     v-text="day.name"
                 >
                 </p>

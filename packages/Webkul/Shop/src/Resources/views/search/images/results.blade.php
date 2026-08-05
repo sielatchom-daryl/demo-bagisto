@@ -4,13 +4,13 @@
             <x-shop::media.images.lazy class="h-[110px] max-h-[110px] w-[110px] min-w-[110px] max-w-[110px] rounded-sm max-sm:h-[60px] max-sm:max-h-[60px] max-sm:min-h-[60px] max-sm:w-[60px] max-sm:min-w-[60px] max-sm:max-w-[60px] max-sm:rounded-xl" />
     
             <div class="flex flex-col gap-4">
-                <span class="shimmer h-8 w-60 max-md:h-7 max-md:w-44"></span>
+                <span class="h-8 shimmer w-60 max-md:h-7 max-md:w-44"></span>
 
                 <!-- For Desktop View keywords -->
                 <div class="flex flex-wrap gap-2 max-sm:hidden">
                     @for ($i = 1; $i < 10; $i++)
-                        <div class="shimmer m-1 flex cursor-pointer items-center justify-center rounded-full font-medium">
-                            <span class="shimmer h-10 w-20 rounded-full"></span>
+                        <div class="flex items-center justify-center m-1 font-medium rounded-full cursor-pointer shimmer">
+                            <span class="w-20 h-10 rounded-full shimmer"></span>
                         </div>
                     @endfor
                 </div>
@@ -18,10 +18,10 @@
         </div>
 
         <!-- For Mobile View keywords -->
-        <div class="hidden flex-wrap gap-2 max-sm:flex">
+        <div class="flex-wrap hidden gap-2 max-sm:flex">
             @for ($i = 1; $i < 8; $i++)
-                <div class="shimmer m-1 flex cursor-pointer items-center justify-center rounded-full font-medium">
-                    <span class="shimmer h-9 w-20 rounded-full"></span>
+                <div class="flex items-center justify-center m-1 font-medium rounded-full cursor-pointer shimmer">
+                    <span class="w-20 rounded-full shimmer h-9"></span>
                 </div>
             @endfor
         </div>
@@ -33,7 +33,7 @@
         type="text/x-template"
         id="v-image-search-result-component-template"
     >
-        <div class="mt-8 rounded-lg border border-gray-200 bg-gray-100 p-5 max-sm:mt-0 max-sm:grid max-sm:gap-y-2.5 max-sm:p-2.5">
+        <div class="mt-8 rounded-lg border border-muted bg-background p-5 max-sm:mt-0 max-sm:grid max-sm:gap-y-2.5 max-sm:p-2.5">
             <div class="flex gap-12 max-sm:items-center max-sm:gap-4">
                 <img
                     class="h-[110px] max-h-[110px] min-h-[110px] w-[110px] max-w-[110px] rounded-sm max-sm:h-[60px] max-sm:max-h-[60px] max-sm:min-h-[60px] max-sm:w-[60px] max-sm:max-w-[60px] max-sm:rounded-xl"
@@ -50,8 +50,8 @@
 
                     <div class="flex flex-wrap gap-5 max-sm:hidden">
                         <span 
-                            class="flex cursor-pointer items-center justify-center rounded-full border border-navyBlue px-4 py-1.5 font-medium text-navyBlue"
-                            :class="{'rounded-full bg-navyBlue text-white': term.name.trim() === queryParameter.trim()}"
+                            class="flex cursor-pointer items-center justify-center rounded-full border border-primary px-4 py-1.5 font-medium text-primary"
+                            :class="{'rounded-full bg-primary text-background': term.name.trim() === queryParameter.trim()}"
                             v-for="term in searchedTerms"
                             @click="search(term)"
                         >
@@ -64,15 +64,15 @@
             </div>
 
             <!-- For Mobile View -->
-            <div class="hidden flex-wrap gap-2 max-sm:flex">
+            <div class="flex-wrap hidden gap-2 max-sm:flex">
                 <span 
-                    class="flex cursor-pointer items-center justify-center rounded-full border border-navyBlue bg-white font-medium text-navyBlue"
+                    class="flex items-center justify-center font-medium rounded-full cursor-pointer borderground bg-bac border-primary text-primary"
                     v-for="term in searchedTerms"
                     @click="search(term)"
                 >
                     <span
                         class="max-w-full flex-initial px-2.5 py-2 text-xs font-normal leading-none max-sm:px-3 max-sm:py-2.5"
-                        :class="{'rounded-full bg-navyBlue text-white': term.name.trim() === queryParameter.trim()}"
+                        :class="{'rounded-full bg-primary text-background': term.name.trim() === queryParameter.trim()}"
                     >
                         @{{ term.name }}
                     </span>

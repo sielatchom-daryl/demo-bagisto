@@ -35,30 +35,30 @@
     </x-slot>
 
     <!-- Hero Section -->
-    <section class="bg-[#F1EADF] px-[60px] py-30 max-md:px-5">
+    <section class="bg-surface px-[60px] py-30 max-md:px-5">
         <div class="mx-auto flex max-w-[1200px] items-center justify-between gap-10 max-md:flex-col mt-6">
 
             <!-- Text Content -->
             <div class="max-w-xl">
-                <h1 class="text-5xl font-bold leading-tight text-zinc-800 max-md:text-3xl">
+                <h1 class="text-5xl font-bold leading-tight text-primary max-md:text-3xl">
                     @lang('shop::app.home.hero.title')
                 </h1>
 
-                <p class="mt-5 text-lg text-zinc-600">
+                <p class="mt-5 text-lg text-muted">
                     @lang('shop::app.home.hero.description')
                 </p>
 
                 <div class="flex gap-4 mt-8 mb-8">
                     <a
                         href="{{ route('shop.search.index') }}"
-                        class="px-8 py-3 text-white transition bg-black rounded-lg hover:opacity-80"
+                        class="px-8 py-3 transition rounded-lg hover:opacity-80 primary-button"
                     >
                         @lang('shop::app.home.hero.shop_now')
                     </a>
 
                     <a
                         href="#categories"
-                        class="px-8 py-3 text-black border border-black rounded-lg"
+                        class="px-8 py-3 rounded-lg secondary-button"
                     >
                         @lang('shop::app.home.hero.discover_more')
                     </a>

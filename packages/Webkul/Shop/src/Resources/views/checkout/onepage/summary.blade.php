@@ -4,9 +4,9 @@
 </h1>
 
 <!-- Cart Items -->
-<div class="mt-10 grid border-b border-zinc-200 max-md:mt-3 max-sm:mt-0">
+<div class="grid mt-10 border-b border-zinc-200 max-md:mt-3 max-sm:mt-0">
     <div
-        class="flex gap-x-4 pb-5 max-md:gap-x-3 max-md:pb-4"
+        class="flex pb-5 gap-x-4 max-md:gap-x-3 max-md:pb-4"
         v-for="item in cart.items"
     >
         {!! view_render_event('bagisto.shop.checkout.onepage.summary.item_image.before') !!}
@@ -24,7 +24,7 @@
         <div>
             {!! view_render_event('bagisto.shop.checkout.onepage.summary.item_name.before') !!}
 
-            <p class="text-base text-navyBlue max-md:text-sm max-md:font-medium">
+            <p class="text-base text-primary max-md:text-sm max-md:font-medium">
                 @{{ item.name }}
             </p>
 
@@ -122,11 +122,11 @@
 
         <!-- Multi Source: Expandable breakdown. -->
         <div
-            class="flex flex-col gap-2 border-y py-2"
+            class="flex flex-col gap-2 py-2 border-y"
             v-else
         >
             <div
-                class="flex cursor-pointer justify-between text-right"
+                class="flex justify-between text-right cursor-pointer"
                 @click="cart.show_discount_breakdown = ! cart.show_discount_breakdown"
             >
                 <p class="text-base text-red-600 max-sm:text-sm">
@@ -249,11 +249,11 @@
 
     @if ($showTaxBreakdown)
         <div
-            class="flex flex-col gap-2 border-y py-2"
+            class="flex flex-col gap-2 py-2 border-y"
             v-else
         >
             <div
-                class="flex cursor-pointer items-center justify-between gap-2 text-right"
+                class="flex items-center justify-between gap-2 text-right cursor-pointer"
                 @click="cart.show_taxes = ! cart.show_taxes"
             >
                 <p class="text-base max-md:font-normal max-sm:text-sm">
@@ -294,11 +294,11 @@
                         class="flex items-center justify-between gap-2 pl-3"
                         v-for="product in taxLine.items"
                     >
-                        <p class="truncate text-xs text-gray-400 dark:text-gray-500">
+                        <p class="text-xs text-gray-400 truncate dark:text-gray-500">
                             @{{ product.name }}
                         </p>
 
-                        <p class="shrink-0 whitespace-nowrap text-xs text-gray-400 dark:text-gray-500">
+                        <p class="text-xs text-gray-400 shrink-0 whitespace-nowrap dark:text-gray-500">
                             <template v-if="displayTax.subtotal === 'including_tax' || displayTax.subtotal === 'both'">@{{ product.tax_amount }}</template>
 
                             <template v-else>+ @{{ product.tax_amount }}</template>

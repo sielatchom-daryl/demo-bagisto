@@ -2,7 +2,7 @@
 {!! view_render_event('bagisto.shop.checkout.cart.summary.estimate_shipping.before') !!}
 
 <x-shop::accordion
-    class="overflow-hidden rounded-xl border max-md:rounded-lg max-md:!border-none max-md:!bg-gray-100"
+    class="overflow-hidden rounded-xl border max-md:rounded-lg max-md:!border-none max-md:!bg-background"
     :is-active="false"
 >
     <x-slot:header class="font-semibold max-md:py-3 max-md:font-medium max-sm:p-2 max-sm:text-sm">
@@ -25,8 +25,9 @@
         <x-shop::form
             v-slot="{ meta, errors, handleSubmit }"
             as="div"
+            class="bg-background"
         >
-            <form @change="handleSubmit($event, estimateShipping)">
+            <form @change="handleSubmit($event, estimateShipping)" class="bg-background">
                 <p class="mb-4 max-sm:text-sm">
                     @lang('shop::app.checkout.cart.summary.estimate-shipping.info')
                 </p>
@@ -41,6 +42,7 @@
                         type="select"
                         name="country"
                         v-model="selectedCountry"
+                        class="bg-surface text-muted"
                         rules="{{ core()->isCountryRequired() ? 'required' : '' }}"
                         :label="trans('shop::app.checkout.cart.summary.estimate-shipping.country')"
                         :placeholder="trans('shop::app.checkout.cart.summary.estimate-shipping.country')"
@@ -123,14 +125,14 @@
 
                 <!-- Estimated Shipping Methods -->
                 <div
-                    class="mt-4 grid rounded-xl border border-zinc-200"
+                    class="grid mt-4 border rounded-xl border-zinc-200"
                     v-if="methods.length"
                 >
                     <template v-for="method in methods">
                         {!! view_render_event('bagisto.shop.checkout.cart.summary.estimate_shipping.shipping_method.before') !!}
 
                         <div
-                            class="relative select-none border-b border-zinc-200 last:border-b-0 max-md:max-w-full max-md:flex-auto"
+                            class="relative border-b select-none border-zinc-200 last:border-b-0 max-md:max-w-full max-md:flex-auto"
                             v-for="rate in method.rates"
                         >
                             <div class="absolute top-5 ltr:left-4 rtl:right-4">
@@ -145,7 +147,7 @@
                             </div>
 
                             <label 
-                                class="block cursor-pointer p-4 pl-12"
+                                class="block p-4 pl-12 cursor-pointer"
                                 :for="rate.method"
                             >
                                 <p class="text-2xl font-semibold max-md:text-lg">
@@ -173,7 +175,7 @@
 
             data() {
                 return {
-                    selectedCountry: '',
+                    selectedCountry: 'GA',
 
                     countries: [],
 

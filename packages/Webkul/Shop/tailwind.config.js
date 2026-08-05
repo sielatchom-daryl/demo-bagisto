@@ -29,11 +29,11 @@ module.exports = {
 
         extend: {
             colors: {
-                navyBlue: "#060C3B",
-                lightOrange: "#F6F2EB",
-                darkGreen: '#40994A',
-                darkBlue: '#0044F2',
-                darkPink: '#F85156',
+                navyBlue: "#060C3B",     // do not use
+                lightOrange: "#F6F2EB",  // do not use
+                darkGreen: '#40994A',   // do not use
+                darkBlue: '#0044F2',   // do not use
+                darkPink: '#F85156',    // do not use
                 
                 primary: '#C9A227',     // Gold
                 secondary: '#1A1A1A',   // Black
@@ -45,7 +45,7 @@ module.exports = {
                 accent: '#D4AF37',
                 danger: '#FF1C24',
 
-                laahtech: '#1AAD21',
+                laahtech: '#1AAD21',    // do not use
             },
 
             fontFamily: {

@@ -18,29 +18,29 @@
             :validate-mass-action="validateMassAction"
             :perform-mass-action="performMassAction"
         >
-            <div class="flex w-full items-center gap-x-1">
+            <div class="flex items-center w-full gap-x-1">
                 <x-shop::dropdown position="bottom-left">
                     <x-slot:toggle>
                         <button
                             type="button"
-                            class="inline-flex w-full max-w-max cursor-pointer appearance-none items-center justify-between gap-x-2 rounded-md border border-gray-300 bg-white px-2.5 py-1.5 text-center leading-6 text-gray-600 transition-all marker:shadow hover:border-gray-400 focus:border-gray-400 focus:ring-black"
+                            class="inline-flex w-full max-w-max cursor-pointer appearance-none items-center justify-between gap-x-2 rounded-md border border-primary bg-surface px-2.5 py-1.5 text-center leading-6 text-foreground transition-all hover:border-primary focus:border-primary"
                         >
                             <span>
                                 @lang('shop::app.components.datagrid.toolbar.mass-actions.select-action')
                             </span>
 
-                            <span class="icon-arrow-down text-2xl"></span>
+                            <span class="text-2xl icon-arrow-down"></span>
                         </button>
                     </x-slot>
 
-                    <x-slot:menu class="border-gray-300 !p-0 shadow-[0_5px_20px_rgba(0,0,0,0.15)]">
+                    <x-slot:menu class="border-border bg-surface !p-0 shadow-[0_5px_20px_rgba(0,0,0,0.35)]">
                         <template v-for="massAction in available.massActions">
                             <li
-                                class="group/item relative overflow-visible"
+                                class="relative overflow-visible group/item"
                                 v-if="massAction?.options?.length"
                             >
                                 <a
-                                    class="whitespace-no-wrap !rounded-0 flex cursor-not-allowed justify-between gap-1.5 bg-white px-4 py-2 hover:bg-gray-100"
+                                    class="whitespace-no-wrap !rounded-0 flex cursor-pointer justify-between gap-1.5 bg-surface px-4 py-2 text-foreground hover:bg-secondary"
                                     href="javascript:void(0);"
                                 >
                                     <i
@@ -54,13 +54,13 @@
                                         @{{ massAction.title }}
                                     </span>
 
-                                    <i class="icon-arrow-right rtl:icon-arrow-left text-2xl"></i>
+                                    <i class="text-2xl icon-arrow-right rtl:icon-arrow-left"></i>
                                 </a>
 
-                                <ul class="absolute top-0 z-10 hidden w-max min-w-[150px] rounded border border-gray-300 bg-white shadow-[0_5px_20px_rgba(0,0,0,0.15)] group-hover/item:block ltr:left-full rtl:right-full">
+                                <ul class="absolute top-0 z-10 hidden w-max min-w-[150px] rounded border border-border bg-surface shadow-[0_5px_20px_rgba(0,0,0,0.35)] group-hover/item:block ltr:left-full rtl:right-full">
                                     <li v-for="option in massAction.options">
                                         <a
-                                            class="whitespace-no-wrap block rounded-t px-4 py-2 hover:bg-gray-100"
+                                            class="block px-4 py-2 whitespace-no-wrap rounded-t text-foreground hover:bg-secondary"
                                             href="javascript:void(0);"
                                             @click="performMassAction(massAction, option)"
                                         >
@@ -72,7 +72,7 @@
 
                             <li v-else>
                                 <a
-                                    class="whitespace-no-wrap flex gap-1.5 rounded-b px-4 py-2 hover:bg-gray-100"
+                                    class="whitespace-no-wrap flex gap-1.5 rounded-b px-4 py-2 text-foreground hover:bg-secondary"
                                     href="javascript:void(0);"
                                     @click="performMassAction(massAction)"
                                 >
@@ -91,7 +91,7 @@
                 </x-shop::dropdown>
 
                 <div class="ltr:pl-2.5 rtl:pr-2.5">
-                    <p class="text-sm font-light text-gray-800">
+                    <p class="text-sm font-light text-muted">
                         @{{ "@lang('shop::app.components.datagrid.toolbar.length-of')".replace(':length', massActions.indices.length) }}
 
                         @{{ "@lang('shop::app.components.datagrid.toolbar.selected')".replace(':total', available.meta.total) }}
@@ -100,6 +100,7 @@
             </div>
         </slot>
     </script>
+
 
     <script type="module">
         app.component('v-datagrid-mass-action', {

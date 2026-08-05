@@ -163,6 +163,7 @@
                         ::name="controlName + '.country'"
                         ::value="address.country"
                         v-model="selectedCountry"
+                        class="bg-surface text-muted"
                         rules="{{ core()->isCountryRequired() ? 'required' : '' }}"
                         :label="trans('shop::app.checkout.onepage.address.country')"
                         :placeholder="trans('shop::app.checkout.onepage.address.country')"

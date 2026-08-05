@@ -62,14 +62,14 @@
         type="text/x-template"
         id="v-carousel-template"
     >
-        <div class="relative m-auto flex w-full overflow-hidden">
+        <div class="relative flex w-full m-auto overflow-hidden">
             <!-- Slider -->
             <div
-                class="inline-flex translate-x-0 cursor-pointer transition-transform duration-700 ease-out will-change-transform"
+                class="inline-flex transition-transform duration-700 ease-out translate-x-0 cursor-pointer will-change-transform"
                 ref="sliderContainer"
             >
                 <div
-                    class="max-h-screen w-screen bg-cover bg-no-repeat"
+                    class="w-screen max-h-screen bg-no-repeat bg-cover"
                     v-for="(image, index) in images"
                     :key="index"
                     @click="visitLink(image)"
@@ -125,7 +125,7 @@
                     :key="index"
                     class="sm:p-2.5 mx-1 h-3 w-3 cursor-pointer rounded-full max-md:h-2 max-md:w-2 max-sm:h-1.5 max-sm:w-1.5
                     p-2 focus:outline-none"
-                    :class="{ 'bg-navyBlue': index === Math.abs(currentIndex), 'opacity-30 bg-gray-500': index !== Math.abs(currentIndex) }"
+                    :class="{ 'bg-primary': index === Math.abs(currentIndex), 'opacity-30 bg-gray-500': index !== Math.abs(currentIndex) }"
                     role="button"
                     tabindex="0"
                     :aria-label="'Go to slide ' + (index + 1)"

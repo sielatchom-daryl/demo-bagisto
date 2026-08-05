@@ -33,7 +33,7 @@
                             <!-- Modal Toggler -->
                             <x-slot:toggle>
                                 <span 
-                                    class="cursor-pointer text-base text-blue-700 max-sm:text-sm"
+                                    class="text-base cursor-pointer text-primary max-sm:text-sm"
                                     role="button"
                                     tabindex="0"
                                     v-if="! cart.coupon_code"
@@ -108,7 +108,7 @@
                     </span>
 
                     <span
-                        class="icon-cancel cursor-pointer text-xl text-gray-400 transition-colors hover:text-red-500 max-sm:text-base"
+                        class="text-xl text-gray-400 transition-colors cursor-pointer icon-cancel hover:text-red-500 max-sm:text-base"
                         title="@lang('shop::app.checkout.coupon.remove')"
                         @click="destroyCoupon"
                     >

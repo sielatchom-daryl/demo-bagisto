@@ -64,7 +64,7 @@
             @endphp
 
             @if (! empty($errors) && $errors['error_code'] === 'MINIMUM_ORDER_AMOUNT')
-                <div class="mt-5 w-full gap-12 rounded-lg bg-[#FFF3CD] px-5 py-3 text-[#383D41] max-sm:px-3 max-sm:py-2 max-sm:text-sm">
+                <div class="w-full gap-12 px-5 py-3 mt-5 rounded-lg text-muted max-sm:px-3 max-sm:py-2 max-sm:text-sm">
                     {{ $errors['message'] }}: {{ $errors['amount'] }}
                 </div>
             @endif
@@ -106,23 +106,23 @@
                         class="mt-8 flex flex-wrap gap-20 pb-8 max-1060:flex-col max-md:mt-0 max-md:gap-[30px] max-md:pb-0"
                         v-if="cart?.items?.length"
                     >
-                        <div class="flex flex-1 flex-col gap-6 max-md:gap-5">
+                        <div class="flex flex-col flex-1 gap-6 max-md:gap-5">
 
                             {!! view_render_event('bagisto.shop.checkout.cart.cart_mass_actions.before') !!}
 
                             <!-- Cart Mass Action Container -->
                             <div class="flex items-center justify-between border-b border-zinc-200 pb-2.5 max-md:py-2.5">
-                                <div class="flex select-none items-center">
+                                <div class="flex items-center select-none">
                                     <input
                                         type="checkbox"
                                         id="select-all"
-                                        class="peer hidden"
+                                        class="hidden peer"
                                         v-model="allSelected"
                                         @change="selectAll"
                                     >
 
                                     <label
-                                        class="icon-uncheck peer-checked:icon-check-box cursor-pointer text-2xl text-navyBlue peer-checked:text-navyBlue"
+                                        class="text-2xl cursor-pointer icon-uncheck peer-checked:icon-check-box text-primary peer-checked:text-primary"
                                         for="select-all"
                                         tabindex="0"
                                         aria-label="@lang('shop::app.checkout.cart.index.select-all')"
@@ -141,7 +141,7 @@
 
                                 <div v-if="selectedItemsCount">
                                     <span
-                                        class="cursor-pointer text-base text-blue-700 max-sm:text-xs"
+                                        class="text-base cursor-pointer text-primary max-sm:text-xs"
                                         role="button"
                                         tabindex="0"
                                         @click="removeSelectedItems"
@@ -150,10 +150,10 @@
                                     </span>
 
                                     @if (auth()->guard()->check())
-                                        <span class="mx-2.5 border-r-2 border-zinc-200"></span>
+                                        <span class="mx-2.5 border-r-2 border-surface"></span>
 
                                         <span
-                                            class="cursor-pointer text-base text-blue-700 max-sm:text-xs"
+                                            class="text-base cursor-pointer text-primary max-sm:text-xs"
                                             role="button"
                                             tabindex="0"
                                             @click="moveToWishlistSelectedItems"
@@ -173,19 +173,19 @@
                                 class="grid gap-y-6"
                                 v-for="item in cart?.items"
                             >
-                                <div class="flex justify-between gap-x-2.5 border-b border-zinc-200 pb-5">
+                                <div class="flex justify-between gap-x-2.5 border-b border-muted pb-5">
                                     <div class="flex gap-x-5">
-                                        <div class="mt-11 select-none max-md:mt-9 max-sm:mt-7">
+                                        <div class="select-none mt-11 max-md:mt-9 max-sm:mt-7">
                                             <input
                                                 type="checkbox"
                                                 :id="'item_' + item.id"
-                                                class="peer hidden"
+                                                class="hidden peer"
                                                 v-model="item.selected"
                                                 @change="updateAllSelected"
                                             >
 
                                             <label
-                                                class="icon-uncheck peer-checked:icon-check-box cursor-pointer text-2xl text-navyBlue peer-checked:text-navyBlue"
+                                                class="text-2xl cursor-pointer icon-uncheck peer-checked:icon-check-box text-primary peer-checked:text-primary"
                                                 :for="'item_' + item.id"
                                                 tabindex="0"
                                                 aria-label="@lang('shop::app.checkout.cart.index.select-cart-item')"
@@ -238,7 +238,7 @@
                                                         @lang('shop::app.checkout.cart.index.see-details')
 
                                                         <span
-                                                            class="text-2xl max-md:text-lg"
+                                                            class="text-2xl max-md:text-lg text-primary"
                                                             :class="{'icon-arrow-up': item.option_show, 'icon-arrow-down': ! item.option_show}"
                                                         ></span>
                                                     </p>
@@ -259,7 +259,7 @@
                                                                 <template v-if="attribute?.attribute_type === 'file'">
                                                                     <a
                                                                         :href="attribute.file_url"
-                                                                        class="text-blue-700"
+                                                                        class="text-primary"
                                                                         target="_blank"
                                                                         :download="attribute.file_name"
                                                                     >
@@ -302,7 +302,7 @@
                                                 </p>
 
                                                 <span
-                                                    class="cursor-pointer text-base text-blue-700 max-md:hidden"
+                                                    class="text-base cursor-pointer text-primary max-md:hidden"
                                                     role="button"
                                                     tabindex="0"
                                                     @click="removeItem(item.id)"
@@ -319,7 +319,7 @@
                                                 <x-shop::quantity-changer
                                                     v-if="item.can_change_qty"
                                                     ::key="'qty-' + item.id + '-' + refreshKey"
-                                                    class="flex max-w-max items-center gap-x-2.5 rounded-[54px] border border-navyBlue px-3.5 py-1.5 max-md:gap-x-1.5 max-md:px-1 max-md:py-0.5"
+                                                    class="flex max-w-max items-center gap-x-2.5 rounded-[54px] border border-border px-3.5 py-1.5 max-md:gap-x-1.5 max-md:px-1 max-md:py-0.5"
                                                     name="quantity"
                                                     ::value="item?.quantity"
                                                     :removable="true"
@@ -329,7 +329,7 @@
 
                                                 <!-- For Mobile view Remove Button -->
                                                 <span
-                                                    class="hidden cursor-pointer text-sm text-blue-700 max-md:block"
+                                                    class="hidden text-sm cursor-pointer text-primary max-md:block"
                                                     role="button"
                                                     tabindex="0"
                                                     @click="removeItem(item.id)"
@@ -375,7 +375,7 @@
 
                                         <!-- Cart Item Remove Button -->
                                         <span
-                                            class="cursor-pointer text-base text-blue-700"
+                                            class="text-base cursor-pointer text-primary"
                                             role="button"
                                             tabindex="0"
                                             @click="removeItem(item.id)"
@@ -431,7 +431,7 @@
 
                     <!-- Empty Cart Section -->
                     <div
-                        class="m-auto grid w-full place-content-center items-center justify-items-center py-32 text-center"
+                        class="grid items-center w-full py-32 m-auto text-center place-content-center justify-items-center"
                         v-else
                     >
                         <img

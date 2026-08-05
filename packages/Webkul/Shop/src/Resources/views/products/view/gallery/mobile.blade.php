@@ -2,11 +2,11 @@
     class="overflow-hidden 1180:hidden"
     v-if="isMediaLoading"
 >
-    <div class="shimmer aspect-square max-h-screen w-screen bg-zinc-200"></div>
+    <div class="w-screen max-h-screen shimmer aspect-square bg-background"></div>
 </div>
 
 <div
-    class="scrollbar-hide flex w-screen gap-8 overflow-auto max-sm:gap-5 1180:hidden"
+    class="flex w-screen gap-8 overflow-auto scrollbar-hide max-sm:gap-5 1180:hidden"
     v-else
 >
     <v-product-carousel
@@ -25,14 +25,14 @@
         type="text/x-template"
         id="v-product-carousel-template"
     >
-        <div class="relative m-auto flex w-full overflow-hidden">
+        <div class="relative flex w-full m-auto overflow-hidden">
             <!-- Slider -->
             <div
-                class="inline-flex translate-x-0 cursor-pointer transition-transform duration-700 ease-out will-change-transform"
+                class="inline-flex transition-transform duration-700 ease-out translate-x-0 cursor-pointer will-change-transform"
                 ref="sliderContainer"
             >
                 <div
-                    class="grid max-h-screen w-screen content-center bg-cover bg-no-repeat"
+                    class="grid content-center w-screen max-h-screen bg-no-repeat bg-cover"
                     v-for="(media, index) in options"
                     ref="slide"
                 >
@@ -52,7 +52,7 @@
 
                     <template v-else>
                         <img
-                            class="aspect-square max-h-full w-full max-w-full select-none transition-transform duration-300 ease-in-out"
+                            class="w-full max-w-full max-h-full transition-transform duration-300 ease-in-out select-none aspect-square"
                             :src="media.large_image_url"
                             :alt="media.large_image_url"
                         />
@@ -68,7 +68,7 @@
                 <div
                     v-for="(media, index) in options"
                     class="mx-1 h-1.5 w-1.5 cursor-pointer rounded-full"
-                    :class="{ 'bg-navyBlue': index === Math.abs(currentIndex), 'opacity-30 bg-gray-500': index !== Math.abs(currentIndex) }"
+                    :class="{ 'bg-primary': index === Math.abs(currentIndex), 'opacity-30 bg-surface': index !== Math.abs(currentIndex) }"
                     role="button"
                 >
                 </div>

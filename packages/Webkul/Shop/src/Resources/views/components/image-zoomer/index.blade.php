@@ -7,7 +7,7 @@
     >
         <transition
             tag="div"
-            class="bg-white"
+            class="bg-background"
             name="modal-content"
             enter-class="duration-300 ease-out"
             enter-from-class="translate-y-4 opacity-0 md:translate-y-0 md:scale-95"
@@ -18,25 +18,25 @@
         >
             <div
                 ref="parentContainer" 
-                class="fixed inset-0 z-10 flex transform flex-col gap-4 overflow-y-auto transition"
+                class="fixed inset-0 z-10 flex flex-col gap-4 overflow-y-auto transition transform"
                 v-show="isOpen"
             >
                 <!-- Close -->
                 <span
-                    class="icon-cancel absolute top-3 z-[1000] cursor-pointer text-3xl ltr:right-3 rtl:left-3"
+                    class="icon-cancel absolute top-3 z-[1000] cursor-pointer text-3xl text-primary transition-colors hover:text-accent ltr:right-3 rtl:left-3"
                     @click="toggle"
                 >
                 </span>
 
                 <span
-                    class="icon-arrow-left fixed left-2.5 top-1/2 z-10 -mt-12 w-auto cursor-pointer rounded-full bg-[rgba(0,0,0,0.8)] p-3 text-2xl font-bold text-white opacity-30 transition-all hover:opacity-100"
+                    class="icon-arrow-left fixed left-2.5 top-1/2 z-10 -mt-12 w-auto cursor-pointer rounded-full border border-border bg-surface p-3 text-2xl font-bold text-primary opacity-70 transition-all hover:bg-secondary hover:text-accent hover:opacity-100"
                     v-if="attachments.length >= 2"
                     @click="navigate(currentIndex -= 1)"
                 >
                 </span>
 
                 <span
-                    class="icon-arrow-right fixed right-2.5 top-1/2 z-10 -mt-12 w-auto cursor-pointer rounded-full bg-[rgba(0,0,0,0.8)] p-3 text-2xl font-bold text-white opacity-30 transition-all hover:opacity-100"
+                    class="icon-arrow-right fixed right-2.5 top-1/2 z-10 -mt-12 w-auto cursor-pointer rounded-full border border-border bg-surface p-3 text-2xl font-bold text-primary opacity-70 transition-all hover:bg-secondary hover:text-accent hover:opacity-100"
                     v-if="attachments.length >= 2"
                     @click="navigate(currentIndex += 1)"
                 >
@@ -45,10 +45,10 @@
                 <!-- Main Image -->
                 <div 
                     ref="mediaContainer" 
-                    class="h-full w-full overflow-hidden"
+                    class="w-full h-full overflow-hidden"
                 >
                     <div
-                        class="relative m-auto flex w-full items-center justify-center"
+                        class="relative flex items-center justify-center w-full m-auto"
                         :class="{
                             'h-full': ! isZooming,
                             'h-auto': isZooming
@@ -56,11 +56,11 @@
                     >
                         <div
                             v-for="(attachment, index) in attachments"
-                            class="h-full items-center justify-center"
+                            class="items-center justify-center h-full"
                             ref="slides"
                         >
                             <video 
-                                class="max-h-full max-w-full transition-transform duration-300 ease-out"
+                                class="max-w-full max-h-full transition-transform duration-300 ease-out"
                                 controls 
                                 v-if="attachment.type == 'video'"
                             >
@@ -73,7 +73,7 @@
                                 <!-- For Desktop -->
                                 <img
                                     :src="attachment.url"
-                                    class="max-h-full max-w-full transition-transform duration-300 ease-out max-md:hidden"
+                                    class="max-w-full max-h-full transition-transform duration-300 ease-out max-md:hidden"
                                     :class="{
                                         'cursor-zoom-in': ! isZooming,
                                         'cursor-grab': ! isDragging && isZooming,
@@ -91,7 +91,7 @@
                                 <!-- For Mobile -->
                                 <img
                                     :src="attachment.url"
-                                    class="max-h-full max-w-full transition-transform duration-300 ease-out md:hidden"
+                                    class="max-w-full max-h-full transition-transform duration-300 ease-out md:hidden"
                                     :class="{
                                         'cursor-zoom-in': ! isZooming,
                                         'cursor-grab': ! isDragging && isZooming,
@@ -105,12 +105,12 @@
                 </div>
 
                 <!-- Thumbnails -->
-                <div class="mb-4 flex justify-center gap-x-2">
+                <div class="flex justify-center mb-4 gap-x-2">
                     <template v-for="(attachment, index) in attachments">
                         <img
-                            class="h-16 w-16 transform cursor-pointer rounded-md border border-navyBlue border-transparent object-cover transition-transform hover:!border-navyBlue"
+                            class="h-16 w-16 transform cursor-pointer rounded-md border border-transparent object-cover transition-all hover:!border-primary"
                             :class="{
-                                '!border-navyBlue': currentIndex === index + 1,
+                                '!border-primary': currentIndex === index + 1,
                             }"
                             :src="attachment.url"
                             :key="index"
@@ -119,9 +119,9 @@
                         />
 
                         <video
-                            class="h-16 w-16 transform cursor-pointer rounded-md border border-navyBlue border-transparent object-cover transition-transform hover:!border-navyBlue"
+                           class="h-16 w-16 transform cursor-pointer rounded-md border border-transparent object-cover transition-all hover:!border-primary"
                             :class="{
-                                '!border-navyBlue': currentIndex === index + 1,
+                                '!border-primary': currentIndex === index + 1,
                             }"
                             :src="attachment.url"
                             :key="index"
