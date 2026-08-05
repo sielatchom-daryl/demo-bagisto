@@ -14,11 +14,11 @@
 
     @isset($header)
         <template v-slot:header="{ toggle, isOpen }">
-            <div {{ $header->attributes->merge(['class' => 'flex items-center justify-between gap-5 border-b border-zinc-200 bg-white p-8 max-sm:px-4 max-sm:py-3']) }}>
+            <div {{ $header->attributes->merge(['class' => 'flex items-center justify-between gap-5 border-b border-border bg-surface p-8 text-foreground max-sm:px-4 max-sm:py-3']) }}>
                 {{ $header }}
 
                 <span
-                    class="icon-cancel cursor-pointer text-3xl max-sm:text-2xl"
+                    class="text-3xl transition-colors cursor-pointer icon-cancel text-primary hover:text-accent max-sm:text-2xl"
                     @click="toggle"
                 >
                 </span>
@@ -28,7 +28,7 @@
 
     @isset($content)
         <template v-slot:content>
-            <div {{ $content->attributes->merge(['class' => 'bg-white p-8 max-sm:p-5']) }}>
+            <div {{ $content->attributes->merge(['class' => 'bg-surface p-8 text-foreground max-sm:p-5']) }}>
                 {{ $content }}
             </div>
         </template>
@@ -36,7 +36,7 @@
 
     @isset($footer)
         <template v-slot:footer>
-            <div {{ $footer->attributes->merge(['class' => 'mt-5 bg-white p-8 max-sm:mt-0.5 max-sm:py-4 max-sm:px-4']) }}>
+            <div {{ $footer->attributes->merge(['class' => 'mt-5 border-t border-border bg-surface p-8 max-sm:mt-0.5 max-sm:px-4 max-sm:py-4']) }}>
                 {{ $footer }}
             </div>
         </template>
@@ -65,7 +65,7 @@
                 leave-to-class="opacity-0"
             >
                 <div
-                    class="fixed inset-0 z-10 bg-gray-500 bg-opacity-50 transition-opacity"
+                    class="fixed inset-0 z-10 transition-opacity bg-black/70 backdrop-blur-sm"
                     v-show="isOpen"
                 ></div>
             </transition>
@@ -81,14 +81,15 @@
                 leave-to-class="translate-y-4 opacity-0 md:translate-y-0 md:scale-95"
             >
                 <div
-                    class="fixed inset-0 z-10 transform overflow-y-auto transition" v-show="isOpen"
+                    class="fixed inset-0 z-10 overflow-y-auto transition transform"
+                    v-show="isOpen"
                 >
-                    <div class="flex min-h-full items-end justify-center p-4 sm:items-center sm:p-0">
+                    <div class="flex items-end justify-center min-h-full p-4 sm:items-center sm:p-0">
                         <div
-                            class="absolute left-1/2 top-1/2 z-[999] w-full -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-lg bg-zinc-100 max-md:w-[90%]"
+                            class="absolute left-1/2 top-1/2 z-[999] w-full -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-lg border border-border bg-surface text-foreground shadow-2xl max-md:w-[90%]"
                             :class="panelClass || 'max-w-[595px]'"
                         >
-                            <!-- Header Slot-->
+                            <!-- Header Slot -->
                             <slot
                                 name="header"
                                 :toggle="toggle"
@@ -96,10 +97,10 @@
                             >
                             </slot>
 
-                            <!-- Content Slot-->
+                            <!-- Content Slot -->
                             <slot name="content"></slot>
 
-                            <!-- Footer Slot-->
+                            <!-- Footer Slot -->
                             <slot name="footer"></slot>
                         </div>
                     </div>
@@ -107,6 +108,7 @@
             </transition>
         </div>
     </script>
+
 
     <script type="module">
         app.component('v-modal', {

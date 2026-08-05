@@ -18,10 +18,10 @@
         type="text/x-template"
         id="v-media-template"
     >
-        <div class="mb-4 flex cursor-pointer flex-col rounded-lg">
-            <div :class="{'border border-dashed border-gray-300 rounded-2xl': isDragOver }">
+        <div class="flex flex-col mb-4 rounded-lg cursor-pointer">
+            <div :class="{'border border-dashed border-primary rounded-2xl': isDragOver }">
                 <div
-                    class="flex h-[200px] w-[200px] cursor-pointer flex-col items-center justify-center rounded-xl bg-zinc-100 hover:bg-gray-100 max-md:h-36 max-md:w-36 max-sm:h-[100px] max-sm:w-[100px]"
+                    class="flex h-[200px] w-[200px] cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-border bg-surface text-foreground hover:border-primary hover:bg-secondary transition-all max-md:h-36 max-md:w-36 max-sm:h-[100px] max-sm:w-[100px] max-sm:gap-1"
                     v-if="uploadedFiles.isPicked"
                 >
                     <div 
@@ -30,15 +30,15 @@
                         @mouseleave="uploadedFiles.showDeleteButton = false"
                     >
                         <img
-                            class="rounded-xl object-cover max-md:rounded-full"
+                            class="object-cover rounded-xl max-md:rounded-full"
                             :src="uploadedFiles.url"
                             :class="{ 'opacity-25' : uploadedFiles.showDeleteButton }"
                             alt="Uploaded Image"
                         >
 
-                        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 transition-opacity group-hover:opacity-100">
+                        <div class="absolute transition-opacity transform -translate-x-1/2 -translate-y-1/2 opacity-0 left-1/2 top-1/2 group-hover:opacity-100">
                             <span 
-                                class="icon-bin cursor-pointer text-2xl text-black"
+                                class="text-2xl transition-colors cursor-pointer text-primary hover:text-danger icon-bin"
                                 @click="remove"
                             >
                             </span>
@@ -48,7 +48,7 @@
 
                 <label 
                     :for="`${$.uid}_fileInput`"
-                    class="flex h-[200px] w-[200px] cursor-pointer flex-col items-center justify-center gap-2 rounded-xl bg-zinc-100 hover:bg-gray-100 max-md:h-36 max-md:w-36 max-sm:h-[100px] max-sm:w-[100px] max-sm:gap-1"
+                    class="flex h-[200px] w-[200px] cursor-pointer flex-col items-center justify-center gap-2 rounded-xl bg-surface border border-border hover:border-primary transition-colors max-md:h-36 max-md:w-36 max-sm:h-[100px] max-sm:w-[100px] max-sm:gap-1"
                     :style="{'max-width': this.width, 'max-height': this.height}"
                     v-show="! uploadedFiles.isPicked"
                     @dragover="onDragOver"
@@ -57,11 +57,11 @@
                 >
                     <label 
                         :for="`${$.uid}_fileInput`"
-                        class="icon-camera text-3xl max-sm:text-lg"
+                        class="text-3xl icon-camera text-primary max-sm:text-lg"
                     >
                     </label>
 
-                    <p class="font-medium max-md:hidden max-sm:text-xs">
+                    <p class="font-medium text-foreground max-md:hidden max-sm:text-xs">
                         @lang("shop::app.components.media.index.add-image")
                     </p>
 
@@ -106,9 +106,9 @@
                                     class="max-h-12 min-w-12 rounded-xl max-sm:max-h-[60px] max-sm:min-w-[60px]"
                                     :class="{ 'opacity-25' : file.showDeleteButton }"
                                 >
-                                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 transition-opacity group-hover:opacity-100">
+                                <div class="absolute transition-opacity transform -translate-x-1/2 -translate-y-1/2 opacity-0 left-1/2 top-1/2 group-hover:opacity-100">
                                     <span
-                                        class="icon-bin cursor-pointer text-2xl text-black"
+                                        class="text-2xl transition-colors cursor-pointer text-primary hover:text-accent icon-bin"
                                         @click="remove(index)"
                                     >
                                     </span>
@@ -129,9 +129,9 @@
                                     :class="{'opacity-25' : file.showDeleteButton}"
                                 >
                                 </video>
-                                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 transition-opacity group-hover:opacity-100">
+                                <div class="absolute transition-opacity transform -translate-x-1/2 -translate-y-1/2 opacity-0 left-1/2 top-1/2 group-hover:opacity-100">
                                     <span 
-                                        class="icon-bin cursor-pointer text-2xl text-black"
+                                        class="text-2xl transition-colors cursor-pointer text-primary hover:text-danger icon-bin"
                                         @click="remove(index)"
                                     >
                                     </span>

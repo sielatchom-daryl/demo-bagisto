@@ -17,24 +17,24 @@
         >
             {!! view_render_event('bagisto.shop.settings.gdpr.consent.form.before') !!}
 
-            <div class="container mt-8 max-1180:px-5 max-md:mt-6 max-md:px-4">
-                <div class="m-auto w-full max-w-[870px] rounded-xl border border-zinc-200 p-16 px-[90px] max-md:px-8 max-md:py-8 max-sm:border-none max-sm:p-0">
+            <div class="container mt-8 text-foreground max-1180:px-5 max-md:mt-6 max-md:px-4">
+                <div class="m-auto w-full max-w-[870px] rounded-xl border border-border bg-surface p-16 px-[90px] text-foreground max-md:px-8 max-md:py-8 max-sm:border-none max-sm:p-0">
                     <!-- Header -->
                     <div class="flex items-center justify-between gap-4 max-sm:flex-wrap">
-                        <p class="text-xl font-bold">
+                        <p class="text-xl font-bold text-primary">
                             @lang('shop::app.components.layouts.cookie.consent.your-cookie-consent-preferences')
                         </p>
             
                         <button 
                             type="submit"
-                            class="primary-button"
+                            class="primary-button bg-primary text-secondary hover:bg-accent"
                             @click="saveCookiePreferences"
                         >
                             @lang('shop::app.components.layouts.cookie.consent.save-and-continue')
                         </button>
                     </div>
                     
-                    <div class="mt-14 rounded max-sm:mt-8">
+                    <div class="rounded mt-14 max-sm:mt-8">
                         <!-- Cookie Categories -->
                         @php
                             $cookieConsentKeys = [
@@ -46,8 +46,8 @@
                         @endphp
 
                         <!-- Strictly Necessary -->
-                        <x-shop::form.control-group class="mb-4 border-b pb-4">
-                            <x-shop::form.control-group.label class="font-semibold">
+                        <x-shop::form.control-group class="pb-4 mb-4 border-b border-border">
+                            <x-shop::form.control-group.label class="font-semibold text-foreground">
                                 @lang('shop::app.components.layouts.cookie.consent.strictly-necessary')
                             </x-shop::form.control-group.label>
 
@@ -61,7 +61,7 @@
                                 />
 
                                 <label
-                                    class="cursor-pointer select-none max-sm:text-sm"
+                                    class="cursor-pointer select-none text-muted max-sm:text-sm"
                                     for="strictly_necessary"
                                 >
                                     {!! core()->getConfigData('general.gdpr.cookie_consent.strictly_necessary') !!}
@@ -70,7 +70,7 @@
                         </x-shop::form.control-group> 
                            
                         @foreach ($cookieConsentKeys as $key => $label)
-                            <x-shop::form.control-group class="mb-4 border-b pb-4">
+                            <x-shop::form.control-group class="pb-4 mb-4 border-b">
                                 <x-shop::form.control-group.label class="font-semibold">
                                     @lang('shop::app.components.layouts.cookie.consent.' . $label)
                                 </x-shop::form.control-group.label>

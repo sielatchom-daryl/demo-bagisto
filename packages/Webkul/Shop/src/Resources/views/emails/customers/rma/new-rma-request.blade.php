@@ -1,7 +1,7 @@
 @component('shop::emails.layout')
     <!-- Header Section -->
     <div style="margin-bottom: 40px;">
-        <h1 style="font-size: 28px; font-weight: 700; color: #121A26; margin: 0 0 20px 0;">
+        <h1 style="font-size: 28px; font-weight: 700; color: #C9A227; margin: 0 0 20px 0;">
             @lang('shop::app.rma.mail.customer-rma-create.heading')
         </h1>
         
@@ -14,7 +14,7 @@
                 'order_id' =>
                     '<a href="' .
                     route('shop.customers.account.orders.view', $rma->order_id) .
-                    '" style="font-weight: 600; color: #2563eb; text-decoration: none;">#' .
+                    '" style="font-weight: 600; color: #C9A227; text-decoration: none;">#' .
                     $rma->order_id .
                     '</a>',
             ])

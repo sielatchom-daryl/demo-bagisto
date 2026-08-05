@@ -1,7 +1,7 @@
 <!-- Mini Cart Vue Component -->
 <v-mini-cart>
     <span
-        class="icon-cart cursor-pointer text-2xl"
+        class="text-2xl cursor-pointer icon-cart text-foreground hover:text-primary"
         role="button"
         aria-label="@lang('shop::app.checkout.cart.mini-cart.shopping-cart')"
     ></span>
@@ -22,7 +22,7 @@
 
                     <span class="relative">
                         <span
-                            class="icon-cart cursor-pointer text-2xl"
+                            class="text-2xl cursor-pointer icon-cart text-foreground hover:text-primary"
                             role="button"
                             aria-label="@lang('shop::app.checkout.cart.mini-cart.shopping-cart')"
                             tabindex="0"
@@ -31,14 +31,14 @@
 
                         @if (core()->getConfigData('sales.checkout.my_cart.summary') == 'display_item_quantity')
                             <span
-                                class="absolute -top-4 rounded-[44px] bg-navyBlue px-2 py-1.5 text-xs font-semibold leading-[9px] text-white ltr:left-5 rtl:right-5 max-md:ltr:left-4 max-md:rtl:right-4"
+                                class="absolute -top-4 rounded-[44px] bg-primary px-2 py-1.5 text-xs font-semibold leading-[9px] text-background ltr:left-5 rtl:right-5 max-md:ltr:left-4 max-md:rtl:right-4"
                                 v-if="cart?.items_qty"
                             >
                                 @{{ cart.items_qty }}
                             </span>
                         @else
                             <span
-                                class="absolute -top-4 rounded-[44px] bg-navyBlue px-2 py-1.5 text-xs font-semibold leading-[9px] text-white ltr:left-5 rtl:right-5 max-md:px-2 max-md:py-1.5 max-md:ltr:left-4 max-md:rtl:right-4"
+                                class="absolute -top-4 rounded-[44px] bg-primary px-2 py-1.5 text-xs font-semibold leading-[9px] text-background ltr:left-5 rtl:right-5 max-md:px-2 max-md:py-1.5 max-md:ltr:left-4 max-md:rtl:right-4"
                                 v-if="cart?.items_count"
                             >
                                 @{{ cart.items_count }}
@@ -59,7 +59,7 @@
                         </p>
                     </div>
 
-                    <p class="text-base max-md:text-zinc-500 max-sm:text-xs">
+                    <p class="text-base max-md:text-muted max-sm:text-xs">
                         {{ core()->getConfigData('sales.checkout.mini_cart.offer_info')}}
                     </p>
 
@@ -122,7 +122,7 @@
                                         <p class="flex flex-col text-lg max-md:font-semibold max-sm:text-sm">
                                             @{{ item.formatted_price_incl_tax }}
 
-                                            <span class="text-xs font-normal text-zinc-500">
+                                            <span class="text-xs font-normal text-muted">
                                                 @lang('shop::app.checkout.cart.mini-cart.excl-tax')
 
                                                 <span class="font-medium text-black">@{{ item.formatted_price }}</span>
@@ -169,7 +169,7 @@
                                     >
                                         <template v-for="attribute in item.options">
                                             <div class="max-md:grid max-md:gap-0.5">
-                                                <p class="text-sm font-medium text-zinc-500 max-md:font-normal max-sm:text-xs">
+                                                <p class="text-sm font-medium text-muted max-md:font-normal max-sm:text-xs">
                                                     @{{ attribute.attribute_name + ':' }}
                                                 </p>
 
@@ -177,7 +177,7 @@
                                                     <template v-if="attribute?.attribute_type === 'file'">
                                                         <a
                                                             :href="attribute.file_url"
-                                                            class="text-blue-700"
+                                                            class="text-primary"
                                                             target="_blank"
                                                             :download="attribute.file_name"
                                                         >
@@ -218,7 +218,7 @@
                                 <!-- Cart Item Remove Button -->
                                 <button
                                     type="button"
-                                    class="text-blue-700 max-md:text-sm"
+                                    class="text-primary max-md:text-sm"
                                     @click="removeItem(item.id)"
                                 >
                                     @lang('shop::app.checkout.cart.mini-cart.remove')
@@ -232,10 +232,10 @@
 
                     <!-- Empty Cart Section -->
                     <div
-                        class="mt-32 pb-8 max-md:mt-32"
+                        class="pb-8 mt-32 max-md:mt-32"
                         v-else
                     >
-                        <div class="b-0 grid place-items-center gap-y-5 max-md:gap-y-0">
+                        <div class="grid b-0 place-items-center gap-y-5 max-md:gap-y-0">
                             <img
                                 class="max-md:h-[100px] max-md:w-[100px]"
                                 src="{{ bagisto_asset('images/thank-you.png') }}"
@@ -262,7 +262,7 @@
                     class="grid-col-1 grid gap-5 max-md:gap-2.5"
                 >
                     <div
-                        class="my-8 flex items-center justify-between border-b border-zinc-200 px-6 pb-2 max-md:my-0 max-md:border-t max-md:px-5 max-md:py-2"
+                        class="flex items-center justify-between px-6 pb-2 my-8 border-b border-border max-md:my-0 max-md:border-t max-md:px-5 max-md:py-2"
                         :class="{'!justify-end': isLoading}"
                     >
                         {!! view_render_event('bagisto.shop.checkout.mini-cart.subtotal.before') !!}
@@ -285,13 +285,13 @@
                                 <span class="text-sm font-normal text-zinc-500 max-sm:text-xs">
                                     @lang('shop::app.checkout.cart.mini-cart.excl-tax')
 
-                                    <span class="font-medium text-black">@{{ cart.formatted_sub_total }}</span>
+                                    <span class="font-medium ">@{{ cart.formatted_sub_total }}</span>
                                 </span>
                             </p>
                         </template>
 
                         <template v-else>
-                            <p class="text-3xl font-semibold max-md:text-base">
+                            <p class="text-3xl font-semibold max-md:text-base text-foreground">
                                 @{{ cart.formatted_sub_total }}
                             </p>
                         </template>
@@ -300,7 +300,7 @@
                         <template v-else>
                             <!-- Spinner -->
                             <svg
-                                class="text-blue h-8 w-8 animate-spin text-[5px] font-semibold max-md:h-7 max-md:w-7 max-sm:h-4 max-sm:w-4"
+                                class="text-blue h-8 w-8 animate-spin text-[5px] font-semibold max-md:h-7 max-md:w-7 max-sm:h-4 max-sm:w-4 text-primary"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 aria-hidden="true"
@@ -334,7 +334,7 @@
 
                         <a
                             href="{{ route('shop.checkout.onepage.index') }}"
-                            class="mx-auto block w-full cursor-pointer rounded-2xl bg-navyBlue px-11 py-4 text-center text-base font-medium text-white max-md:rounded-lg max-md:px-5 max-md:py-2"
+                            class="block w-full py-4 mx-auto text-base font-medium text-center cursor-pointer primary-button rounded-2xl px-11 max-md:rounded-lg max-md:px-5 max-md:py-2"
                         >
                             @lang('shop::app.checkout.cart.mini-cart.continue-to-checkout')
                         </a>
@@ -359,14 +359,14 @@
 
                     <span class="relative">
                         <span
-                            class="icon-cart cursor-pointer text-2xl"
+                            class="text-2xl cursor-pointer icon-cart"
                             role="button"
                             aria-label="@lang('shop::app.checkout.cart.mini-cart.shopping-cart')"
                             tabindex="0"
                         ></span>
 
                         <span
-                            class="absolute -top-4 rounded-[44px] bg-navyBlue px-2 py-1.5 text-xs font-semibold leading-[9px] text-white ltr:left-5 rtl:right-5 max-md:px-2 max-md:py-1.5 max-md:ltr:left-4 max-md:rtl:right-4"
+                            class="absolute -top-4 rounded-[44px] bg-primary px-2 py-1.5 text-xs font-semibold leading-[9px] text-background ltr:left-5 rtl:right-5 max-md:px-2 max-md:py-1.5 max-md:ltr:left-4 max-md:rtl:right-4"
                             v-if="cart?.items_qty"
                         >
                             @{{ cart.items_qty }}

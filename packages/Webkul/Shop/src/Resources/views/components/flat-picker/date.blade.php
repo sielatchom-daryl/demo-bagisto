@@ -10,9 +10,10 @@
         <span class="relative">
             <slot></slot>
 
-            <i class="icon-calendar pointer-events-none absolute top-1/2 -translate-y-1/2 text-2xl text-gray-400 ltr:right-2 rtl:left-2"></i>
+            <i class="absolute text-2xl transition-colors -translate-y-1/2 pointer-events-none icon-calendar top-1/2 text-primary ltr:right-2 rtl:left-2"></i>
         </span>
     </script>
+
 
     <script type="module">
         app.component('v-date-picker', {

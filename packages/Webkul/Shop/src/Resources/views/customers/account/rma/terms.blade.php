@@ -17,10 +17,10 @@
                 v-slot="{ field, errors }" 
                 value="1"
             >
-                <label class="relative inline-flex cursor-pointer items-start gap-2">
+                <label class="relative inline-flex items-start gap-2 cursor-pointer">
                     <input
                         type="checkbox"
-                        class="peer sr-only"
+                        class="sr-only peer"
                         id="agreement"
                         name="agreement"
                         value="1"
@@ -28,7 +28,7 @@
                     />
 
                     <span
-                        class="icon-uncheck peer-checked:icon-check-box cursor-pointer text-2xl leading-tight peer-checked:text-navyBlue"
+                        class="text-2xl leading-tight cursor-pointer icon-uncheck peer-checked:icon-check-box peer-checked:text-navyBlue"
                     >
                     </span>
 
@@ -49,7 +49,7 @@
 
                 <span 
                     v-if="errors[0]" 
-                    class="mt-1 block text-xs italic text-red-600"
+                    class="block mt-1 text-xs italic text-red-600"
                     v-text="errors[0]"
                 >
                 </span>
@@ -68,10 +68,10 @@
             <!-- Modal Content -->
             <x-slot:content>
                 <div 
-                    class="overflow-y-auto rounded border border-gray-200 bg-gray-50 p-4" 
+                    class="p-4 overflow-y-auto border rounded border-border bg-surface" 
                     style="min-height: 400px; max-height: 500px;"
                 >
-                    <div class="prose prose-sm max-w-none text-gray-700">
+                    <div class="prose-sm prose text-muted max-w-none">
                         {{ core()->getConfigData('sales.rma.setting.return_policy') }}
                     </div>
                 </div>

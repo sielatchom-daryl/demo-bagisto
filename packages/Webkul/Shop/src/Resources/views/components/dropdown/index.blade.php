@@ -11,7 +11,7 @@
 
     @isset($content)
         <template v-slot:content>
-            <div {{ $content->attributes->merge(['class' => 'p-5']) }}>
+            <div {{ $content->attributes->merge(['class' => 'bg-surface p-5 text-foreground']) }}>
                 {{ $content }}
             </div>
         </template>
@@ -19,7 +19,7 @@
 
     @isset($menu)
         <template v-slot:menu>
-            <ul {{ $menu->attributes->merge(['class' => 'py-4']) }}>
+            <ul {{ $menu->attributes->merge(['class' => 'bg-surface py-4 text-foreground']) }}>
                 {{ $menu }}
             </ul>
         </template>
@@ -44,14 +44,14 @@
                 tag="div"
                 name="dropdown"
                 enter-active-class="transition duration-100 ease-out"
-                enter-from-class="scale-95 transform opacity-0"
-                enter-to-class="scale-100 transform opacity-100"
+                enter-from-class="transform scale-95 opacity-0"
+                enter-to-class="transform scale-100 opacity-100"
                 leave-active-class="transition duration-75 ease-in"
-                leave-from-class="scale-100 transform opacity-100"
-                leave-to-class="scale-95 transform opacity-0"
+                leave-from-class="transform scale-100 opacity-100"
+                leave-to-class="transform scale-95 opacity-0"
             >
                 <div
-                    class="absolute z-20 w-max rounded-[20px] bg-white shadow-[0px_10px_84px_rgba(0,0,0,0.1)] max-md:rounded-lg"
+                    class="absolute z-20 w-max rounded-[20px] border border-border bg-surface text-foreground shadow-2xl max-md:rounded-lg"
                     :style="positionStyles"
                     v-show="isActive"
                 >
@@ -62,6 +62,7 @@
             </transition>
         </div>
     </script>
+
 
     <script type="module">
         app.component('v-dropdown', {

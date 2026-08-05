@@ -15,14 +15,14 @@
         <x-shop::layouts.account.navigation />
     </div>
 
-    <div class="mx-4 flex-auto max-md:mx-6 max-sm:mx-4">
-        <div class="mb-8 flex items-center max-md:mb-5">
+    <div class="flex-auto mx-4 max-md:mx-6 max-sm:mx-4">
+        <div class="flex items-center mb-8 max-md:mb-5">
             <!-- Back Button -->
             <a
                 class="grid md:hidden"
                 href="{{ route('shop.customers.account.profile.index') }}"
             >
-                <span class="icon-arrow-left rtl:icon-arrow-right text-2xl"></span>
+                <span class="text-2xl icon-arrow-left rtl:icon-arrow-right"></span>
             </a>
 
             <h2 class="text-2xl font-medium max-md:text-xl max-sm:text-base ltr:ml-2.5 md:ltr:ml-0 rtl:mr-2.5 md:rtl:mr-0">
@@ -43,7 +43,7 @@
             <x-shop::form.control-group class="mt-4">
                 <x-shop::form.control-group.control
                     type="image"
-                    class="max-md:[&>*]:[&>*]:rounded-full mb-0 rounded-xl !p-0 text-gray-700 max-md:grid max-md:justify-center"
+                    class="max-md:[&>*]:[&>*]:rounded-full mb-0 rounded-xl !p-0 text-forground max-md:grid max-md:justify-center"
                     name="image[]"
                     :label="trans('Image')"
                     :is-multiple="false"
@@ -251,17 +251,17 @@
                     type="checkbox"
                     name="subscribed_to_news_letter"
                     id="is-subscribed"
-                    class="peer hidden"
+                    class="hidden peer"
                     @checked($customer->subscribed_to_news_letter)
                 />
 
                 <label
-                    class="icon-uncheck peer-checked:icon-check-box cursor-pointer text-2xl text-navyBlue peer-checked:text-navyBlue"
+                    class="text-2xl cursor-pointer icon-uncheck peer-checked:icon-check-box text-navyBlue peer-checked:text-navyBlue"
                     for="is-subscribed"
                 ></label>
 
                 <label
-                    class="cursor-pointer select-none text-base text-zinc-500 max-md:text-sm ltr:pl-0 rtl:pr-0"
+                    class="text-base cursor-pointer select-none text-zinc-500 max-md:text-sm ltr:pl-0 rtl:pr-0"
                     for="is-subscribed"
                 >
                     @lang('shop::app.customers.account.profile.edit.subscribe-to-newsletter')

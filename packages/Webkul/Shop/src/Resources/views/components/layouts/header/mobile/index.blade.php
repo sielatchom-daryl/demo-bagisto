@@ -8,7 +8,7 @@
     $showWishlist = (bool) core()->getConfigData('customer.settings.wishlist.wishlist_option');
 @endphp
 
-<div class="flex flex-wrap gap-4 px-4 pt-6 pb-4 shadow-sm lg:hidden">
+<div class="flex flex-wrap gap-4 px-4 pt-6 pb-4 border-b shadow-sm bg-surface text-foreground lg:hidden border-border">
     <div class="flex items-center justify-between w-full">
         <!-- Left Navigation -->
         <div class="flex items-center gap-x-1.5">
@@ -82,7 +82,7 @@
                                         </p>
                                     </div>
 
-                                    <p class="w-full mt-3 border border-zinc-200"></p>
+                                    <p class="w-full mt-3 border border-border"></p>
 
                                     {!! view_render_event('bagisto.shop.components.layouts.header.mobile.index.customers_action.before') !!}
 
@@ -91,14 +91,14 @@
 
                                     <a
                                         href="{{ route('shop.customer.session.create') }}"
-                                        class="block py-4 m-0 mx-auto text-base font-medium text-center text-white cursor-pointer w-max rounded-2xl bg-navyBlue px-7 ltr:ml-0 rtl:mr-0"
+                                        class="block py-4 m-0 mx-auto text-base font-medium text-center cursor-pointer text-foreground w-max rounded-2xl bg-navyBlue px-7 ltr:ml-0 rtl:mr-0"
                                     >
                                             @lang('shop::app.components.layouts.header.mobile.sign-in')
                                         </a>
 
                                     <a
                                         href="{{ route('shop.customers.register.index') }}"
-                                        class="m-0 mx-auto block w-max cursor-pointer rounded-2xl border-2 border-navyBlue bg-white px-7 py-3.5 text-center text-base font-medium text-navyBlue ltr:ml-0 rtl:mr-0"
+                                        class="m-0 mx-auto block w-max cursor-pointer rounded-2xl border-2 border-border bg-background px-7 py-3.5 text-center text-base font-medium text-navyBlue ltr:ml-0 rtl:mr-0"
                                     >
                                             @lang('shop::app.components.layouts.header.mobile.sign-up')
                                         </a>
@@ -112,7 +112,7 @@
 
                                 <!-- Customers Dropdown -->
                                 @auth('customer')
-                                    <x-slot:content class="!p-0">
+                                    <x-slot:content class="!p-0 bg-background text-foreground">
                                         <div class="grid gap-2.5 p-5 pb-0">
                                             <p class="text-xl font-dmserif" v-pre>
                                         @lang('shop::app.components.layouts.header.mobile.welcome')’
@@ -124,7 +124,7 @@
                                             </p>
                                         </div>
 
-                                        <p class="w-full mt-3 border border-zinc-200"></p>
+                                        <p class="w-full mt-3 border border-border"></p>
 
                                         <div class="mt-2.5 grid gap-1 pb-2.5">
                                             {!! view_render_event('bagisto.shop.components.layouts.header.mobile.index.profile_dropdown.links.before') !!}
@@ -213,11 +213,11 @@
         </label>
 
         <div class="relative w-full">
-            <div class="icon-search pointer-events-none absolute top-3 flex items-center text-2xl max-md:text-xl max-sm:top-2.5 ltr:left-3 rtl:right-3"></div>
+            <div class="icon-search pointer-events-none absolute top-3 flex items-center text-2xl max-md:text-xl max-sm:top-2.5 ltr:left-3 rtl:right-3 text-muted"></div>
 
             <input
                 type="text"
-                class="block w-full rounded-xl border border-['#E3E3E3'] px-11 py-3.5 text-sm font-medium text-gray-900 max-md:rounded-lg max-md:px-10 max-md:py-3 max-md:font-normal max-sm:text-xs"
+                class="block w-full rounded-xl border border-border bg-background px-11 py-3.5 text-sm font-medium text-foreground placeholder:text-muted focus:border-primary focus:ring-primary"
                 name="query"
                 value="{{ request('query') }}"
                 placeholder="@lang('shop::app.components.layouts.header.mobile.search-text')"
@@ -241,7 +241,7 @@
                 @close="onDrawerClose"
             >
                 <x-slot:toggle>
-                    <span class="text-2xl cursor-pointer icon-hamburger"></span>
+                    <span class="text-2xl cursor-pointer icon-hamburger bg-background"></span>
                 </x-slot>
 
                 <x-slot:header>
@@ -257,10 +257,10 @@
                     </div>
                 </x-slot>
 
-                <x-slot:content class="!p-0">
+                <x-slot:content class="!p-0 bg-background text-foreground">
                     <!-- Account Profile Hero Section -->
-                    <div class="p-4 border-b border-zinc-200">
-                        <div class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-xl border border-zinc-200 p-2.5">
+                    <div class="p-4 border-b border-border bg-surface">
+                        <div class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-xl border border-border bg-background p-2.5">
                             <div>
                                 <img
                                 src="{{ auth()->user()?->image_url ??  bagisto_asset('images/user-placeholder.png') }}"
@@ -271,7 +271,7 @@
                             @guest('customer')
                                 <a
                                     href="{{ route('shop.customer.session.create') }}"
-                                    class="flex text-base font-medium"
+                                    class="flex text-base font-medium text-primary"
                                 >
                                     @lang('shop::app.components.layouts.header.mobile.login')
 
@@ -284,9 +284,9 @@
                                     class="flex flex-col justify-between gap-2.5 max-md:gap-0"
                                     v-pre
                                 >
-                                    <p class="text-2xl break-all font-mediums max-md:text-xl">Hello! {{ auth()->user()?->first_name }}</p>
+                                    <p class="text-2xl font-medium break-all text-foreground">Hello! {{ auth()->user()?->first_name }}</p>
 
-                                    <p class="no-underline text-zinc-500 max-md:text-sm">{{ auth()->user()?->email }}</p>
+                                    <p class="no-underline text-muted max-md:text-sm">{{ auth()->user()?->email }}</p>
                                 </div>
                             @endauth
                         </div>
@@ -303,7 +303,7 @@
                 <x-slot:footer>
                     <!-- Localization & Currency Section -->
                 @if(core()->getCurrentChannel()->locales()->count() > 1 || core()->getCurrentChannel()->currencies()->count() > 1 )
-                                    <div class="fixed bottom-0 z-10 grid w-full max-w-full grid-cols-[1fr_auto_1fr] items-center justify-items-center border-t border-zinc-200 bg-white px-5 ltr:left-0 rtl:right-0">
+                                    <div class="fixed bottom-0 z-10 grid w-full max-w-full grid-cols-[1fr_auto_1fr] items-center justify-items-center border-t border-border bg-surface px-5 ltr:left-0 rtl:right-0">
                                         <!-- Filter Drawer -->
                                         <x-shop::drawer
                                             position="bottom"
@@ -341,7 +341,7 @@
                                         </x-shop::drawer>
 
                                         <!-- Seperator -->
-                                        <span class="h-5 w-0.5 bg-zinc-200"></span>
+                                        <span class="h-5 w-0.5 bg-border"></span>
 
                                         <!-- Sort Drawer -->
                                         <x-shop::drawer
@@ -418,7 +418,7 @@
                             :class="{'mb-2': category.children && category.children.length}"
                         >
                         <div class="flex items-center justify-between py-2 transition-colors duration-200 cursor-pointer">
-                            <a :href="category.url" class="text-base font-medium text-black">
+                            <a :href="category.url" class="text-base font-medium text-foreground">
                                 @{{ category.name }}
                             </a>
                         </div>
@@ -433,7 +433,7 @@
                                         class="flex items-center justify-between py-2 transition-colors duration-200 cursor-pointer"
                                         @click="showThirdLevel(secondLevelCategory, category, $event)"
                                     >
-                                    <a :href="secondLevelCategory.url" class="text-sm font-normal">
+                                    <a :href="secondLevelCategory.url" class="text-sm font-normal text-muted hover:text-primary">
                                         @{{ secondLevelCategory.name }}
                                     </a>
 
@@ -453,14 +453,14 @@
                     class="flex-shrink-0 w-full h-full"
                     v-if="currentViewLevel === 'third'"
                 >
-                <div class="px-6 py-4 border-b border-gray-200">
+                <div class="px-6 py-4 border-b border-border bg-surface">
                         <button
                             @click="goBackToMainView"
                             class="flex items-center justify-center gap-2 focus:outline-none"
                             aria-label="Go back"
                         >
                         <span class="text-lg icon-arrow-left rtl:icon-arrow-right"></span>
-                        <div class="text-base font-medium text-black">
+                        <div class="text-base font-medium text-foreground">
                             @lang('shop::app.components.layouts.header.mobile.back-button')
                         </div>
                     </button>
@@ -475,7 +475,7 @@
                         >
                             <a
                                 :href="thirdLevelCategory.url"
-                                class="block py-2 text-sm transition-colors duration-200"
+                                class="block py-2 text-sm transition-colors duration-200 text-muted hover:text-primary"
                             >
                             @{{ thirdLevelCategory.name }}
                         </a>

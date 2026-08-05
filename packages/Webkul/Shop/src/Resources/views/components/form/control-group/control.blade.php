@@ -18,6 +18,7 @@
                 type="{{ $type }}"
                 name="{{ $name }}"
                 v-bind="field"
+                class="bg-surface text-muted"
                 :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
                 {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base font-normal text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
             >
@@ -33,6 +34,7 @@
             <input
                 type="{{ $type }}"
                 name="{{ $name }}"
+                class="bg-surface text-muted"
                 :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
                 {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
             >
@@ -47,6 +49,7 @@
         >
             <input
                 type="{{ $type }}"
+                class="bg-surface text-muted"
                 :class="[errors.length ? 'border !border-red-500' : '']"
                 v-bind="field"
                 {{ $attributes->except(['value'])->merge(['class' => 'rounded-lg-md w-full appearance-none border text-base text-gray-600 transition-all hover:border-gray-400 ']) }}
@@ -64,6 +67,7 @@
                 type="{{ $type }}"
                 name="{{ $name }}"
                 v-bind="field"
+                class="bg-surface text-muted"
                 :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
                 {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base font-normal text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400']) }}
             >
@@ -90,6 +94,7 @@
                 <input
                     name="{{ $name }}"
                     v-bind="field"
+                    class="bg-surface text-muted"
                     :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
                     {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base text-gray-600  transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
                     autocomplete="off"
@@ -108,6 +113,7 @@
                 <input
                     name="{{ $name }}"
                     v-bind="field"
+                    class="bg-surface text-muted"
                     :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
                     {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base text-gray-600  transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
                     autocomplete="off"
@@ -125,8 +131,9 @@
             <select
                 name="{{ $name }}"
                 v-bind="field"
+                class=" text-muted"
                 :class="[errors.length ? 'border !border-red-500' : '']"
-                {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'custom-select mb-1.5 w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-base text-gray-600  transition-all hover:border-gray-400 focus-visible:outline-none max-md:py-2 max-sm:px-4 max-sm:text-sm']) }}
+                {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'custom-select mb-1.5 w-full rounded-lg border border-zinc-200 px-5 py-3 text-base text-gray-600 bg-surface  transition-all hover:border-gray-400 focus-visible:outline-none max-md:py-2 max-sm:px-4 max-sm:text-sm']) }}
             >
                 {{ $slot }}
             </select>
@@ -137,6 +144,7 @@
         <v-field
             as="select"
             v-slot="{ value }"
+            class="bg-surface text-muted"
             :class="[errors && errors['{{ $name }}'] ? 'border !border-red-500' : '']"
             {{ $attributes->except([])->merge(['class' => 'mb-1.5 w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-base text-gray-600  transition-all hover:border-gray-400 focus-visible:outline-none max-md:py-2 max-sm:px-4 max-sm:text-sm']) }}
             name="{{ $name }}"
@@ -157,14 +165,15 @@
             <input
                 type="checkbox"
                 v-bind="field"
-                class="peer sr-only"
+                class="sr-only peer"
+
                 {{ $attributes->except(['rules', 'label', ':label', 'key', ':key']) }}
                 name="{{ $name }}"
             />
         </v-field>
 
         <label
-            class="icon-uncheck peer-checked:icon-check-box cursor-pointer text-2xl peer-checked:text-navyBlue"
+            class="text-2xl cursor-pointer icon-uncheck peer-checked:icon-check-box peer-checked:text-primary"
             {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label', 'key', ':key']) }}
         >
         </label>
@@ -182,20 +191,20 @@
                 type="radio"
                 name="{{ $name }}"
                 v-bind="field"
-                class="peer sr-only"
+                class="sr-only peer"
                 {{ $attributes->except(['rules', 'label', ':label', 'key', ':key']) }}
             />
         </v-field>
 
         <label
-            class="icon-radio-unselect peer-checked:icon-radio-select cursor-pointer text-2xl peer-checked:text-navyBlue"
+            class="text-2xl cursor-pointer icon-radio-unselect peer-checked:icon-radio-select peer-checked:text-primary"
             {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label', 'key', ':key']) }}
         >
         </label>
         @break
 
     @case('switch')
-        <label class="relative inline-flex cursor-pointer items-center">
+        <label class="relative inline-flex items-center cursor-pointer">
             <v-field
                 type="checkbox"
                 class="hidden"
@@ -207,14 +216,14 @@
                     type="checkbox"
                     name="{{ $name }}"
                     id="{{ $name }}"
-                    class="peer sr-only"
+                    class="sr-only peer"
                     v-bind="field"
                     {{ $attributes->except(['v-model', 'rules', ':rules', 'label', ':label', 'key', ':key']) }}
                 />
             </v-field>
 
             <label
-                class="rounded-lg-full after:rounded-lg-full peer h-5 w-9 cursor-pointer bg-gray-200 after:absolute after:left-0.5 after:top-0.5 after:h-4 after:w-4 after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-navyBlue peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-blue-300"
+                class="rounded-lg-full after:rounded-lg-full peer h-5 w-9 cursor-pointer bg-secondary after:absolute after:left-0.5 after:top-0.5 after:h-4 after:w-4 after:border after:border-border after:bg-foreground after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-foreground peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary"
                 for="{{ $name }}"
             ></label>
         </label>

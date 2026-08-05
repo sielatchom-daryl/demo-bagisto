@@ -18,16 +18,16 @@
     </div>
     
     <!--Customers logout-->
-    <div class="mx-4 flex-auto max-md:mx-6 max-sm:mx-4">
+    <div class="flex-auto mx-4 max-md:mx-6 max-sm:mx-4">
         <!-- Heading of the page -->
         <div class="flex items-center justify-between">
-            <div class="mb-8 flex items-center max-md:mb-5">
+            <div class="flex items-center mb-8 max-md:mb-5">
                 <!-- Back Button -->
                 <a
                     class="grid md:hidden"
                     href="{{ route('shop.customers.account.index') }}"
                 >
-                    <span class="icon-arrow-left rtl:icon-arrow-right text-2xl"></span>
+                    <span class="text-2xl icon-arrow-left rtl:icon-arrow-right"></span>
                 </a>
 
                 <h2 class="text-2xl font-medium max-md:text-xl max-sm:text-base ltr:ml-2.5 md:ltr:ml-0 rtl:mr-2.5 md:rtl:mr-0">
@@ -37,7 +37,7 @@
 
             <a
                 href="{{ route('shop.customers.account.rma.index') }}"
-                class="secondary-button flex items-center gap-x-2 border-[#E9E9E9] px-5 max-lg:px-3 max-lg:text-xs py-3 font-normal"
+                class="flex items-center px-5 py-3 font-normal secondary-button gap-x-2 max-lg:px-3 max-lg:text-xs"
             >
                 @lang('shop::app.checkout.onepage.address.back')
             </a>
@@ -73,21 +73,21 @@
 
                             <template v-else>
                                 <div
-                                    class="row grid items-center gap-2.5 border-b border-zinc-200 bg-zinc-100 px-6 py-4 text-sm font-medium text-black max-md:p-4"
+                                    class="row grid items-center gap-2.5 border-b border-border bg-surface px-6 py-4 text-sm font-medium text-foreground max-md:p-4"
                                     style="grid-template-columns: repeat(6, minmax(0, 1fr));"
                                 >
                                     <div
                                         class="flex gap-2.5 items-center select-none"
                                         v-for="(columnGroup, index) in [['increment_id'], ['status'], ['grand_total'], ['method_title'], ['created_at']]"
                                     >
-                                        <p class="text-gray-600">
+                                        <p class="text-muted">
                                             <span class="[&>*]:after:content-['_/_']">
                                                 <template v-for="column in columnGroup">
                                                     <span
                                                         class="after:content-[''] last:after:content-['']"
                                                         :class="{
-                                                            'text-gray-800 font-medium': applied.sort.column == column,
-                                                            'cursor-pointer hover:text-gray-800': available.columns.find(columnTemp => columnTemp.index === column)?.sortable,
+                                                            'text-foreground font-medium': applied.sort.column == column,
+                                                            'cursor-pointer hover:text-foreground': available.columns.find(columnTemp => columnTemp.index === column)?.sortable,
                                                         }"
                                                         @click="
                                                             available.columns.find(columnTemp => columnTemp.index === column)?.sortable ? sort(available.columns.find(columnTemp => columnTemp.index === column)): {}
@@ -99,14 +99,14 @@
                                             </span>
 
                                             <i
-                                                class="align-text-bottom text-base text-gray-800 ltr:ml-1.5 rtl:mr-1.5"
+                                                class="align-text-bottom text-base text-foreground ltr:ml-1.5 rtl:mr-1.5"
                                                 :class="[applied.sort.order === 'asc' ? 'icon-down-stat': 'icon-up-stat']"
                                                 v-if="columnGroup.includes(applied.sort.column)"
                                             ></i>
                                         </p>
                                     </div>
 
-                                    <p class="flex justify-end text-gray-600 cursor-pointer">
+                                    <p class="flex justify-end cursor-pointer text-muted">
                                         @lang('shop::app.customers.account.rma.create.action')
                                     </p>
                                 </div>
@@ -127,13 +127,13 @@
 
                             <template v-else>
                                 <div
-                                    class="row grid px-4 py-2.5 border-b transition-all hover:bg-gray-50"
+                                    class="row grid px-4 py-2.5 border-b transition-all hover:bg-background"
                                     style="grid-template-columns: repeat(6, minmax(0, 1fr));"
                                     v-for="record in available.records"
                                 >
                                         <!-- Order Id, Created -->
                                         <p
-                                            class="text-base text-gray-800 "
+                                            class="text-base text-foreground "
                                             v-html="record.increment_id"
                                         >
                                         </p>
@@ -142,19 +142,19 @@
 
                                         <!--  Grand Total, Method Title -->
                                         <p
-                                            class="text-base text-gray-800 font-semibold"
+                                            class="text-base font-semibold text-foreground"
                                             v-html="record.grand_total"
                                         >
                                         </p>
 
                                         <p
-                                            class="text-gray-600 "
+                                            class="text-muted "
                                             v-html="record.method_title"
                                         >
                                         </p>
 
                                         <p
-                                            class="text-gray-600"
+                                            class="text-muted"
                                             v-html="record.created_at"
                                         >
                                         </p>
@@ -162,7 +162,7 @@
                                         <p class="flex justify-end">
                                             <!-- Arrow -->
                                             <a
-                                                class="icon-edit text-2xl"
+                                                class="text-2xl icon-edit"
                                                 @click="productAvail(record)"
                                             >
                                             </a>
@@ -190,21 +190,21 @@
 
                             <template v-else>
                                 <div
-                                    class="row grid items-center gap-2.5 border-b border-zinc-200 bg-zinc-100 px-6 py-4 text-sm font-medium text-black max-md:p-4"
+                                    class="row grid items-center gap-2.5 border-b border-border bg-background px-6 py-4 text-sm font-medium text-foreground max-md:p-4"
                                     style="grid-template-columns: repeat(2, minmax(0, 1fr));"
                                 >
                                     <div
                                         class="flex gap-2.5 items-center select-none"
                                         v-for="(columnGroup, index) in [['increment_id', 'created_at', 'grand_total'], ['method_title', 'status']]"
                                     >
-                                        <p class="text-gray-600">
+                                        <p class="text-muted">
                                             <span class="[&>*]:after:content-['_/_']">
                                                 <template v-for="column in columnGroup">
                                                     <span
                                                         class="after:content-['/'] last:after:content-['']"
                                                         :class="{
-                                                            'text-gray-800 font-medium': applied.sort.column == column,
-                                                            'cursor-pointer hover:text-gray-800': available.columns.find(columnTemp => columnTemp.index === column)?.sortable,
+                                                            'text-foreground font-medium': applied.sort.column == column,
+                                                            'cursor-pointer hover:text-foreground': available.columns.find(columnTemp => columnTemp.index === column)?.sortable,
                                                         }"
                                                         @click="
                                                             available.columns.find(columnTemp => columnTemp.index === column)?.sortable ? sort(available.columns.find(columnTemp => columnTemp.index === column)): {}
@@ -216,7 +216,7 @@
                                             </span>
 
                                             <i
-                                                class="align-text-bottom text-base text-gray-800 ltr:ml-1.5 rtl:mr-1.5"
+                                                class="align-text-bottom text-base text-foreground ltr:ml-1.5 rtl:mr-1.5"
                                                 :class="[applied.sort.order === 'asc' ? 'icon-down-stat': 'icon-up-stat']"
                                                 v-if="columnGroup.includes(applied.sort.column)"
                                             ></i>
@@ -240,37 +240,37 @@
 
                             <template v-else>
                                 <div
-                                    class="row grid px-4 py-2.5 border-b transition-all hover:bg-gray-50"
+                                    class="row grid px-4 py-2.5 border-b transition-all hover:bg-background"
                                     style="grid-template-columns: repeat(2, minmax(0, 1fr));"
                                     v-for="record in available.records"
                                 >
-                                    <div class="flex gap-x-4 justify-between items-center">
+                                    <div class="flex items-center justify-between gap-x-4">
                                         <div class="flex flex-col gap-1.5">
                                             <p
-                                                class="text-gray-600"
+                                                class="text-muted"
                                                 v-html="record.increment_id ?? 'N/A'"
                                             >
                                             </p>
 
                                             <p
-                                                class="text-gray-600"
+                                                class="text-muted"
                                                 v-html="record.created_at"
                                             >
                                             </p>
 
                                             <p
-                                                class="text-gray-600"
+                                                class="text-muted"
                                                 v-html="record.grand_total"
                                             >
                                             </p>
                                         </div>
                                     </div>
 
-                                    <div class="flex gap-x-4 justify-between items-center">
+                                    <div class="flex items-center justify-between gap-x-4">
                                         <div class="flex flex-col gap-1.5">
 
                                         <p
-                                            class="text-gray-600 "
+                                            class="text-muted "
                                             v-html="record.method_title"
                                         >
                                         </p>
@@ -280,7 +280,7 @@
                                         <p class="flex justify-end">
                                             <!-- Arrow -->
                                             <a
-                                                class="icon-edit text-2xl"
+                                                class="text-2xl icon-edit"
                                                 @click="productAvail(record)"
                                             >
                                             </a>
@@ -307,13 +307,13 @@
                         >
                             <!-- Modal Header -->
                             <x-slot:header>
-                                <h2 class="text-lg font-semibold text-gray-800 max-md:text-base">
+                                <h2 class="text-lg font-semibold text-foreground max-md:text-base">
                                     @lang('shop::app.rma.customer.create.heading')
                                 </h2>
                             </x-slot>
 
                             <!-- Modal Content -->
-                            <x-slot:content class="bg-gray-50 p-5 max-sm:p-3">
+                            <x-slot:content class="p-5 bg-background max-sm:p-3">
                                 <div class="journal-scroll flex flex-col gap-3 overflow-auto ltr:pr-1.5 rtl:pl-1.5" style="min-height: 420px; max-height: 60vh;">
                                     <v-order-items-list :key="refreshComponent" :order-id="isSelect"></v-order-items-list>
                                 </div>
@@ -326,7 +326,7 @@
                                         :disabled="!rmaFormButton || !rmaFormSubmit"
                                         class="primary-button"
                                     >
-                                        <svg v-if="!rmaFormSubmit" aria-hidden="true" class="w-5 h-5 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg v-if="!rmaFormSubmit" aria-hidden="true" class="w-5 h-5 text-background animate-spin fill-primary" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
                                             <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
                                         </svg>
@@ -353,7 +353,7 @@
                 />
 
                 <div v-for="product in products">
-                    <div class="mb-3 rounded-lg border border-zinc-200 bg-white p-4 shadow-sm transition-all hover:border-zinc-300">
+                    <div class="p-4 mb-3 transition-all border rounded-lg shadow-sm bg-background border-border hover:border-border/80">
                         <div class="flex gap-4">
                             <!-- Checkbox -->
                             <p>
@@ -362,7 +362,7 @@
                                         type="checkbox"
                                         :name="'isChecked[' + getProductId(product) + ']'"
                                         :id="'isChecked[' + getProductId(product) + ']'"
-                                        class="mt-1 h-4 w-4 cursor-pointer"
+                                        class="w-4 h-4 mt-1 cursor-pointer"
                                         :checked="isChecked[getProductId(product)] === true"
                                         @change="selectOnlyOne(getProductId(product))"
                                     >
@@ -385,7 +385,7 @@
                             <p>
                                 <template v-if="product.base_image">
                                     <img
-                                        class="h-20 w-20 shrink-0 rounded-lg border border-zinc-200 object-cover"
+                                        class="object-cover w-20 h-20 border rounded-lg shrink-0 border-border"
                                         :src="`${baseImageUrl}${product.base_image}`"
                                         :alt="`${product.base_image}`"
                                     />
@@ -393,7 +393,7 @@
 
                                 <template v-else>
                                     <img
-                                        class="h-20 w-20 shrink-0 rounded-lg border border-zinc-200 object-cover"
+                                        class="object-cover w-20 h-20 border rounded-lg shrink-0 border-border"
                                         src="{{ bagisto_asset('images/medium-product-placeholder.webp') }}"
                                         alt="medium-product-placeholder.webp"
                                     >
@@ -402,12 +402,12 @@
 
                             <!-- Sku, Price, Return Window -->
                             <p class="w-full space-y-1">
-                                <p class="flex text-sm justify-between">
+                                <p class="flex justify-between text-sm">
                                     <template v-if="product.url_key && product.visible_individually">
                                         <a
                                             :href="'{{ route('shop.product_or_category.index', ':slug') }}'.replace(':slug', product.url_key)"
                                             target='_blank'
-                                            class="text-blue-600 text-base font-semibold hover:underline"
+                                            class="text-base font-semibold text-primary hover:underline"
                                         >
                                             @{{ product.name }}
 
@@ -421,7 +421,7 @@
 
                                 <p
                                     v-for="(attribute) in product.attributes" v-if="product.attributes"
-                                    class="flex gap-1.5 text-sm text-gray-500 [&>span:last-child]:font-medium [&>span:last-child]:text-gray-800"
+                                    class="flex gap-1.5 text-sm text-muted [&>span:last-child]:font-medium [&>span:last-child]:text-foreground"
                                     >
                                     <span>
                                         @{{ attribute.attribute_name }}:
@@ -430,7 +430,7 @@
                                     <span>@{{ attribute.option_label }}</span>
                                 </p>
 
-                                <p class="flex gap-1.5 text-sm text-gray-500 [&>span:last-child]:font-medium [&>span:last-child]:text-gray-800">
+                                <p class="flex gap-1.5 text-sm text-muted [&>span:last-child]:font-medium [&>span:last-child]:text-foreground">
                                     <span>
                                         @lang('shop::app.customers.account.rma.create.sku'):
                                     </span>
@@ -438,7 +438,7 @@
                                     <span>@{{ product.sku }}</span>
                                 </p>
 
-                                <p class="flex gap-1.5 text-sm text-gray-500 [&>span:last-child]:font-medium [&>span:last-child]:text-gray-800">
+                                <p class="flex gap-1.5 text-sm text-muted [&>span:last-child]:font-medium [&>span:last-child]:text-foreground">
                                     <span>
                                         @lang('shop::app.customers.account.rma.create.price'):
                                     </span>
@@ -446,7 +446,7 @@
                                     <span>@{{ formatPrice(product.price) }}</span>
                                 </p>
 
-                                <p class="flex gap-1.5 text-sm text-gray-500 [&>span:last-child]:font-medium [&>span:last-child]:text-gray-800">
+                                <p class="flex gap-1.5 text-sm text-muted [&>span:last-child]:font-medium [&>span:last-child]:text-foreground">
                                     <span>
                                         @lang('shop::app.customers.account.rma.create.current-order-quantity'):
                                     </span>
@@ -458,7 +458,7 @@
 
                                 <p
                                     v-if="resolutionType[getProductId(product)] == 'return'"
-                                    class="flex gap-1.5 text-sm text-gray-500 [&>span:last-child]:font-medium [&>span:last-child]:text-gray-800"
+                                    class="flex gap-1.5 text-sm text-muted [&>span:last-child]:font-medium [&>span:last-child]:text-foreground"
                                 >
                                     <span>
                                         @lang('shop::app.rma.customer.create.return-window'):
@@ -475,9 +475,9 @@
                         <template v-if="! notAllowed">
                             <div
                                 v-if="product.currentQuantity <= '0'"
-                                class="mt-3 flex items-center gap-2 rounded-md border border-red-100 bg-red-50 px-3 py-2 text-sm text-red-600"
+                                class="flex items-center gap-2 px-3 py-2 mt-3 text-sm text-red-600 border border-red-100 rounded-md bg-red-50"
                             >
-                                <span class="icon-cancel text-lg"></span>
+                                <span class="text-lg icon-cancel"></span>
 
                                 @lang('shop::app.customers.account.rma.create.product-already-raw')
                             </div>
@@ -487,7 +487,7 @@
                                 <p class="w-full" v-if="product.rma_return_period">
                                     <div class="mt-4" v-if="isChecked[getProductId(product)] && product.currentQuantity > '0'">
                                         <x-shop::form.control-group>
-                                            <x-shop::form.control-group.label class="required text-sm flex">
+                                            <x-shop::form.control-group.label class="flex text-sm required">
                                                 @lang('shop::app.customers.account.rma.create.resolution-type') 
                                             </x-shop::form.control-group.label>
 
@@ -527,7 +527,7 @@
                                 <p class="w-full" v-else>
                                     <div class="mt-4" v-if="isChecked[getProductId(product)] && product.currentQuantity > '0'">
                                         <x-shop::form.control-group>
-                                            <x-shop::form.control-group.label class="required text-sm flex">
+                                            <x-shop::form.control-group.label class="flex text-sm required">
                                                 @lang('shop::app.customers.account.rma.create.resolution-type')
                                             </x-shop::form.control-group.label>
 
@@ -564,7 +564,7 @@
                                 </p>
 
                                 <!-- Reasons -->
-                                <p class="mt-4 w-full"
+                                <p class="w-full mt-4"
                                     v-if="isChecked[getProductId(product)]
                                         && product.currentQuantity > '0'
                                         && resolutionType[getProductId(product)]
@@ -572,7 +572,7 @@
                                         && resolutionReason[getProductId(product)].length"
                                 >
                                     <x-shop::form.control-group>
-                                        <x-shop::form.control-group.label class="required text-sm flex">
+                                        <x-shop::form.control-group.label class="flex text-sm required">
                                             @lang('shop::app.rma.customer.create.reason')
                                         </x-shop::form.control-group.label>
 
@@ -610,7 +610,7 @@
                                         <!-- RMA Quantity -->
                                         <p class="w-full">
                                             <x-shop::form.control-group>
-                                                <x-shop::form.control-group.label class="required text-sm flex">
+                                                <x-shop::form.control-group.label class="flex text-sm required">
                                                     @lang('shop::app.rma.customer.rma-qty')
                                                 </x-shop::form.control-group.label>
 
@@ -630,7 +630,7 @@
                                         <!-- Package Condition -->
                                         <p class="w-full">
                                             <x-shop::form.control-group>
-                                                <x-shop::form.control-group.label class="text-sm flex">
+                                                <x-shop::form.control-group.label class="flex text-sm">
                                                     @lang('shop::app.customers.account.rma.create.package-condition')
                                                 </x-shop::form.control-group.label>
                     
@@ -662,7 +662,7 @@
                                 <template v-else>
                                     <!-- RMA Quantity -->
                                     <x-shop::form.control-group>
-                                        <x-shop::form.control-group.label class="required text-sm flex">
+                                        <x-shop::form.control-group.label class="flex text-sm required">
                                             @lang('shop::app.rma.customer.rma-qty')
                                         </x-shop::form.control-group.label>
 
@@ -690,7 +690,7 @@
                     <!-- Additionally -->
                     @foreach ($customAttributes as $attribute)
                         <x-shop::form.control-group>
-                            <x-shop::form.control-group.label class="flex text-sm mt-4">
+                            <x-shop::form.control-group.label class="flex mt-4 text-sm">
                                 {{ $attribute->label }} @if ($attribute->is_required == '1')<span class="required"></span>@endif
                             </x-shop::form.control-group.label>
 
@@ -813,7 +813,7 @@
 
                                 @case('checkbox')
                                     @foreach($attribute->options ?? [] as $index => $option)
-                                        <label class="relative mb-2 flex cursor-pointer items-start">
+                                        <label class="relative flex items-start mb-2 cursor-pointer">
                                             <v-field
                                                 type="checkbox"
                                                 class="flex"
@@ -824,7 +824,7 @@
                                             >
                                                 <input
                                                     type="checkbox"
-                                                    class="peer sr-only"
+                                                    class="sr-only peer"
                                                     id="{{ $attribute->id }}-{{ $index }}"
                                                     rules="required"
                                                     name="customAttributes[{{ $attribute->id }}]"
@@ -834,7 +834,7 @@
                                             </v-field>
 
                                             <label
-                                                class="icon-uncheck peer-checked:icon-check-box cursor-pointer text-base peer-checked:text-navyBlue"
+                                                class="text-base cursor-pointer icon-uncheck peer-checked:icon-check-box peer-checked:text-primary"
                                                 for="{{ $attribute->id }}-{{ $index }}"
                                             >
                                                 {{ $option->name }}
@@ -851,7 +851,7 @@
 
                                 @case('radio')
                                     @foreach($attribute->options ?? [] as $option)
-                                        <label class="relative mb-2 flex cursor-pointer items-start">
+                                        <label class="relative flex items-start mb-2 cursor-pointer">
                                             <v-field
                                                 type="radio"
                                                 class="flex"
@@ -872,7 +872,7 @@
                                             </v-field>
 
                                             <label
-                                                class="icon-radio-unselect text-base peer-checked:icon-radio-select peer-checked:text-navyBlue cursor-pointer"
+                                                class="text-base cursor-pointer icon-radio-unselect peer-checked:icon-radio-select peer-checked:text-primary"
                                                 for="option_{{ $loop->index }}"
                                             >
                                                 {{ $option->name }}
@@ -893,7 +893,7 @@
 
                     <!-- Additional information -->
                     <x-shop::form.control-group>
-                        <x-shop::form.control-group.label class="text-sm flex">
+                        <x-shop::form.control-group.label class="flex text-sm">
                             @lang('shop::app.rma.customer.create.information')
                         </x-shop::form.control-group.label>
 
@@ -914,13 +914,13 @@
 
                     <!-- Images -->
                     <x-shop::form.control-group class="mt-4">
-                        <x-shop::form.control-group.label class="text-sm flex">
+                        <x-shop::form.control-group.label class="flex text-sm">
                             @lang('shop::app.customers.account.rma.create.images')
                         </x-shop::form.control-group.label>
 
                         <x-shop::form.control-group.control
                             type="image"
-                            class="!p-0 rounded-xl text-gray-700 mb-0"
+                            class="!p-0 rounded-xl text-muted mb-0"
                             name="images[]"
                             :label="trans('shop::app.customers.account.rma.create.images')"
                             :is-multiple="true"
@@ -941,10 +941,10 @@
                         <x-shop::media.images.lazy class="h-[95px] max-h-[95px] w-28 min-w-32 max-w-24 rounded-xl max-md:w-18 max-md:min-w-18" />
                         
                         <div>
-                            <div class="shimmer w-32 min-w-32 h-4 mt-1"></div>
-                            <div class="shimmer w-32 min-w-32 h-4 mt-1"></div>
-                            <div class="shimmer w-32 min-w-32 h-4 mt-1"></div>
-                            <div class="shimmer w-32 min-w-32 h-4 mt-1"></div>
+                            <div class="w-32 h-4 mt-1 shimmer min-w-32"></div>
+                            <div class="w-32 h-4 mt-1 shimmer min-w-32"></div>
+                            <div class="w-32 h-4 mt-1 shimmer min-w-32"></div>
+                            <div class="w-32 h-4 mt-1 shimmer min-w-32"></div>
                         </div>
                     </div>
                 </div>
@@ -954,10 +954,10 @@
                         <x-shop::media.images.lazy class="h-[95px] max-h-[95px] w-28 min-w-32 max-w-24 rounded-xl max-md:w-18 max-md:min-w-18" />
                         
                         <div>
-                            <div class="shimmer w-32 min-w-32 h-4 mt-1"></div>
-                            <div class="shimmer w-32 min-w-32 h-4 mt-1"></div>
-                            <div class="shimmer w-32 min-w-32 h-4 mt-1"></div>
-                            <div class="shimmer w-32 min-w-32 h-4 mt-1"></div>
+                            <div class="w-32 h-4 mt-1 shimmer min-w-32"></div>
+                            <div class="w-32 h-4 mt-1 shimmer min-w-32"></div>
+                            <div class="w-32 h-4 mt-1 shimmer min-w-32"></div>
+                            <div class="w-32 h-4 mt-1 shimmer min-w-32"></div>
                         </div>
                     </div>
                 </div>
@@ -965,7 +965,7 @@
             
             <div
                 v-else
-                class="text-center text-red-600 font-semibold mt-4"
+                class="mt-4 font-semibold text-center text-red-600"
             >
                 @lang('shop::app.rma.customer.create.rma-not-available-quotes')
             </div>

@@ -15,14 +15,14 @@
         <x-shop::layouts.account.navigation />
     </div>
 
-    <div class="mx-4 flex-auto max-md:mx-6 max-sm:mx-4">
-        <div class="mb-8 flex items-center max-md:mb-5">
+    <div class="flex-auto mx-4 max-md:mx-6 max-sm:mx-4">
+        <div class="flex items-center mb-8 max-md:mb-5">
             <!-- Back Button -->
             <a
                 class="grid md:hidden"
                 href="{{ route('shop.customers.account.index') }}"
             >
-                <span class="icon-arrow-left rtl:icon-arrow-right text-2xl"></span>
+                <span class="text-2xl icon-arrow-left rtl:icon-arrow-right"></span>
             </a>
 
             <h2 class="text-2xl font-medium max-md:text-xl max-sm:text-base ltr:ml-2.5 md:ltr:ml-0 rtl:mr-2.5 md:rtl:mr-0">
@@ -75,7 +75,7 @@
                                         <div class="text-sm font-semibold">
                                             <p>@lang('shop::app.customers.account.downloadable-products.orderId'): #@{{ record.increment_id }}</p>
 
-                                            <p class="text-xs font-normal text-neutral-500">
+                                            <p class="text-xs font-normal text-muted">
                                                 @{{ record.created_at }}
                                             </p>
                                         </div>
@@ -85,12 +85,12 @@
             
                                     <div class="text-xs font-normal">
                                         <p
-                                            class="text-sm font-semibold text-blue-600"
+                                            class="text-sm font-semibold text-primary"
                                             v-html="record.product_name"
                                         >
                                         </p>
 
-                                        <p><span class="text-neutral-500">@lang('Remaining Downloads'):</span> <span class="font-medium">@{{ record.remaining_downloads }}</span></p>
+                                        <p><span class="text-muted">@lang('Remaining Downloads'):</span> <span class="font-medium">@{{ record.remaining_downloads }}</span></p>
                                     </div>
                                 </div>
                             </template>

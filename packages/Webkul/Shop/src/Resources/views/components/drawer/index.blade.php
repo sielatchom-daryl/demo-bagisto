@@ -18,12 +18,12 @@
 
     @isset($header)
         <template v-slot:header="{ close }">
-            <div {{ $header->attributes->merge(['class' => 'grid gap-y-2.5 p-6 pb-5 max-md:gap-y-1.5 max-md:border-b max-md:border-zinc-200 max-md:p-4 max-md:gap-y-1 max-md:font-semibold']) }}>
+            <div {{ $header->attributes->merge(['class' => 'grid gap-y-2.5 bg-surface p-6 pb-5 text-foreground border-b border-border max-md:gap-y-1.5 max-md:p-4 max-md:gap-y-1 max-md:font-semibold']) }}>
                 {{ $header }}
 
                 <div class="absolute top-5 max-sm:top-4 ltr:right-5 rtl:left-5">
                     <span
-                        class="icon-cancel cursor-pointer text-3xl max-md:text-2xl"
+                        class="text-3xl transition-colors cursor-pointer icon-cancel text-primary hover:text-accent max-md:text-2xl"
                         @click="close"
                     >
                     </span>
@@ -34,7 +34,7 @@
 
     @isset($content)
         <template v-slot:content>
-            <div {{ $content->attributes->merge(['class' => 'flex-1 overflow-auto px-6 max-md:px-4']) }}>
+            <div {{ $content->attributes->merge(['class' => 'flex-1 overflow-auto bg-background px-6 text-foreground max-md:px-4']) }}>
                 {{ $content }}
             </div>
         </template>
@@ -42,7 +42,7 @@
 
     @isset($footer)
         <template v-slot:footer>
-            <div {{ $footer->attributes->merge(['class' => 'pb-8 max-md:pb-2']) }}>
+            <div {{ $footer->attributes->merge(['class' => 'border-t border-border bg-surface pb-8 max-md:pb-2']) }}>
                 {{ $footer }}
             </div>
         </template>
@@ -72,7 +72,7 @@
                 leave-to-class="opacity-0"
             >
                 <div
-                    class="fixed inset-0 z-20 bg-gray-500 bg-opacity-50 transition-opacity"
+                    class="fixed inset-0 z-20 transition-opacity bg-black/70 backdrop-blur-sm"
                     v-show="isOpen"
                 ></div>
             </transition>
@@ -82,14 +82,14 @@
                 tag="div"
                 name="drawer"
                 :enter-from-class="enterFromLeaveToClasses"
-                enter-active-class="transform transition duration-200 ease-in-out"
+                enter-active-class="transition duration-200 ease-in-out transform"
                 enter-to-class="translate-x-0"
                 leave-from-class="translate-x-0"
-                leave-active-class="transform transition duration-200 ease-in-out"
+                leave-active-class="transition duration-200 ease-in-out transform"
                 :leave-to-class="enterFromLeaveToClasses"
             >
                 <div
-                    class="fixed z-[1000] overflow-hidden bg-white max-md:!w-full"
+                    class="fixed z-[1000] overflow-hidden border-l border-border bg-background text-foreground shadow-2xl max-md:!w-full"
                     :class="{
                         'inset-x-0 top-0': position == 'top',
                         'inset-x-0 bottom-0 max-sm:max-h-full': position == 'bottom',
@@ -99,10 +99,10 @@
                     :style="'width:' + width"
                     v-show="isOpen"
                 >
-                    <div class="pointer-events-auto h-full w-full overflow-auto bg-white">
-                        <div class="flex h-full w-full flex-col">
-                            <div class="min-h-0 min-w-0 flex-1 overflow-auto">
-                                <div class="flex h-full flex-col">
+                    <div class="w-full h-full overflow-auto pointer-events-auto bg-background text-foreground">
+                        <div class="flex flex-col w-full h-full">
+                            <div class="flex-1 min-w-0 min-h-0 overflow-auto">
+                                <div class="flex flex-col h-full">
                                     <slot
                                         name="header"
                                         :close="close"

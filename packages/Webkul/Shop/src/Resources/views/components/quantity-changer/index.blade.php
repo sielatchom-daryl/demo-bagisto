@@ -6,7 +6,7 @@
 ])
 
 <v-quantity-changer
-    {{ $attributes->merge(['class' => 'flex items-center border border-navyBlue']) }}
+    {{ $attributes->merge(['class' => 'flex items-center rounded-lg border border-border bg-surface text-foreground']) }}
     name="{{ $name }}"
     value="{{ $value }}"
     min-value="{{ $minValue }}"
@@ -22,7 +22,7 @@
         <div>
             <span
                 v-if="isAtMinValue"
-                class="icon-bin cursor-pointer text-2xl"
+                class="text-2xl transition-opacity cursor-pointer icon-bin text-danger hover:opacity-80"
                 role="button"
                 tabindex="0"
                 aria-label="@lang('shop::app.components.quantity-changer.remove-item')"
@@ -32,8 +32,8 @@
 
             <span
                 v-else
-                class="icon-minus text-2xl"
-                :class="atMinValue ? 'cursor-not-allowed opacity-40' : 'cursor-pointer'"
+                class="text-2xl transition-colors icon-minus hover:text-primary"
+                :class="[atMinValue ? 'cursor-not-allowed opacity-40' : 'cursor-pointer hover:text-primary']"
                 role="button"
                 tabindex="0"
                 :aria-disabled="atMinValue"
@@ -42,12 +42,12 @@
             >
             </span>
 
-            <p class="w-2.5 select-none text-center max-sm:text-sm">
+            <p class="w-6 font-medium text-center select-none text-foreground max-sm:text-sm">
                 @{{ quantity }}
             </p>
 
             <span
-                class="icon-plus cursor-pointer text-2xl"
+                class="text-2xl transition-colors cursor-pointer icon-plus hover:text-primary"
                 role="button"
                 tabindex="0"
                 aria-label="@lang('shop::app.components.quantity-changer.increase-quantity')"

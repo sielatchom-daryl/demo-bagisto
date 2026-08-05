@@ -10,7 +10,7 @@
         @isset($header)
             <template v-slot:header="{ toggle, isOpen }">
                 <div
-                    {{ $header->attributes->merge(['class' => 'flex cursor-pointer select-none items-center justify-between p-4']) }}
+                    {{ $header->attributes->merge(['class' => 'flex cursor-pointer select-none items-center justify-between p-4 bg-background']) }}
                     role="button"
                     tabindex="0"
                     @click="toggle"
@@ -30,7 +30,7 @@
         @isset($content)
             <template v-slot:content="{ isOpen }">
                 <div
-                    {{ $content->attributes->merge(['class' => 'z-10 rounded-lg bg-white p-1.5']) }}
+                    {{ $content->attributes->merge(['class' => 'z-10 rounded-lg bg-background p-1.5']) }}
                     v-show="isOpen"
                 >
                     {{ $content }}

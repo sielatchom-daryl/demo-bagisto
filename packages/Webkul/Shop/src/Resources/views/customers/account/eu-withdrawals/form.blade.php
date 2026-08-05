@@ -13,7 +13,7 @@
         <x-shop::layouts.account.navigation />
     </div>
 
-    <div class="mx-4 flex-auto max-md:mx-6 max-sm:mx-4">
+    <div class="flex-auto mx-4 max-md:mx-6 max-sm:mx-4">
         <div class="flex items-center">
             <a
                 class="grid md:hidden"
@@ -28,7 +28,7 @@
         </div>
 
         {{-- Statutory effect notice --}}
-        <div class="mt-6 flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+        <div class="flex items-start gap-3 p-4 mt-6 text-sm border rounded-xl border-accent bg-surface text-foreground">
             <span class="icon-warning mt-0.5 text-xl leading-none"></span>
 
             <div>
@@ -36,7 +36,7 @@
                     @lang('shop::app.eu_withdrawal.form.legal_notice_title')
                 </p>
 
-                <p class="mt-1 text-amber-800">
+                <p class="mt-1 text-foreground">
                     @lang('shop::app.eu_withdrawal.form.legal_effect', [
                         'order_id' => $order->increment_id ?? $order->id,
                     ])
@@ -53,49 +53,49 @@
 
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
                 {{-- Order summary card --}}
-                <aside class="rounded-xl border border-zinc-200 bg-white p-5">
-                    <p class="text-xs font-medium uppercase tracking-wide text-zinc-500">
+                <aside class="p-5 border bg-background rounded-xl border-border">
+                    <p class="text-xs font-medium tracking-wide uppercase text-muted">
                         @lang('shop::app.eu_withdrawal.form.order_summary')
                     </p>
 
-                    <p class="mt-2 text-lg font-semibold text-zinc-900">
+                    <p class="mt-2 text-lg font-semibold text-foreground">
                         #{{ $order->increment_id ?? $order->id }}
                     </p>
 
-                    <p class="mt-1 text-sm text-zinc-600">
+                    <p class="mt-1 text-sm text-muted">
                         @lang('shop::app.eu_withdrawal.form.placed_on',
                             ['date' => core()->formatDate($order->created_at, 'd M Y')])
                     </p>
 
-                    <div class="mt-4 grid gap-2 border-t border-zinc-100 pt-4 text-sm">
-                        <div class="flex items-center justify-between text-zinc-600">
+                    <div class="grid gap-2 pt-4 mt-4 text-sm border-t border-border">
+                        <div class="flex items-center justify-between text-muted">
                             <span>@lang('shop::app.eu_withdrawal.form.order_total')</span>
 
-                            <span class="font-medium text-zinc-900">{{ core()->formatPrice($order->grand_total, $order->order_currency_code) }}</span>
+                            <span class="font-medium text-foreground">{{ core()->formatPrice($order->grand_total, $order->order_currency_code) }}</span>
                         </div>
 
-                        <div class="flex items-center justify-between text-zinc-600">
+                        <div class="flex items-center justify-between text-foreground">
                             <span>@lang('shop::app.eu_withdrawal.form.order_items')</span>
 
-                            <span class="font-medium text-zinc-900">{{ $order->total_qty_ordered }}</span>
+                            <span class="font-medium text-foreground">{{ $order->total_qty_ordered }}</span>
                         </div>
                     </div>
                 </aside>
 
                 {{-- Reason input --}}
-                <div class="rounded-xl border border-zinc-200 bg-white p-5 lg:col-span-2">
+                <div class="p-5 border bg-background rounded-xl border-border lg:col-span-2">
                     <label
                         for="reason_text"
-                        class="block text-base font-medium text-zinc-900"
+                        class="block text-base font-medium text-foreground"
                     >
                         @lang('shop::app.eu_withdrawal.form.reason_label')
                         
-                        <span class="ml-1 text-xs font-normal text-zinc-500">
+                        <span class="ml-1 text-xs font-normal text-muted">
                             @lang('shop::app.eu_withdrawal.form.reason_optional')
                         </span>
                     </label>
 
-                    <p class="mt-1 text-xs text-zinc-500">
+                    <p class="mt-1 text-xs text-muted">
                         @lang('shop::app.eu_withdrawal.form.reason_help')
                     </p>
 
@@ -104,25 +104,25 @@
                         name="reason_text"
                         rows="6"
                         maxlength="5000"
-                        class="mt-3 block w-full rounded-lg border border-zinc-200 px-4 py-3 text-sm focus:border-navyBlue focus:outline-none focus:ring-1 focus:ring-navyBlue"
+                        class="block w-full px-4 py-3 mt-3 text-sm border rounded-lg border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                         placeholder="@lang('shop::app.eu_withdrawal.form.reason_placeholder')"
                     >{{ old('reason_text') }}</textarea>
 
                     @error('reason_text')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        <p class="mt-1 text-sm text-danger">{{ $message }}</p>
                     @enderror
 
-                    <div class="mt-6 flex items-center justify-end gap-3 border-t border-zinc-100 pt-5">
+                    <div class="flex items-center justify-end gap-3 pt-5 mt-6 border-t border-border">
                         <a
                             href="{{ route('shop.customers.account.orders.view', $order->id) }}"
-                            class="secondary-button border-zinc-200 px-5 py-3 font-normal"
+                            class="px-5 py-3 font-normal secondary-button border-border"
                         >
                             @lang('shop::app.eu_withdrawal.form.cancel')
                         </a>
 
                         <button
                             type="submit"
-                            class="primary-button px-6 py-3"
+                            class="px-6 py-3 primary-button"
                         >
                             @lang('shop::app.eu_withdrawal.form.submit')
                         </button>

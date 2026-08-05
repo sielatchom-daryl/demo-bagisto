@@ -51,13 +51,13 @@
                                     name="payment[method]" 
                                     :value="payment.payment"
                                     :id="payment.method"
-                                    class="peer hidden"
+                                    class="hidden peer"
                                     @change="store(payment)"
                                 >
     
                                 <label 
                                     :for="payment.method" 
-                                    class="icon-radio-unselect peer-checked:icon-radio-select absolute top-5 cursor-pointer text-2xl text-navyBlue ltr:right-5 rtl:left-5"
+                                    class="absolute text-2xl cursor-pointer icon-radio-unselect peer-checked:icon-radio-select top-5 text-primary ltr:right-5 rtl:left-5"
                                 >
                                 </label>
 

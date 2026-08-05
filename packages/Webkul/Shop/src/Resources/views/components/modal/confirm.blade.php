@@ -17,7 +17,7 @@
                 leave-to-class="opacity-0"
             >
                 <div
-                    class="fixed inset-0 z-20 bg-gray-500 bg-opacity-50 transition-opacity"
+                    class="fixed inset-0 z-20 transition-opacity bg-black/70 backdrop-blur-sm"
                     v-show="isOpen"
                 ></div>
             </transition>
@@ -33,23 +33,24 @@
                 leave-to-class="translate-y-4 opacity-0 md:translate-y-0 md:scale-95"
             >
                 <div
-                    class="fixed inset-0 z-20 transform overflow-y-auto transition" v-show="isOpen"
+                    class="fixed inset-0 z-20 overflow-y-auto transition transform"
+                    v-show="isOpen"
                 >
-                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                        <div class="absolute left-1/2 top-1/2 z-[999] w-full max-w-[475px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl bg-white p-5 max-md:w-[90%] max-sm:p-4">
+                    <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+                        <div class="absolute left-1/2 top-1/2 z-[999] w-full max-w-[475px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl border border-border bg-surface p-5 text-foreground shadow-2xl max-md:w-[90%] max-sm:p-4">
                             <div class="flex gap-2.5">
                                 <div>
-                                    <span class="flex rounded-full border border-gray-300 p-2.5">
-                                        <i class="icon-error text-3xl max-sm:text-xl"></i>
+                                    <span class="flex rounded-full border border-primary p-2.5">
+                                        <i class="text-3xl icon-error text-primary max-sm:text-xl"></i>
                                     </span>
                                 </div>
 
                                 <div>
-                                    <div class="flex items-center justify-between gap-5 text-xl max-sm:text-lg">
+                                    <div class="flex items-center justify-between gap-5 text-xl font-semibold text-foreground max-sm:text-lg">
                                         @{{ title }}
                                     </div>
 
-                                    <div class="pb-5 pt-1.5 text-left text-sm text-gray-500">
+                                    <div class="pb-5 pt-1.5 text-left text-sm text-muted">
                                         @{{ message }}
                                     </div>
 
@@ -67,7 +68,7 @@
                                             class="primary-button max-md:py-3 max-sm:px-6 max-sm:py-2.5"
                                             @click="agree"
                                         >
-                                            @{{ options.btnAgree }} 
+                                            @{{ options.btnAgree }}
                                         </button>
                                     </div>
                                 </div>
@@ -78,6 +79,7 @@
             </transition>
         </div>
     </script>
+
 
     <script type="module">
         app.component('v-modal-confirm', {

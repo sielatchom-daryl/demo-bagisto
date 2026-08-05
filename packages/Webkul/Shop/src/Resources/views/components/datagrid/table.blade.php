@@ -17,8 +17,8 @@
         type="text/x-template"
         id="v-datagrid-table-template"
     >
-        <div class="w-full overflow-x-auto rounded-xl border max-md:rounded-none max-md:border-0">
-            <div class="table-responsive box-shadow grid w-full overflow-hidden rounded bg-white">
+        <div class="w-full overflow-x-auto border rounded-xl border-border bg-background max-md:rounded-none max-md:border-0">
+            <div class="w-full overflow-x-auto border rounded-xl border-border bg-background max-md:rounded-none max-md:border-0">
                 <slot
                     name="header"
                     :is-loading="isLoading"
@@ -34,7 +34,7 @@
 
                     <template v-else>
                         <div
-                            class="row grid items-center gap-2.5 border-b border-zinc-200 bg-zinc-100 px-6 py-4 text-sm font-medium text-black max-md:p-4"
+                            class="row grid items-center gap-2.5 border-b border-border bg-secondary px-6 py-4 text-sm font-medium text-foreground max-md:p-4"
                             :style="`grid-template-columns: repeat(${gridsCount}, minmax(0, 1fr))`"
                         >
                             <!-- Mass Actions -->
@@ -44,13 +44,13 @@
                                         type="checkbox"
                                         name="mass_action_select_all_records"
                                         id="mass_action_select_all_records"
-                                        class="peer hidden"
+                                        class="hidden peer"
                                         :checked="['all', 'partial'].includes(applied.massActions.meta.mode)"
                                         @change="selectAll"
                                     >
 
                                     <span
-                                        class="icon-uncheck cursor-pointer rounded-md text-2xl"
+                                        class="text-2xl rounded-md cursor-pointer icon-uncheck"
                                         :class="[
                                             applied.massActions.meta.mode === 'all' ? 'peer-checked:icon-check-box' : (
                                                 applied.massActions.meta.mode === 'partial' ? 'peer-checked:icon-checkbox-partial' : ''
@@ -72,7 +72,7 @@
                                     @{{ column.label }}
 
                                     <i
-                                        class="align-text-bottom text-base text-gray-800"
+                                        class="text-base align-text-bottom text-primary"
                                         :class="[applied.sort.order === 'asc' ? 'icon-arrow-down': 'icon-arrow-up']"
                                         v-if="column.index == applied.sort.column"
                                     ></i>
@@ -106,7 +106,7 @@
                     <template v-else>
                         <template v-if="available.records.length">
                             <div
-                                class="row grid items-center gap-2.5 border-b bg-white px-6 py-4 font-medium text-gray-600 transition-all max-md:p-4 max-md:text-xs"
+                                class="row grid items-center gap-2.5 border-b border-border bg-surface px-6 py-4 font-medium text-foreground transition-all hover:bg-secondary max-md:p-4 max-md:text-xs"
                                 v-for="record in available.records"
                                 :style="`grid-template-columns: repeat(${gridsCount}, minmax(0, 1fr))`"
                             >
@@ -118,11 +118,11 @@
                                             :name="`mass_action_select_record_${record[available.meta.primary_column]}`"
                                             :value="record[available.meta.primary_column]"
                                             :id="`mass_action_select_record_${record[available.meta.primary_column]}`"
-                                            class="peer hidden"
+                                            class="hidden peer"
                                             v-model="applied.massActions.indices"
                                         >
 
-                                        <span class="icon-uncheck peer-checked:icon-check-box cursor-pointer rounded-md text-2xl">
+                                        <span class="text-2xl rounded-md cursor-pointer icon-uncheck peer-checked:icon-check-box">
                                         </span>
                                     </label>
                                 </p>
@@ -140,7 +140,7 @@
                                 <!-- Actions -->
                                 <p v-if="available.actions.length">
                                     <span
-                                        class="float-right cursor-pointer rounded-md p-1.5 text-2xl transition-all hover:bg-gray-200"
+                                        class="float-right cursor-pointer rounded-md p-1.5 text-2xl text-primary transition-all hover:bg-secondary hover:text-accent"
                                         :class="action.icon"
                                         v-for="action in record.actions"
                                         @click="performAction(action)"
@@ -152,7 +152,7 @@
                         </template>
 
                         <template v-else>
-                            <div class="row grid border-b border-gray-300 px-4 py-4 text-center text-gray-600">
+                            <div class="grid px-4 py-4 text-center border-b row border-border bg-surface text-muted">
                                 <p>
                                     @lang('shop::app.components.datagrid.table.no-records-available')
                                 </p>
@@ -173,8 +173,8 @@
 
                     <template v-else>
                         <!-- Information Panel -->
-                        <div v-if="$parent.available.records.length" class="flex items-center justify-between p-6 max-md:p-2">
-                            <p class="text-xs font-medium">
+                        <div v-if="$parent.available.records.length" class="flex items-center justify-between p-6 border-t border-border bg-surface max-md:p-2">
+                            <p class="text-xs font-medium text-muted">
                                 @{{ "@lang('shop::app.components.datagrid.table.showing')".replace(':firstItem', $parent.available.meta.from) }}
                                 @{{ "@lang('shop::app.components.datagrid.table.to')".replace(':lastItem', $parent.available.meta.to) }}
                                 @{{ "@lang('shop::app.components.datagrid.table.of')".replace(':total', $parent.available.meta.total) }}
@@ -183,29 +183,29 @@
                             <!-- Pagination -->
                             <div class="flex items-center gap-1">
                                 <div
-                                    class="inline-flex w-full max-w-max cursor-pointer appearance-none items-center justify-between gap-x-1 rounded-md border border-transparent p-1.5 text-center text-gray-600 transition-all marker:shadow hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black active:border-gray-300"
+                                    class="inline-flex w-full max-w-max cursor-pointer appearance-none items-center justify-between gap-x-1 rounded-md border border-border bg-surface p-1.5 text-center text-primary transition-all hover:bg-secondary hover:text-accent focus:outline-none focus:ring-2 focus:ring-primary active:border-primary"
                                     @click="changePage('previous')"
                                 >
-                                    <span class="icon-sort-left text-2xl"></span>
+                                    <span class="text-2xl icon-sort-left"></span>
                                 </div>
 
                                 <div
-                                    class="inline-flex w-full max-w-max cursor-pointer appearance-none items-center justify-between gap-x-1 rounded-md border border-transparent p-1.5 text-center text-gray-600 transition-all marker:shadow hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black active:border-gray-300"
+                                    class="inline-flex w-full max-w-max cursor-pointer appearance-none items-center justify-between gap-x-1 rounded-md border border-border bg-surface p-1.5 text-center text-primary transition-all hover:bg-secondary hover:text-accent focus:outline-none focus:ring-2 focus:ring-primary active:border-primary"
                                     @click="changePage('next')"
                                 >
-                                    <span class="icon-sort-right text-2xl"></span>
+                                    <span class="text-2xl icon-sort-right"></span>
                                 </div>
                             </div>
 
                             <nav aria-label="@lang('shop::app.components.datagrid.table.page-navigation')">
-                                <ul class="inline-flex items-center -space-x-px rounded-lg border border-zinc-200 max-md:px-0">
+                                <ul class="inline-flex items-center -space-x-px border rounded-lg border-border bg-surface max-md:px-0">
                                     <li  @click="changePage('previous')">
                                         <a
                                             href="javascript:void(0);"
-                                            class="flex h-10 w-9 items-center justify-center font-medium leading-normal hover:bg-gray-100 max-md:h-8 max-md:w-6 max-md:justify-normal"
+                                            class="flex items-center justify-center h-10 font-medium leading-normal w-9 text-foreground hover:bg-secondary hover:text-primary max-md:h-8 max-md:w-6 max-md:justify-normal"
                                             aria-label="@lang('shop::app.components.datagrid.table.previous-page')"
                                         >
-                                            <span class="icon-arrow-left rtl:icon-arrow-right text-2xl"></span>
+                                            <span class="text-2xl icon-arrow-left rtl:icon-arrow-right"></span>
                                         </a>
                                     </li>
 
@@ -213,7 +213,7 @@
                                         <input
                                             type="text"
                                             :value="$parent.available.meta.current_page"
-                                            class="max-w-[42px] items-center border-l border-r px-4 py-2 font-medium leading-normal text-black hover:bg-gray-100 max-md:max-w-9 max-md:justify-normal max-md:px-0 max-md:py-1 max-md:text-center"
+                                            class="max-w-[42px] items-center border-l border-r border-border bg-surface px-4 py-2 font-medium leading-normal text-foreground hover:bg-secondary focus:outline-none focus:ring-1 focus:ring-primary max-md:max-w-9 max-md:justify-normal max-md:px-0 max-md:py-1 max-md:text-center"
                                             @change="changePage(parseInt($event.target.value))"
                                             aria-label="@lang('shop::app.components.datagrid.table.page-number')"
                                         >
@@ -222,10 +222,10 @@
                                     <li @click="changePage('next')">
                                         <a
                                             href="javascript:void(0);"
-                                            class="flex h-10 w-9 items-center justify-center font-medium leading-normal hover:bg-gray-100 max-md:h-8 max-md:w-6 max-md:justify-normal"
+                                            class="flex items-center justify-center h-10 font-medium leading-normal w-9 text-foreground hover:bg-secondary hover:text-primary max-md:h-8 max-md:w-6 max-md:justify-normal"
                                             aria-label="@lang('shop::app.components.datagrid.table.next-page')"
                                         >
-                                            <span class="icon-arrow-right rtl:icon-arrow-left text-2xl"></span>
+                                            <span class="text-2xl icon-arrow-right rtl:icon-arrow-left"></span>
                                         </a>
                                     </li>
                                 </ul>

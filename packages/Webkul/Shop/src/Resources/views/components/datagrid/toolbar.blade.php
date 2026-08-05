@@ -3,7 +3,7 @@
 </template>
 
 <template v-else>
-    <div class="mt-7 flex items-center justify-between gap-4 max-md:block">
+    <div class="flex items-center justify-between gap-4 rounded-lg mt-7 bg-background max-md:block">
         <!-- Left Toolbar -->
         <div class="flex w-full gap-x-1">
             <!-- Mass Actions Panel -->
@@ -105,7 +105,7 @@
             </x-shop::datagrid.toolbar.pagination>                
 
             <div class="hidden max-md:block ltr:pl-2.5 rtl:pr-2.5">
-                <p class="text-sm font-light text-gray-800 max-md:w-full">
+                <p class="text-sm font-light text-muted max-md:w-full">
                     @{{ "@lang('shop::app.components.datagrid.toolbar.results')".replace(':total', available.meta.total) }}
                 </p>
             </div>

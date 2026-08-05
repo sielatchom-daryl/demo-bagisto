@@ -33,13 +33,13 @@
                         >
 
                         <label
-                            class="text-2xl icon-radio-unselect peer-checked:icon-radio-select text-navyBlue"
+                            class="text-2xl icon-radio-unselect peer-checked:icon-radio-select text-ptimary"
                             for="booking[daily]"
                         >
                         </label>
 
                         <label
-                            class="cursor-pointer text-[#6E6E6E]"
+                            class="cursor-pointer text-muted"
                             for="booking[daily]"
                         >
                             @lang('shop::app.products.view.type.booking.rental.daily-basis')
@@ -58,13 +58,13 @@
                         >
 
                         <label
-                            class="text-2xl icon-radio-unselect peer-checked:icon-radio-select text-navyBlue"
+                            class="text-2xl icon-radio-unselect peer-checked:icon-radio-select text-primary"
                             for="booking[hourly]"
                         >
                         </label>
 
                         <label
-                            class="cursor-pointer text-[#6E6E6E]"
+                            class="cursor-pointer text-muted"
                             for="booking[hourly]"
                         >
                             @lang('shop::app.products.view.type.booking.rental.hourly-basis')
@@ -261,21 +261,21 @@
             </div>
 
             <!-- Rental Price Breakdown -->
-            <div class="mt-3 rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm">
+            <div class="p-4 mt-3 text-sm border rounded-lg border-border bg-surface">
                 <p class="mb-3 font-semibold">
                     @lang('shop::app.products.view.type.booking.rental.summary-title')
                 </p>
 
                 <template v-if="hasSelection">
                     <div class="flex items-center justify-between py-1">
-                        <span class="text-zinc-600">
+                        <span class="text-foreground">
                             @lang('shop::app.products.view.type.booking.rental.base-rental-fee')
                         </span>
 
                         <span class="flex items-center gap-2">
                             <span
                                 v-if="hasBaseDiscount"
-                                class="text-zinc-400 line-through"
+                                class="line-through text-muted"
                                 v-text="formattedBaseRegularPrice"
                             >
                             </span>
@@ -290,7 +290,7 @@
 
                     <div class="flex items-center justify-between py-1">
                         <span
-                            class="text-zinc-600"
+                            class="text-foreground"
                             v-text="rateLineLabel"
                         >
                         </span>
@@ -302,7 +302,7 @@
                         </span>
                     </div>
 
-                    <div class="mt-3 flex items-center justify-between border-t border-zinc-200 pt-3">
+                    <div class="flex items-center justify-between pt-3 mt-3 border-t border-border">
                         <span class="font-semibold">
                             @lang('shop::app.products.view.type.booking.rental.total')
                         </span>
@@ -316,7 +316,7 @@
                 </template>
 
                 <template v-else>
-                    <p class="text-xs text-zinc-500">
+                    <p class="text-xs text-muted">
                         @lang('shop::app.products.view.type.booking.rental.select-dates-hint')
                     </p>
                 </template>

@@ -3,9 +3,9 @@
 <div>
     <x-shop::shimmer.datagrid.toolbar />
 
-    <div class="mt-8 flex overflow-x-auto rounded-xl border">
+    <div class="flex mt-8 overflow-x-auto border rounded-xl">
         <div class="w-full">
-            <div class="table-responsive box-shadow grid w-full overflow-hidden rounded bg-white">
+            <div class="grid w-full overflow-hidden rounded table-responsive box-shadow bg-background">
                 <x-shop::shimmer.datagrid.table.head :isMultiRow="$isMultiRow" />
 
                 <x-shop::shimmer.datagrid.table.body :isMultiRow="$isMultiRow" />

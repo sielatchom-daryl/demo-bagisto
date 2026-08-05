@@ -10,6 +10,18 @@
     font-display: swap;
 }
 
+:root {
+    --color-primary: #C9A227;
+    --color-secondary: #1A1A1A;
+    --color-surface: #111111;
+    --color-background: #000000;
+    --color-foreground: #FFFFFF;
+    --color-muted: #B3B3B3;
+    --color-border: #333333;
+    --color-accent: #D4AF37;
+    --color-danger: #FF1C24;
+}
+
 img.lazy {
   visibility: hidden;
 }
@@ -24,11 +36,11 @@ img.lazy {
     }
 
     button:disabled {
-        @apply cursor-not-allowed opacity-50;
+        @apply opacity-50 cursor-not-allowed;
     }
 
     button:disabled:hover {
-        @apply cursor-not-allowed opacity-50;
+        @apply opacity-50 cursor-not-allowed;
     }
 
     [class^="icon-"],
@@ -431,11 +443,21 @@ img.lazy {
     }
 
     .primary-button {
-        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl text-white bg-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:opacity-[0.9];
+        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl 
+        text-background bg-primary border border-primary 
+        px-8 py-4 max-w-max cursor-pointer 
+        transition-all duration-300 ease-in-out 
+        hover:bg-accent hover:border-accent 
+        hover:scale-[1.02];
     }
 
     .secondary-button {
-        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl bg-white text-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:bg-[#050e3a0d];
+        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl 
+        text-primary bg-background border border-primary
+        px-8 py-4 max-w-max cursor-pointer 
+        transition-all duration-300 ease-in-out 
+        hover:bg-primary hover:text-background 
+        hover:scale-[1.02];
     }
 
     .shimmer {
@@ -444,9 +466,17 @@ img.lazy {
         animation-iteration-count: infinite;
         animation-name: skeleton;
         animation-timing-function: linear;
-        background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+
+        background: linear-gradient(
+            90deg,
+            var(--color-surface) 8%,
+            var(--color-secondary) 18%,
+            var(--color-surface) 33%
+        );
+
         background-size: 1250px 100%;
-    }
+        border: 1px solid var(--color-border);
+    }                                                   
 
     @keyframes skeleton {
         0% {

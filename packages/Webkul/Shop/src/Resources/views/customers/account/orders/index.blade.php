@@ -15,14 +15,14 @@
         <x-shop::layouts.account.navigation />
     </div>
 
-    <div class="mx-4 flex-auto max-md:mx-6 max-sm:mx-4">
-        <div class="mb-8 flex items-center max-sm:mb-5">
+    <div class="flex-auto mx-4 max-md:mx-6 max-sm:mx-4">
+        <div class="flex items-center mb-8 max-sm:mb-5">
             <!-- Back Button -->
             <a
                 class="grid md:hidden"
                 href="{{ route('shop.customers.account.index') }}"
             >
-                <span class="icon-arrow-left rtl:icon-arrow-right text-2xl"></span>
+                <span class="text-2xl icon-arrow-left rtl:icon-arrow-right"></span>
             </a>
 
             <h2 class="text-2xl font-medium ltr:ml-2.5 rtl:mr-2.5 max-sm:text-base md:ltr:ml-0 md:rtl:mr-0">
@@ -66,13 +66,13 @@
     
                     <template v-else>
                         <template v-for="record in available.records">
-                            <div class="w-full p-4 border rounded-md transition-all hover:bg-gray-50 [&>*]:border-0 mb-4 last:mb-0">
+                            <div class="w-full p-4 border rounded-md transition-all hover:bg-bachground [&>*]:border-0 mb-4 last:mb-0">
                                 <a :href="record.actions[0].url">
                                     <div class="flex justify-between">
                                         <div class="text-sm font-semibold">
                                             @lang('shop::app.customers.account.orders.order-id'): #@{{ record.id }}
     
-                                            <p class="text-xs font-normal text-neutral-500">
+                                            <p class="text-xs font-normal text-muted">
                                                 @{{ record.created_at }}
                                             </p>
                                         </div>
@@ -80,10 +80,10 @@
                                         <p v-html="record.status"></p>
                                     </div>
         
-                                    <div class="mt-2.5 text-xs font-normal text-neutral-500">
+                                    <div class="mt-2.5 text-xs font-normal text-muted">
                                         @lang('shop::app.customers.account.orders.subtotal')
     
-                                        <p class="text-xl font-semibold text-black">
+                                        <p class="text-xl font-semibold text-foreground">
                                             @{{ record.grand_total }}
                                         </p>
                                     </div>

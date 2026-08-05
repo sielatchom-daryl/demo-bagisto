@@ -15,14 +15,14 @@
         <x-shop::layouts.account.navigation />
     </div>
 
-    <div class="mx-4 flex-auto max-md:mx-6 max-sm:mx-4">
-        <div class="mb-8 flex items-center max-md:mb-5">
+    <div class="flex-auto mx-4 max-md:mx-6 max-sm:mx-4">
+        <div class="flex items-center mb-8 max-md:mb-5">
             <!-- Back Button -->
             <a
                 class="grid md:hidden"
                 href="{{ route('shop.customers.account.index') }}"
             >
-                <span class="icon-arrow-left rtl:icon-arrow-right text-2xl"></span>
+                <span class="text-2xl icon-arrow-left rtl:icon-arrow-right"></span>
             </a>
 
             <h2 class="text-2xl font-medium max-md:text-xl max-sm:text-base ltr:ml-2.5 md:ltr:ml-0 rtl:mr-2.5 md:rtl:mr-0">
@@ -90,7 +90,7 @@
 
                                                 <div class="flex items-center gap-0.5">
                                                     @for ($i = 1; $i <= 5; $i++)
-                                                        <span class="icon-star-fill text-3xl {{ $review->rating >= $i ? 'text-amber-500' : 'text-zinc-500' }}"></span>
+                                                        <span class="icon-star-fill text-3xl {{ $review->rating >= $i ? 'text-amber-500' : 'text-muted' }}"></span>
                                                     @endfor
                                                 </div>
 
@@ -111,7 +111,7 @@
                                             {!! view_render_event('bagisto.shop.customers.account.reviews.comment.before', ['reviews' => $reviews]) !!}
 
                                             <p
-                                                class="mt-5 text-base text-zinc-500 max-md:mt-2"
+                                                class="mt-5 text-base text-muted max-md:mt-2"
                                                 v-pre
                                             >
                                                 {{ $review->comment }}
@@ -150,7 +150,7 @@
                                                 {!! view_render_event('bagisto.shop.customers.account.reviews.created_at.before', ['reviews' => $reviews]) !!}
 
                                                 <p
-                                                    class="mt-1.5 font-normal text-zinc-500 max-md:mt-0 max-md:text-xs"
+                                                    class="mt-1.5 font-normal text-muted max-md:mt-0 max-md:text-xs"
                                                     v-pre
                                                 >
                                                     {{ $review->created_at }}
@@ -160,9 +160,9 @@
         
                                                 {!! view_render_event('bagisto.shop.customers.account.reviews.rating.before', ['reviews' => $reviews]) !!}
 
-                                                <div class="mt-1 flex items-center">
+                                                <div class="flex items-center mt-1">
                                                     @for ($i = 1; $i <= 5; $i++)
-                                                        <span class="icon-star-fill text-3xl {{ $review->rating >= $i ? 'text-amber-500' : 'text-zinc-500' }}"></span>
+                                                        <span class="icon-star-fill text-3xl {{ $review->rating >= $i ? 'text-amber-500' : 'text-muted' }}"></span>
                                                     @endfor
                                                 </div>
 
@@ -175,7 +175,7 @@
                                             {!! view_render_event('bagisto.shop.customers.account.reviews.comment.before', ['reviews' => $reviews]) !!}
 
                                             <p
-                                                class="text-xs text-zinc-500"
+                                                class="text-xs text-muted"
                                                 v-pre
                                             >
                                                 {{ $review->comment }}
@@ -192,7 +192,7 @@
                         </div>
                     @else
                         <!-- Review Empty Page -->
-                        <div class="m-auto grid w-full place-content-center items-center justify-items-center py-32 text-center">
+                        <div class="grid items-center w-full py-32 m-auto text-center place-content-center justify-items-center">
                             <img
                                 class="max-md:h-[100px] max-md:w-[100px]"
                                 src="{{ bagisto_asset('images/review.png') }}"

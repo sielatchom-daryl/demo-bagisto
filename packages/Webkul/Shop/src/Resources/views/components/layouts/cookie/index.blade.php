@@ -13,12 +13,12 @@
 
             @if (core()->getConfigData('general.gdpr.cookie.enabled'))
                 <div
-                    class="js-cookie-consent fixed z-[999] mx-4 box-border hidden min-h-5 overflow-hidden rounded bg-black/90 p-7"
+                    class="js-cookie-consent fixed z-[999] mx-4 hidden min-h-5 overflow-hidden rounded-xl border border-border bg-surface p-7 shadow-2xl"
                     :class="getPositionClasses(position)"
                 >
                     <div class="cookieTitle">
                         <span
-                            class="mb-1.5 block font-sans text-xl leading-5 text-white"
+                            class="block mb-2 text-xl font-semibold leading-6 text-foreground"
                             v-pre
                         >
                             {{ core()->getConfigData('general.gdpr.cookie.static_block_identifier') }}
@@ -27,13 +27,13 @@
 
                     <div class="cookieDesc cookie-consent__message">
                         <p
-                            class="mt-2.5 block font-sans text-sm leading-5 text-white"
+                            class="mt-3 text-sm leading-6 text-muted"
                             v-pre
                         >
                             {{ core()->getConfigData('general.gdpr.cookie.description') }}
 
                             <a
-                                class="text-white underline"
+                                class="underline text-primary hover:text-accent"
                                 href="{{ url('page/privacy-policy') }}"
                             >
                                 @lang('shop::app.components.layouts.cookie.index.privacy-policy')
@@ -42,16 +42,16 @@
                     </div>
 
                     <div class="cookieButton">
-                        <div class="mt-2.5 flex gap-2">
+                        <div class="mt-2.5 flex gap-3">
                             <button
-                                class="box-border inline-block w-full cursor-pointer rounded bg-blue-500 px-6 py-4 text-center font-sans text-sm font-bold text-white transition-colors duration-300 ease-in-out hover:bg-blue-400 hover:text-white"
+                                class="w-full px-6 py-3 text-sm font-semibold transition rounded-lg bg-primary text-secondary hover:bg-accent"
                                 @click="createCookie()"
                             >
                                 @lang('shop::app.components.layouts.cookie.index.accept')
                             </button>
 
                             <button
-                                class="box-border inline-block w-full cursor-pointer rounded bg-blue-500 px-6 py-4 text-center font-sans text-sm font-bold text-white transition-colors duration-300 ease-in-out hover:bg-blue-400 hover:text-white"
+                                class="w-full px-6 py-3 text-sm font-semibold transition border rounded-lg border-border bg-surface text-foreground hover:border-primary hover:text-primary"
                                 @click="rejectCookie()"
                             >
                                 @lang('shop::app.components.layouts.cookie.index.reject')
@@ -59,7 +59,7 @@
                         </div>
 
                         <a
-                            class="mt-2.5 box-border inline-block w-full cursor-pointer rounded bg-blue-500 px-6 py-4 text-center font-sans text-sm font-bold text-white transition-colors duration-300 ease-in-out hover:bg-blue-400 hover:text-white"
+                            class="inline-block w-full px-6 py-3 mt-3 text-sm font-semibold text-center transition border rounded-lg border-primary text-primary hover:bg-primary hover:text-secondary"
                             href="{{ route('shop.customers.gdpr.cookie-consent') }}"
                         >
                             @lang('shop::app.components.layouts.cookie.index.learn-more-and-customize')

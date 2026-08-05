@@ -15,7 +15,7 @@
         <x-shop::layouts.account.navigation />
     </div>
 
-    <div class="flex-auto mx-4">
+    <div class="flex-auto mx-4 bg-background">
         <div class="flex items-center justify-between">
             <div class="flex items-center">
                 <!-- Back Button -->
@@ -33,7 +33,7 @@
 
             <a
                 href="{{ route('shop.customers.account.addresses.create') }}"
-                class="secondary-button border-zinc-200 px-5 py-3 font-normal max-md:rounded-lg max-md:py-2 max-sm:py-1.5 max-sm:text-sm"
+                class="secondary-button border-border px-5 py-3 font-normal max-md:rounded-lg max-md:py-2 max-sm:py-1.5 max-sm:text-sm"
             >
                 @lang('shop::app.customers.account.addresses.index.add-address') 
             </a>
@@ -44,9 +44,9 @@
 
             {!! view_render_event('bagisto.shop.customers.account.addresses.list.before', ['addresses' => $addresses]) !!}
 
-            <div class="mt-[60px] grid grid-cols-2 gap-5 max-1060:grid-cols-[1fr] max-md:mt-5">
+            <div class="mt-[60px] grid grid-cols-2 gap-5 max-1060:grid-cols-[1fr] max-md:mt-5 bg-background">
                 @foreach ($addresses as $address)
-                    <div class="p-5 border rounded-xl border-zinc-200 max-md:flex-wrap">
+                    <div class="p-5 border rounded-xl border-border max-md:flex-wrap">
                         <div class="flex justify-between">
                             <p class="text-base font-medium" v-pre>
                                 {{ $address->first_name }} {{ $address->last_name }}
@@ -67,7 +67,7 @@
                                 <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'right' : 'left' }}">
                                     <x-slot:toggle>
                                         <button 
-                                            class="icon-more cursor-pointer rounded-md px-1.5 py-1 text-2xl text-zinc-500 transition-all hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black max-md:p-0" 
+                                            class="icon-more cursor-pointer rounded-md px-1.5 py-1 text-2xl text-muted transition-all hover:bg-surface hover:text-muted focus:bg-surface focus:text-muted max-md:p-0" 
                                             aria-label="More Options"
                                         >
                                         </button>
@@ -137,7 +137,7 @@
                             </div>
                         </div>
 
-                        <p class="mt-6 text-zinc-500 max-md:mt-5 max-md:text-sm" v-pre>
+                        <p class="mt-6 text-muted max-md:mt-5 max-md:text-sm" v-pre>
                             {{ $address->address }},
 
                             {{ $address->city }}, 

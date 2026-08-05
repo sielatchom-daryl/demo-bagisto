@@ -11,11 +11,11 @@
         id="v-flash-item-template"
     >
         <div
-            class="flex w-max max-w-[408px] justify-between gap-12 rounded-lg px-5 py-3 max-sm:max-w-80 max-sm:items-center max-sm:gap-2 max-sm:p-3"
+            class="flex w-max max-w-[408px] justify-between gap-12 rounded-lg border px-5 py-3 shadow-xl backdrop-blur-sm max-sm:max-w-80 max-sm:items-center max-sm:gap-2 max-sm:p-3"
             :style="typeStyles[flash.type]['container']"
         >
             <p
-                class="flex items-center break-words text-sm"
+                class="flex items-center text-sm font-medium break-words"
                 :style="typeStyles[flash.type]['message']"
             >
                 <span
@@ -27,8 +27,8 @@
                 @{{ flash.message }}
             </p>
 
-			<span
-                class="icon-cancel max-h-4 max-w-4 cursor-pointer"
+            <span
+                class="transition-opacity cursor-pointer icon-cancel max-h-4 max-w-4 hover:opacity-70"
                 :style="typeStyles[flash.type]['icon']"
                 @click="remove"
             ></span>
@@ -55,35 +55,47 @@
 
                     typeStyles: {
                         success: {
-                            container: 'background: #D4EDDA',
+                            container: `
+                                background: #111111;
+                                border: 1px solid #C9A227;
+                            `,
 
-                            message: 'color: #155721',
+                            message: 'color: #FFFFFF',
 
-                            icon: 'color: #155721'
+                            icon: 'color: #C9A227'
                         },
 
                         error: {
-                            container: 'background: #F8D7DA',
+                            container: `
+                                background: #111111;
+                                border: 1px solid #FF1C24;
+                            `,
 
-                            message: 'color: #721C24',
+                            message: 'color: #FFFFFF',
 
-                            icon: 'color: #721C24'
+                            icon: 'color: #FF1C24'
                         },
 
                         warning: {
-                            container: 'background: #FFF3CD',
+                            container: `
+                                background: #111111;
+                                border: 1px solid #D4AF37;
+                            `,
 
-                            message: 'color: #856404',
+                            message: 'color: #FFFFFF',
 
-                            icon: 'color: #856404'
+                            icon: 'color: #D4AF37'
                         },
 
                         info: {
-                            container: 'background: #E2E3E5',
+                            container: `
+                                background: #111111;
+                                border: 1px solid #C9A227;
+                            `,
 
-                            message: 'color: #383D41',
+                            message: 'color: #FFFFFF',
 
-                            icon: 'color: #383D41'
+                            icon: 'color: #C9A227'
                         },
                     },
                 };

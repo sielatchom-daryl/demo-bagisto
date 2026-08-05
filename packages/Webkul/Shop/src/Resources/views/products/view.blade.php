@@ -87,7 +87,7 @@
                     :is-selected="true"
                 >
                     <div class="container mt-[60px] max-1180:px-5">
-                        <p class="text-lg text-zinc-500 max-1180:text-sm">
+                        <p class="text-lg text-muted max-1180:text-sm">
                             {!! $product->description !!}
                         </p>
                     </div>
@@ -108,7 +108,7 @@
                                 @foreach ($customAttributeValues as $customAttributeValue)
                                     @if (! empty($customAttributeValue['value']))
                                         <div class="grid">
-                                            <p class="text-base text-black">
+                                            <p class="text-base text-foreground">
                                                 {{ $customAttributeValue['label'] }}
                                             </p>
                                         </div>
@@ -118,7 +118,7 @@
                                                 href="{{ Storage::url($product[$customAttributeValue['code']]) }}"
                                                 download="{{ $customAttributeValue['label'] }}"
                                             >
-                                                <span class="icon-download text-2xl"></span>
+                                                <span class="text-2xl icon-download"></span>
                                             </a>
                                         @elseif ($customAttributeValue['type'] == 'image')
                                             <a
@@ -126,13 +126,13 @@
                                                 download="{{ $customAttributeValue['label'] }}"
                                             >
                                                 <img
-                                                    class="min-h-5 min-w-5 h-5 w-5"
+                                                    class="w-5 h-5 min-h-5 min-w-5"
                                                     src="{{ Storage::url($customAttributeValue['value']) }}"
                                                 />
                                             </a>
                                         @else
                                             <div class="grid">
-                                                <p class="text-base text-zinc-500">
+                                                <p class="text-base text-muted">
                                                     {{ $customAttributeValue['value'] }}
                                                 </p>
                                             </div>
@@ -164,14 +164,14 @@
             class="max-md:border-none"
             :is-active="true"
         >
-            <x-slot:header class="bg-gray-100 max-md:!py-3 max-sm:!py-2">
+            <x-slot:header class="bg-background max-md:!py-3 max-sm:!py-2">
                 <p class="text-base font-medium 1180:hidden">
                     @lang('shop::app.products.view.description')
                 </p>
             </x-slot>
 
             <x-slot:content class="max-sm:px-0">
-                <div class="mb-5 text-lg text-zinc-500 max-1180:text-sm max-md:mb-1 max-md:px-4">
+                <div class="mb-5 text-lg text-muted max-1180:text-sm max-md:mb-1 max-md:px-4">
                     {!! $product->description !!}
                 </div>
             </x-slot>
@@ -183,7 +183,7 @@
                 class="max-md:border-none"
                 :is-active="false"
             >
-                <x-slot:header class="bg-gray-100 max-md:!py-3 max-sm:!py-2">
+                <x-slot:header class="bg-background max-md:!py-3 max-sm:!py-2">
                     <p class="text-base font-medium 1180:hidden">
                         @lang('shop::app.products.view.additional-information')
                     </p>
@@ -191,12 +191,12 @@
 
                 <x-slot:content class="max-sm:px-0">
                     <div class="container max-1180:px-5">
-                        <div class="grid max-w-max grid-cols-[auto_1fr] gap-4 text-lg text-zinc-500 max-1180:text-sm">
+                        <div class="grid max-w-max grid-cols-[auto_1fr] gap-4 text-lg text-muted max-1180:text-sm">
                             @foreach ($customAttributeValues as $customAttributeValue)
                                 @if (! empty($customAttributeValue['value']))
                                     <div class="grid">
                                         <p
-                                            class="text-base text-black"
+                                            class="text-base text-foreground"
                                             v-pre
                                         >
                                             {{ $customAttributeValue['label'] }}
@@ -208,7 +208,7 @@
                                             href="{{ Storage::url($product[$customAttributeValue['code']]) }}"
                                             download="{{ $customAttributeValue['label'] }}"
                                         >
-                                            <span class="icon-download text-2xl"></span>
+                                            <span class="text-2xl icon-download"></span>
                                         </a>
                                     @elseif ($customAttributeValue['type'] == 'image')
                                         <a
@@ -216,7 +216,7 @@
                                             download="{{ $customAttributeValue['label'] }}"
                                         >
                                             <img
-                                                class="min-h-5 min-w-5 h-5 w-5"
+                                                class="w-5 h-5 min-h-5 min-w-5"
                                                 src="{{ Storage::url($customAttributeValue['value']) }}"
                                                 alt="Product Image"
                                             />
@@ -224,7 +224,7 @@
                                     @else
                                         <div class="grid">
                                             <p
-                                                class="text-base text-zinc-500"
+                                                class="text-base text-muted"
                                                 v-pre
                                             >
                                                 {{ $customAttributeValue['value'] ?? '-' }}
@@ -245,7 +245,7 @@
             :is-active="false"
         >
             <x-slot:header
-                class="bg-gray-100 max-md:!py-3 max-sm:!py-2"
+                class="bg-bakground max-md:!py-3 max-sm:!py-2"
                 id="review-accordian-button"
             >
                 <p class="text-base font-medium">
@@ -289,7 +289,7 @@
                     >
 
                     <div class="container px-[60px] max-1180:px-0">
-                        <div class="mt-12 flex gap-9 max-1180:flex-wrap max-lg:mt-0 max-sm:gap-y-4">
+                        <div class="flex mt-12 gap-9 max-1180:flex-wrap max-lg:mt-0 max-sm:gap-y-4">
                             <!-- Gallery Blade Inclusion -->
                             @include('shop::products.view.gallery')
 
@@ -298,7 +298,7 @@
                                 {!! view_render_event('bagisto.shop.products.name.before', ['product' => $product]) !!}
 
                                 <div class="flex justify-between gap-4">
-                                    <h1 class="break-words text-3xl font-medium max-sm:text-xl" v-pre>
+                                    <h1 class="text-3xl font-medium break-words max-sm:text-xl" v-pre>
                                         {{ $product->name }}
                                     </h1>
 
@@ -329,7 +329,7 @@
                                         @click="scrollToReview"
                                     >
                                         <x-shop::products.ratings
-                                            class="transition-all hover:border-gray-400 max-sm:px-3 max-sm:py-1"
+                                            class="transition-all hover:border-border max-sm:px-3 max-sm:py-1"
                                             :average="$avgRatings"
                                             :total="$totalRatings"
                                             ::rating="true"
@@ -347,7 +347,7 @@
                                 </p>
 
                                 @if (\Webkul\Tax\Facades\Tax::isInclusiveTaxProductPrices())
-                                    <span class="text-sm font-normal text-zinc-500 max-sm:text-xs">
+                                    <span class="text-sm font-normal text-muted max-sm:text-xs">
                                         (@lang('shop::app.products.view.tax-inclusive'))
                                     </span>
                                 @endif
@@ -355,7 +355,7 @@
                                 @if (count($product->getTypeInstance()->getCustomerGroupPricingOffers()))
                                     <div class="mt-2.5 grid gap-1.5">
                                         @foreach ($product->getTypeInstance()->getCustomerGroupPricingOffers() as $offer)
-                                            <p class="text-zinc-500 [&>*]:text-black">
+                                            <p class="text-muted [&>*]:text-foreground">
                                                 {!! $offer !!}
                                             </p>
                                         @endforeach
@@ -366,7 +366,7 @@
 
                                 {!! view_render_event('bagisto.shop.products.short_description.before', ['product' => $product]) !!}
 
-                                <p class="mt-6 text-lg text-zinc-500 max-sm:mt-1.5 max-sm:text-sm">
+                                <p class="mt-6 text-lg text-muted max-sm:mt-1.5 max-sm:text-sm">
                                     {!! $product->short_description !!}
                                 </p>
 
@@ -450,7 +450,7 @@
                                 {!! view_render_event('bagisto.shop.products.view.additional_actions.before', ['product' => $product]) !!}
 
                                 <!-- Share Buttons -->
-                                <div class="mt-10 flex gap-9 max-md:mt-4 max-md:flex-wrap max-sm:justify-center max-sm:gap-3">
+                                <div class="flex mt-10 gap-9 max-md:mt-4 max-md:flex-wrap max-sm:justify-center max-sm:gap-3">
                                     {!! view_render_event('bagisto.shop.products.view.compare.before', ['product' => $product]) !!}
 
                                     <div
@@ -461,7 +461,7 @@
                                     >
                                         @if (core()->getConfigData('catalog.products.settings.compare_option'))
                                             <span
-                                                class="icon-compare text-2xl"
+                                                class="text-2xl icon-compare"
                                                 role="presentation"
                                             ></span>
 
@@ -572,10 +572,10 @@
                             </x-shop::form.control-group>
                         @endif
 
-                        <div class="mt-6 flex justify-end">
+                        <div class="flex justify-end mt-6">
                             <button
                                 type="submit"
-                                class="primary-button rounded-2xl px-8 py-3 max-sm:rounded-lg max-sm:px-6 max-sm:py-2"
+                                class="px-8 py-3 primary-button rounded-2xl max-sm:rounded-lg max-sm:px-6 max-sm:py-2"
                             >
                                 @lang('shop::app.products.view.contact-us.submit')
                             </button>
