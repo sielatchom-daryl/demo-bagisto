@@ -87,9 +87,9 @@
                     :is-selected="true"
                 >
                     <div class="container mt-[60px] max-1180:px-5">
-                        <p class="text-lg text-muted max-1180:text-sm">
+                        <div class="text-lg text-muted max-1180:text-sm">
                             {!! $product->description !!}
-                        </p>
+                        </div>
                     </div>
                 </x-shop::tabs.item>
 
@@ -342,9 +342,9 @@
                                 <!-- Pricing -->
                                 {!! view_render_event('bagisto.shop.products.price.before', ['product' => $product]) !!}
 
-                                <p class="mt-[22px] flex items-center gap-2.5 text-2xl !font-medium max-sm:mt-2 max-sm:gap-x-2.5 max-sm:gap-y-0 max-sm:text-lg">
+                                <div class="mt-[22px] flex items-center gap-2.5 text-2xl !font-medium max-sm:mt-2 max-sm:gap-x-2.5 max-sm:gap-y-0 max-sm:text-lg">
                                     {!! $product->getTypeInstance()->getPriceHtml() !!}
-                                </p>
+                                </div>
 
                                 @if (\Webkul\Tax\Facades\Tax::isInclusiveTaxProductPrices())
                                     <span class="text-sm font-normal text-muted max-sm:text-xs">
@@ -366,9 +366,9 @@
 
                                 {!! view_render_event('bagisto.shop.products.short_description.before', ['product' => $product]) !!}
 
-                                <p class="mt-6 text-lg text-muted max-sm:mt-1.5 max-sm:text-sm">
+                                <div class="mt-6 text-lg text-muted max-sm:mt-1.5 max-sm:text-sm">
                                     {!! $product->short_description !!}
-                                </p>
+                                </div>
 
                                 {!! view_render_event('bagisto.shop.products.short_description.after', ['product' => $product]) !!}
 
