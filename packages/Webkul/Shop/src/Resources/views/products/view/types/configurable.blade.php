@@ -34,7 +34,7 @@
                         <v-field
                             as="select"
                             :name="'super_attribute[' + attribute.id + ']'"
-                            class="block w-full px-5 py-3 mb-3 text-base bg-white border rounded-lg cursor-pointer custom-select border-zinc-200 text-zinc-500 focus:border-blue-500 focus:ring-blue-500"
+                            class="custom-select mb-3 block w-full cursor-pointer rounded-lg border border-zinc-200 bg-white px-5 py-3 text-base text-zinc-500 focus:border-blue-500 focus:ring-blue-500"
                             :class="[errors['super_attribute[' + attribute.id + ']'] ? 'border border-red-500' : '']"
                             :id="'attribute_' + attribute.id"
                             v-model="attribute.selectedValue"
@@ -87,7 +87,7 @@
                                                 v-bind="field"
                                                 :id="'attribute_' + attribute.id"
                                                 :aria-labelledby="'color-choice-' + index + '-label'"
-                                                class="sr-only peer"
+                                                class="peer sr-only"
                                                 @click="configure(attribute, $event.target.value)"
                                             />
                                         </v-field>
@@ -123,7 +123,7 @@
                                                 v-bind="field"
                                                 :id="'attribute_' + attribute.id"
                                                 :aria-labelledby="'color-choice-' + index + '-label'"
-                                                class="sr-only peer"
+                                                class="peer sr-only"
                                                 @click="configure(attribute, $event.target.value)"
                                             />
                                         </v-field>
@@ -157,7 +157,7 @@
                                                 :value="option.id"
                                                 v-bind="field"
                                                 :id="'attribute_' + attribute.id"
-                                                class="sr-only peer"
+                                                class="peer sr-only"
                                                 :aria-labelledby="'color-choice-' + index + '-label'"
                                                 @click="configure(attribute, $event.target.value)"
                                             />
@@ -168,7 +168,7 @@
                                         </span>
 
                                         <span
-                                            class="absolute rounded-full pointer-events-none -inset-px"
+                                            class="pointer-events-none absolute -inset-px rounded-full"
                                             role="presentation"
                                         >
                                         </span>

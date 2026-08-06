@@ -54,7 +54,7 @@
             type="text/x-template"
             id="v-product-bundle-option-item-template"
         >
-            <div class="pb-4 mt-8 border-b border-zinc-200 max-sm:mt-4 max-sm:pb-0">
+            <div class="mt-8 border-b border-zinc-200 pb-4 max-sm:mt-4 max-sm:pb-0">
                 <x-shop::form.control-group>
                     <!-- Dropdown Options Container -->
                     <x-shop::form.control-group.label
@@ -91,7 +91,7 @@
                                 >
                                     <span class="text-black">+</span>
 
-                                    <span class="line-through text-zinc-500 max-sm:text-sm">
+                                    <span class="text-zinc-500 line-through max-sm:text-sm">
                                         (@{{ product.price.regular.formatted_price }})
                                     </span>
 
@@ -151,7 +151,7 @@
                                 />
 
                                 <label
-                                    class="flex gap-2 cursor-pointer text-zinc-500 max-sm:text-sm"
+                                    class="flex cursor-pointer gap-2 text-zinc-500 max-sm:text-sm"
                                     :for="'bundle_options[' + option.id + '][' + index + ']'"
                                 >
                                     @{{ product.name }}
@@ -162,7 +162,7 @@
                                     >
                                         <span class="text-black">+</span>
 
-                                        <span class="line-through text-zinc-500 max-sm:text-sm">
+                                        <span class="text-zinc-500 line-through max-sm:text-sm">
                                             @{{ product.price.regular.formatted_price }}
                                         </span>
     
@@ -208,7 +208,7 @@
                                 >
                                     <span class="text-black">+</span>
 
-                                    <span class="line-through text-zinc-500 max-sm:text-sm">
+                                    <span class="text-zinc-500 line-through max-sm:text-sm">
                                         (@{{ product.price.regular.formatted_price }})
                                     </span>
 
@@ -244,7 +244,7 @@
                                 />
 
                                 <label
-                                    class="flex gap-2 cursor-pointer text-zinc-500 max-sm:text-sm"
+                                    class="flex cursor-pointer gap-2 text-zinc-500 max-sm:text-sm"
                                     :for="'bundle_options[' + option.id + '][' + index + ']'"
                                 >
                                     @{{ product.name }}
@@ -255,7 +255,7 @@
                                     >
                                         <span class="text-black">+</span>
 
-                                        <span class="line-through text-zinc-500 max-sm:text-sm">
+                                        <span class="text-zinc-500 line-through max-sm:text-sm">
                                             (@{{ product.price.regular.formatted_price }})
                                         </span>
 

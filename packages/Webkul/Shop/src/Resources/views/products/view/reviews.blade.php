@@ -50,15 +50,15 @@
 
                         <div>
                             <x-shop::form.control-group>
-                                <x-shop::form.control-group.label class="mt-0 required">
+                                <x-shop::form.control-group.label class="required mt-0">
                                     @lang('shop::app.products.view.reviews.rating')
                                 </x-shop::form.control-group.label>
 
                                 <span
-                                    class="text-2xl cursor-pointer icon-star-fill"
+                                    class="icon-star-fill cursor-pointer text-2xl"
                                     role="presentation"
                                     v-for="rating in [1,2,3,4,5]"
-                                    :class="appliedRatings >= rating ? 'text-accent' : 'text-muted'"
+                                    :class="appliedRatings >= rating ? 'text-amber-500' : 'text-zinc-500'"
                                     @click="appliedRatings = rating"
                                 >
                                 </span>
@@ -127,7 +127,7 @@
                             </x-shop::form.control-group>
 
 
-                            <div class="flex justify-start gap-4 mt-4 max-xl:mb-5 max-sm:mb-5 max-sm:flex-wrap max-sm:justify-normal max-sm:gap-x-0">
+                            <div class="mt-4 flex justify-start gap-4 max-xl:mb-5 max-sm:mb-5 max-sm:flex-wrap max-sm:justify-normal max-sm:gap-x-0">
                                 <button
                                     class="primary-button w-full max-w-[374px] rounded-2xl px-11 py-4 text-center max-md:max-w-full max-md:rounded-lg max-md:py-3 max-sm:py-1.5"
                                     type='submit'
@@ -166,20 +166,20 @@
 
                         <div class="flex gap-16 max-lg:flex-wrap max-sm:gap-5 max-sm:gap-x-0">
                             <!-- Left Section -->
-                            <div class="sticky flex flex-col gap-6 top-24 h-max max-lg:relative max-lg:top-auto max-md:w-full">
+                            <div class="sticky top-24 flex h-max flex-col gap-6 max-lg:relative max-lg:top-auto max-md:w-full">
 
-                                <div class="flex flex-col items-center gap-2 max-md:mt-3 max-md:gap-0 max-md:border-b max-md:border-muted max-md:pb-3">
+                                <div class="flex flex-col items-center gap-2 max-md:mt-3 max-md:gap-0 max-md:border-b max-md:border-zinc-200 max-md:pb-3">
                                     <p class="text-5xl max-md:text-3xl">
                                         {{ $avgRatings }}
                                     </p>
 
                                     <div class="flex items-center gap-0.5">
                                         @for ($i = 1; $i <= 5; $i++)
-                                            <span class="icon-star-fill text-3xl {{ $avgRatings >= $i ? 'text-accent' : 'text-muted' }}"></span>
+                                            <span class="icon-star-fill text-3xl {{ $avgRatings >= $i ? 'text-amber-500' : 'text-zinc-500' }}"></span>
                                         @endfor
                                     </div>
 
-                                    <p class="text-base text-muted max-sm:text-sm">
+                                    <p class="text-base text-zinc-500 max-sm:text-sm">
                                         {{ $reviewHelper->getTotalFeedback($product) }}
 
                                         @lang('shop::app.products.view.reviews.ratings')
@@ -190,11 +190,11 @@
                                 <div class="grid max-w-[365px] flex-wrap gap-y-3 max-md:max-w-full">
                                     @for ($i = 5; $i >= 1; $i--)
                                         <div class="row grid grid-cols-[1fr_2fr] items-center gap-4 max-md:grid-cols-[0.5fr_2fr] max-sm:flex-wrap max-sm:gap-0">
-                                            <div class="text-base font-medium whitespace-nowrap max-sm:text-sm">{{ $i }} Stars</div>
+                                            <div class="whitespace-nowrap text-base font-medium max-sm:text-sm">{{ $i }} Stars</div>
 
                                             <div class="h-4 w-[275px] max-w-full rounded-sm bg-neutral-200 max-sm:h-3.5 max-sm:w-full">
                                                 <div
-                                                    class="h-4 rounded-sm bg-accent max-sm:h-3.5"
+                                                    class="h-4 rounded-sm bg-amber-500 max-sm:h-3.5"
                                                     style="width: {{ $percentageRatings[$i] }}%"
                                                 ></div>
                                             </div>
@@ -209,10 +209,10 @@
                                             || auth()->guard('customer')->user()
                                         )
                                             <div
-                                                class="flex cursor-pointer items-center justify-center gap-x-4 rounded-xl border border-primary px-4 py-3 max-sm:rounded-lg max-sm:py-1.5"
+                                                class="flex cursor-pointer items-center justify-center gap-x-4 rounded-xl border border-navyBlue px-4 py-3 max-sm:rounded-lg max-sm:py-1.5"
                                                 @click="canReview = true"
                                             >
-                                                <span class="text-2xl icon-pen"></span>
+                                                <span class="icon-pen text-2xl"></span>
 
                                                 @lang('shop::app.products.view.reviews.write-a-review')
                                             </div>
@@ -221,7 +221,7 @@
                             </div>
 
                             <!-- Right Section -->
-                            <div class="flex flex-col w-full gap-5">
+                            <div class="flex w-full flex-col gap-5">
                                 <!-- Product Review Item Vue Component -->
                                 <v-product-review-item
                                     v-for='review in reviews'
@@ -229,7 +229,7 @@
                                 ></v-product-review-item>
 
                                 <button
-                                    class="block py-3 mx-auto text-base font-medium text-center bg-white border w-max rounded-2xl border-primary px-11 text-primary"
+                                    class="mx-auto block w-max rounded-2xl border border-navyBlue bg-white px-11 py-3 text-center text-base font-medium text-navyBlue"
                                     v-if="links?.next"
                                     @click="get()"
                                 >
@@ -259,10 +259,10 @@
                                         || auth()->guard('customer')->user()
                                     )
                                         <div
-                                            class="mt-8 flex cursor-pointer items-center gap-x-4 rounded-xl border border-primary px-4 py-2.5 max-sm:mt-5 max-sm:gap-x-1.5 max-sm:rounded-lg max-sm:py-1.5 max-sm:text-sm"
+                                            class="mt-8 flex cursor-pointer items-center gap-x-4 rounded-xl border border-navyBlue px-4 py-2.5 max-sm:mt-5 max-sm:gap-x-1.5 max-sm:rounded-lg max-sm:py-1.5 max-sm:text-sm"
                                             @click="canReview = true"
                                         >
-                                            <span class="text-2xl icon-pen max-sm:text-lg"></span>
+                                            <span class="icon-pen text-2xl max-sm:text-lg"></span>
 
                                             @lang('shop::app.products.view.reviews.write-a-review')
                                         </div>
@@ -280,7 +280,7 @@
         type="text/x-template"
         id="v-product-review-item-template"
     >
-        <div class="p-6 border rounded-xl border-muted max-md:hidden">
+        <div class="rounded-xl border border-zinc-200 p-6 max-md:hidden">
             <div class="flex gap-5">
                 <template v-if="review.profile">
                     <img
@@ -293,17 +293,17 @@
 
                 <template v-else>
                     <div
-                        class="flex max-h-[100px] min-h-[100px] min-w-[100px] max-w-[100px] items-center justify-center rounded-xl bg-foreground"
+                        class="flex max-h-[100px] min-h-[100px] min-w-[100px] max-w-[100px] items-center justify-center rounded-xl bg-zinc-100"
                         :title="review.name"
                     >
-                        <span class="text-2xl font-semibold text-muted">
+                        <span class="text-2xl font-semibold text-zinc-500">
                             @{{ review.name.split(' ').map(name => name.charAt(0).toUpperCase()).join('') }}
                         </span>
                     </div>
                 </template>
 
                 <div class="flex flex-col">
-                    <p class="text-xl font x-md:text-lg">
+                    <p class="font x-md:text-lg text-xl">
                         @{{ review.name }}
                     </p>
 
@@ -313,15 +313,15 @@
 
                     <div class="flex items-center gap-0.5">
                         <span
-                            class="text-3xl icon-star-fill"
+                            class="icon-star-fill text-3xl"
                             v-for="rating in [1,2,3,4,5]"
-                            :class="review.rating >= rating ? 'text-accent' : 'text-muted'"
+                            :class="review.rating >= rating ? 'text-amber-500' : 'text-zinc-500'"
                         ></span>
                     </div>
                 </div>
             </div>
 
-            <div class="flex flex-col gap-4 mt-3">
+            <div class="mt-3 flex flex-col gap-4">
                 <p class="text-base max-sm:text-xs">
                     @{{ review.title }}
                 </p>
@@ -338,7 +338,7 @@
                         <!-- Spinner -->
                         <template v-if="isLoading">
                             <img
-                                class="w-5 h-5 animate-spin text-primary"
+                                class="h-5 w-5 animate-spin text-blue-600"
                                 src="{{ bagisto_asset('images/spinner.svg') }}"
                             />
 
@@ -355,13 +355,13 @@
 
                 <!-- Review Attachments -->
                 <div
-                    class="flex flex-wrap gap-2 mt-3"
+                    class="mt-3 flex flex-wrap gap-2"
                     v-if="review.images.length"
                 >
                     <template v-for="(file, index) in review.images">
                         <div
                             :href="file.url"
-                            class="flex w-12 h-12"
+                            class="flex h-12 w-12"
                             target="_blank"
                             v-if="file.type == 'image'"
                         >
@@ -376,7 +376,7 @@
 
                         <div
                             :href="file.url"
-                            class="flex w-12 h-12"
+                            class="flex h-12 w-12"
                             target="_blank"
                             v-else
                         >
@@ -403,11 +403,11 @@
 
         <!-- For Mobile View -->
         <div class="md:hidden">
-            <div class="grid gap-1.5 rounded-xl border border-muted p-4 max-md:mb-0">
+            <div class="grid gap-1.5 rounded-xl border border-zinc-200 p-4 max-md:mb-0">
                 <div class="flex items-center gap-2.5">
                     <img
                         v-if="review.profile"
-                        class="flex items-center justify-center rounded-full min-h-10 min-w-10 max-w-10 max-h-10"
+                        class="min-h-10 min-w-10 max-w-10 flex max-h-10 items-center justify-center rounded-full"
                         :src="review.profile"
                         :alt="review.name"
                         :title="review.name"
@@ -415,10 +415,10 @@
 
                     <div
                         v-else
-                        class="flex items-center justify-center rounded-full min-h-10 min-w-10 max-w-10 max-h-10 bg-foreground"
+                        class="min-h-10 min-w-10 max-w-10 flex max-h-10 items-center justify-center rounded-full bg-zinc-100"
                         :title="review.name"
                     >
-                        <span class="text-xs font-semibold text-muted">
+                        <span class="text-xs font-semibold text-zinc-500">
                             @{{ review.name.split(' ').map(name => name.charAt(0).toUpperCase()).join('') }}
                         </span>
                     </div>
@@ -428,7 +428,7 @@
                             @{{ review.name }}
                         </p>
 
-                        <p class="text-xs text-muted">
+                        <p class="text-xs text-zinc-500">
                             @{{ review.created_at }}
                         </p>
                     </div>
@@ -436,7 +436,7 @@
 
                 <div class="flex items-center">
                     @for ($i = 1; $i <= 5; $i++)
-                        <span class="icon-star-fill text-xl {{ $avgRatings >= $i ? 'text-accent' : 'text-muted' }}"></span>
+                        <span class="icon-star-fill text-xl {{ $avgRatings >= $i ? 'text-amber-500' : 'text-zinc-500' }}"></span>
                     @endfor
                 </div>
 
@@ -445,7 +445,7 @@
                         @{{ review.title }}
                     </p>
 
-                    <p class="mt-1.5 text-sm text-muted">
+                    <p class="mt-1.5 text-sm text-zinc-500">
                         @{{ review.comment }}
                     </p>
 
@@ -457,7 +457,7 @@
                             <!-- Spinner -->
                             <template v-if="isLoading">
                                 <img
-                                    class="w-5 h-5 animate-spin text-primary"
+                                    class="h-5 w-5 animate-spin text-blue-600"
                                     src="{{ bagisto_asset('images/spinner.svg') }}"
                                 />
 
@@ -475,18 +475,18 @@
 
                 <!-- Review Attachments -->
                 <div
-                    class="flex gap-2 mt-3 overflow-auto journal-scroll scrollbar-width-hidden"
+                    class="journal-scroll scrollbar-width-hidden mt-3 flex gap-2 overflow-auto"
                     v-if="review.images.length"
                 >
                     <template v-for="file in review.images">
                         <a
                             :href="file.url"
-                            class="flex w-20 h-20"
+                            class="flex h-20 w-20"
                             target="_blank"
                             v-if="file.type == 'image'"
                         >
                             <img
-                                class="cursor-pointer min-w-20 max-h-20 rounded-xl"
+                                class="min-w-20 max-h-20 cursor-pointer rounded-xl"
                                 :src="file.url"
                                 :alt="review.name"
                                 :title="review.name"
@@ -495,12 +495,12 @@
 
                         <a
                             :href="file.url"
-                            class="flex w-20 h-20"
+                            class="flex h-20 w-20"
                             target="_blank"
                             v-else
                         >
                             <video
-                                class="cursor-pointer min-w-20 max-h-20 rounded-xl"
+                                class="min-w-20 max-h-20 cursor-pointer rounded-xl"
                                 :src="file.url"
                                 :alt="review.name"
                                 :title="review.name"
