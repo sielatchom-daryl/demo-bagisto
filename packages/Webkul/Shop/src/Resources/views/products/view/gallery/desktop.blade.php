@@ -21,7 +21,7 @@
             <template v-for="(media, index) in [...media.images, ...media.videos]">
                 <video
                     v-if="media.type == 'videos'"
-                    :class="`transparent max-h-[100px] min-w-[100px] cursor-pointer rounded-xl border ${isActiveMedia(index) ? 'pointer-events-none border-primary' : 'border-muted'}`"
+                    :class="`transparent max-h-[100px] min-w-[100px] cursor-pointer rounded-xl border ${isActiveMedia(index) ? 'pointer-events-none border-navyBlue' : 'border-white'}`"
                     @click="change(media, index)"
                     alt="{{ $product->name }}"
                     tabindex="0"
@@ -34,7 +34,7 @@
 
                 <img
                     v-else
-                    :class="`transparent max-h-[100px] min-w-[100px] cursor-pointer rounded-xl border ${isActiveMedia(index) ? 'pointer-events-none border border-primary' : 'border-muted'}`"
+                    :class="`transparent max-h-[100px] min-w-[100px] cursor-pointer rounded-xl border ${isActiveMedia(index) ? 'pointer-events-none border border-navyBlue' : 'border-white'}`"
                     :src="media.small_image_url"
                     alt="{{ $product->name }}"
                     width="100"
@@ -62,7 +62,7 @@
         class="max-h-[610px] max-w-[560px]"
         v-show="isMediaLoading"
     >
-        <div class="shimmer min-h-[607px] min-w-[560px] rounded-xl bg-background"></div>
+        <div class="shimmer min-h-[607px] min-w-[560px] rounded-xl bg-zinc-200"></div>
     </div>
 
     <div
