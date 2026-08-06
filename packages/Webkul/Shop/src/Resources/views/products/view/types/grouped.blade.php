@@ -17,7 +17,7 @@
                                 </p>
 
                                 <p
-                                    class="mt-1.5 text-muted"
+                                    class="mt-1.5 text-zinc-500"
                                     v-pre
                                 >
                                     {{ $groupedProduct->associated_product->name . ' + ' . core()->currency($groupedProduct->associated_product->getTypeInstance()->getFinalPrice()) }}

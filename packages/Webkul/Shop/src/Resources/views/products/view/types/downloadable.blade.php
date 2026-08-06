@@ -12,7 +12,7 @@
                     <li class="mb-2">
                         <a 
                             href="{{ route('shop.downloadable.download_sample', ['type' => 'sample', 'id' => $sample->id]) }}" 
-                            class="text-primary"
+                            class="text-blue-700"
                             target="_blank"
                             v-pre
                         >
@@ -45,7 +45,7 @@
                         </v-field>
                         
                         <label
-                            class="text-2xl cursor-pointer icon-uncheck peer-checked:icon-check-box text-primary peer-checked:text-primary"
+                            class="text-2xl cursor-pointer icon-uncheck peer-checked:icon-check-box text-navyBlue peer-checked:text-navyBlue"
                             for="{{ $link->id }}"
                         ></label>
                         
@@ -65,7 +65,7 @@
                         <a 
                             href="{{ route('shop.downloadable.download_sample', ['type' => 'link', 'id' => $link->id]) }}"
                             target="_blank"
-                            class="text-primary max-sm:text-sm"
+                            class="text-blue-700 max-sm:text-sm"
                         >
                             @lang('shop::app.products.view.type.downloadable.sample')
                         </a>
