@@ -14,7 +14,7 @@
 
 <!-- Mobile Filters Navigation -->
 <div
-    class="fixed bottom-0 z-10 grid w-full max-w-full grid-cols-[1fr_auto_1fr] items-center justify-items-center border-t border-zinc-200 bg-white px-5 ltr:left-0 rtl:right-0"
+    class="fixed bottom-0 z-10 grid w-full max-w-full grid-cols-[1fr_auto_1fr] items-center justify-items-center border-t border-muted bg-surface px-5 ltr:left-0 rtl:right-0"
     v-if="isMobile"
 >
     <!-- Filter Drawer -->
@@ -29,7 +29,7 @@
                 class="flex cursor-pointer items-center gap-x-2.5 px-2.5 py-3.5 text-base font-medium uppercase max-md:py-3"
                 @click="isDrawerActive.filter = true"
             >
-                <span class="icon-filter-1 text-2xl"></span>
+                <span class="text-2xl icon-filter-1"></span>
 
                 @lang('shop::app.categories.filters.filter')
             </div>
@@ -65,7 +65,7 @@
     </x-shop::drawer>
 
     <!-- Separator -->
-    <span class="h-5 w-0.5 bg-zinc-200"></span>
+    <span class="h-5 w-0.5 bg-muted"></span>
 
     <!-- Sort Drawer -->
     <x-shop::drawer
@@ -76,10 +76,10 @@
         <!-- Drawer Toggler -->
         <x-slot:toggle>
             <div
-                class="flex cursor-pointer items-center gap-x-2.5 px-2.5 py-3.5 text-base font-medium uppercase max-md:py-3"
+                class="flex cursor-pointer items-center gap-x-2.5 px-2.5 py-3.5 text-base font-medium uppercase max-md:py-3 bg-surface text-muted"
                 @click="isDrawerActive.toolbar = true"
             >
-                <span class="icon-sort-1 text-2xl"></span>
+                <span class="text-2xl icon-sort-1"></span>
 
                 @lang('shop::app.categories.filters.sort')
             </div>
@@ -118,13 +118,13 @@
         <template v-else>
             <div class="panel-side journal-scroll grid max-h-[1320px] min-w-[342px] grid-cols-[1fr] overflow-y-auto overflow-x-hidden max-xl:min-w-[270px] md:max-w-[342px] md:ltr:pr-7 md:rtl:pl-7">
                 <!-- Filters Header Container -->
-                <div class="flex h-[50px] items-center justify-between border-b border-zinc-200 pb-2.5 max-md:hidden">
+                <div class="flex h-[50px] items-center justify-between border-b border-muted pb-2.5 max-md:hidden">
                     <p class="text-lg font-semibold max-sm:font-medium">
                         @lang('shop::app.categories.filters.filters')
                     </p>
 
                     <p
-                        class="cursor-pointer text-xs font-medium"
+                        class="text-xs font-medium cursor-pointer"
                         tabindex="0"
                         @click="clear()"
                     >
@@ -187,7 +187,7 @@
 
                             <input
                                 type="text"
-                                class="block w-full rounded-xl border border-zinc-200 px-11 py-3.5 text-sm font-medium text-gray-900 max-md:rounded-lg max-md:px-10 max-md:py-3 max-md:font-normal max-sm:text-xs"
+                                class="block w-full rounded-xl border border-muted bg-surface px-11 py-3.5 text-sm font-medium text-foreground max-md:rounded-lg max-md:px-10 max-md:py-3 max-md:font-normal max-sm:text-xs"
                                 placeholder="@lang('shop::app.categories.filters.search.title')"
                                 v-model="searchQuery"
                                 v-debounce:500="searchOptions"
@@ -195,7 +195,7 @@
                         </div>
 
                         <p
-                            class="mt-1 flex flex-row-reverse text-xs text-gray-600"
+                            class="flex flex-row-reverse mt-1 text-xs text-muted"
                             v-text="
                                 '@lang('shop::app.categories.filters.search.results-info', ['currentCount' => 'currentCount', 'totalCount' => 'totalCount'])'
                                     .replace('currentCount', options.length)
@@ -207,24 +207,24 @@
                     </div>
 
                     <!-- Filter Options -->
-                    <ul class="pb-3 text-base text-gray-700">
+                    <ul class="pb-3 text-base text-muted">
                         <template v-if="options.length">
                             <li
                                 :key="`${filter.id}_${option.id}`"
                                 v-for="(option, optionIndex) in options"
                             >
-                                <div class="flex select-none items-center gap-x-4 rounded hover:bg-gray-100 max-sm:gap-x-1 max-sm:!p-0 ltr:pl-2 rtl:pr-2">
+                                <div class="flex select-none items-center gap-x-4 rounded hover:bg-background max-sm:gap-x-1 max-sm:!p-0 ltr:pl-2 rtl:pr-2">
                                     <input
                                         type="checkbox"
                                         :id="`filter_${filter.id}_option_ ${option.id}`"
-                                        class="peer hidden"
+                                        class="hidden peer"
                                         :value="option.id"
                                         v-model="appliedValues"
                                         @change="applyValue"
                                     />
 
                                     <label
-                                        class="icon-uncheck peer-checked:icon-check-box cursor-pointer text-2xl text-navyBlue peer-checked:text-navyBlue max-sm:text-xl"
+                                        class="text-2xl cursor-pointer icon-uncheck peer-checked:icon-check-box text-muted peer-checked:text-primary max-sm:text-xl"
                                         role="checkbox"
                                         aria-checked="false"
                                         :aria-label="option.name"
@@ -235,7 +235,7 @@
                                     </label>
 
                                     <label
-                                        class="w-full cursor-pointer p-2 text-base text-gray-900 max-sm:p-1 max-sm:text-sm ltr:pl-0 rtl:pr-0"
+                                        class="w-full p-2 text-base cursor-pointer text-foreground max-sm:p-1 max-sm:text-sm ltr:pl-0 rtl:pr-0"
                                         :id="'label_option_' + option.id"
                                         :for="`filter_${filter.id}_option_ ${option.id}`"
                                         role="button"
@@ -263,25 +263,25 @@
                                     <div class="shimmer h-5 w-[50%] self-end rounded"></div>
                                 </div>
 
-                                <div class="z-10 grid gap-1 rounded-lg bg-white">
+                                <div class="z-10 grid gap-1 rounded-lg bg-surface">
                                     <div class="flex items-center gap-x-4 ltr:pl-2 rtl:pr-2">
-                                        <div class="shimmer h-5 w-5 rounded"></div>
+                                        <div class="w-5 h-5 rounded shimmer"></div>
 
                                         <div class="p-2 ltr:pl-0 rtl:pr-0">
                                             <div class="shimmer h-5 w-[100px]"></div>
                                         </div>
                                     </div>
 
-                                    <div class="flex items-center gap-x-4 rounded ltr:pl-2 rtl:pr-2">
-                                        <div class="shimmer h-5 w-5 rounded"></div>
+                                    <div class="flex items-center rounded gap-x-4 ltr:pl-2 rtl:pr-2">
+                                        <div class="w-5 h-5 rounded shimmer"></div>
 
                                         <div class="p-2 ltr:pl-0 rtl:pr-0">
                                             <div class="shimmer h-5 w-[100px]"></div>
                                         </div>
                                     </div>
 
-                                    <div class="flex items-center gap-x-4 rounded ltr:pl-2 rtl:pr-2">
-                                        <div class="shimmer h-5 w-5 rounded"></div>
+                                    <div class="flex items-center rounded gap-x-4 ltr:pl-2 rtl:pr-2">
+                                        <div class="w-5 h-5 rounded shimmer"></div>
 
                                         <div class="p-2 ltr:pl-0 rtl:pr-0">
                                             <div class="shimmer h-5 w-[100px]"></div>
@@ -296,7 +296,7 @@
                     <div class="flex justify-center pb-3" v-if="meta && meta.current_page < meta.last_page">
                         <button
                             type="button"
-                            class="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                            class="px-4 py-2 text-sm font-medium border rounded border-muted text-foreground hover:bg-surface"
                             @click="loadMoreOptions"
                             :disabled="isLoadingMore"
                         >
