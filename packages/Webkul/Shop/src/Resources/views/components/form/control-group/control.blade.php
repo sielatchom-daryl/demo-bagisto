@@ -18,9 +18,8 @@
                 type="{{ $type }}"
                 name="{{ $name }}"
                 v-bind="field"
-                class="bg-surface text-muted"
                 :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
-                {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base font-normal text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
+                {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base font-normal bg-surface text-muted transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
             >
         </v-field>
         @break
@@ -34,9 +33,8 @@
             <input
                 type="{{ $type }}"
                 name="{{ $name }}"
-                class="bg-surface text-muted"
                 :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
-                {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
+                {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base bg-surface text-muted transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
             >
         </v-field>
         @break
@@ -49,10 +47,9 @@
         >
             <input
                 type="{{ $type }}"
-                class="bg-surface text-muted"
                 :class="[errors.length ? 'border !border-red-500' : '']"
                 v-bind="field"
-                {{ $attributes->except(['value'])->merge(['class' => 'rounded-lg-md w-full appearance-none border text-base text-gray-600 transition-all hover:border-gray-400 ']) }}
+                {{ $attributes->except(['value'])->merge(['class' => 'rounded-lg-md w-full appearance-none border text-base bg-surface text-muted transition-all hover:border-gray-400 ']) }}
             >
         </v-field>
         @break
@@ -67,9 +64,8 @@
                 type="{{ $type }}"
                 name="{{ $name }}"
                 v-bind="field"
-                class="bg-surface text-muted"
                 :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
-                {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base font-normal text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400']) }}
+                {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base font-normal bg-surface text-muted transition-all hover:border-gray-400 focus:border-gray-400']) }}
             >
             </textarea>
 
@@ -94,9 +90,8 @@
                 <input
                     name="{{ $name }}"
                     v-bind="field"
-                    class="bg-surface text-muted"
                     :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
-                    {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base text-gray-600  transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
+                    {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base bg-surface text-muted  transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
                     autocomplete="off"
                 >
             </x-shop::flat-picker.date>
@@ -113,9 +108,8 @@
                 <input
                     name="{{ $name }}"
                     v-bind="field"
-                    class="bg-surface text-muted"
                     :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
-                    {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base text-gray-600  transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
+                    {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'mb-1.5 w-full rounded-lg border px-5 py-3 text-base bg-surface text-muted  transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm']) }}
                     autocomplete="off"
                 >
             </x-shop::flat-picker.datetime>
@@ -131,9 +125,8 @@
             <select
                 name="{{ $name }}"
                 v-bind="field"
-                class=" text-muted"
                 :class="[errors.length ? 'border !border-red-500' : '']"
-                {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'custom-select mb-1.5 w-full rounded-lg border border-zinc-200 px-5 py-3 text-base text-gray-600 bg-surface  transition-all hover:border-gray-400 focus-visible:outline-none max-md:py-2 max-sm:px-4 max-sm:text-sm']) }}
+                {{ $attributes->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label'])->merge(['class' => 'custom-select mb-1.5 w-full rounded-lg border border-zinc-200 px-5 py-3 text-base bg-surface text-muted bg-surface  transition-all hover:border-gray-400 focus-visible:outline-none max-md:py-2 max-sm:px-4 max-sm:text-sm']) }}
             >
                 {{ $slot }}
             </select>
@@ -144,9 +137,8 @@
         <v-field
             as="select"
             v-slot="{ value }"
-            class="bg-surface text-muted"
             :class="[errors && errors['{{ $name }}'] ? 'border !border-red-500' : '']"
-            {{ $attributes->except([])->merge(['class' => 'mb-1.5 w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-base text-gray-600  transition-all hover:border-gray-400 focus-visible:outline-none max-md:py-2 max-sm:px-4 max-sm:text-sm']) }}
+            {{ $attributes->except([])->merge(['class' => 'mb-1.5 w-full rounded-lg border border-zinc-200 bg-white px-5 py-3 text-base bg-surface text-muted  transition-all hover:border-gray-400 focus-visible:outline-none max-md:py-2 max-sm:px-4 max-sm:text-sm']) }}
             name="{{ $name }}"
             multiple
         >
