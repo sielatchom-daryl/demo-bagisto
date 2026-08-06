@@ -7,7 +7,7 @@
         @endphp
 
         @if ($groupedProducts->count())
-            <div class="grid gap-5 mt-8 max-sm:mt-3 max-sm:gap-3">
+            <div class="mt-8 grid gap-5 max-sm:mt-3 max-sm:gap-3">
                 @foreach ($groupedProducts as $groupedProduct)
                     @if ($groupedProduct->associated_product->getTypeInstance()->isSaleable())
                         <div class="flex items-center justify-between gap-5">

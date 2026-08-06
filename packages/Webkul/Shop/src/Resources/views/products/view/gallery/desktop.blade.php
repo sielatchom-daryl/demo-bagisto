@@ -1,10 +1,10 @@
 <!-- For large screens greater than 1180px. -->
-<div class="sticky flex gap-8 top-20 h-max max-1180:hidden">
+<div class="sticky top-20 flex h-max gap-8 max-1180:hidden">
     <!-- Product Image and Videos Slider -->
     <div class="flex-24 h-509 flex min-w-[100px] max-w-[100px] flex-wrap place-content-start justify-center gap-2.5 overflow-y-auto overflow-x-hidden">
         <!-- Arrow Up -->
         <span
-            class="text-2xl cursor-pointer icon-arrow-up"
+            class="icon-arrow-up cursor-pointer text-2xl"
             role="button"
             aria-label="@lang('shop::app.components.products.carousel.previous')"
             tabindex="0"
@@ -47,7 +47,7 @@
 
         <!-- Arrow Down -->
         <span
-            class="text-2xl cursor-pointer icon-arrow-down"
+            class="icon-arrow-down cursor-pointer text-2xl"
             v-if= "lengthOfMedia"
             role="button"
             aria-label="@lang('shop::app.components.products.carousel.previous')"

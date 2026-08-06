@@ -57,7 +57,7 @@
                 type="text/x-template"
                 id="v-product-customizable-option-item-template"
             >
-                <div class="pb-4 mt-8 border-b border-zinc-200 max-sm:mt-4 max-sm:pb-0">
+                <div class="mt-8 border-b border-zinc-200 pb-4 max-sm:mt-4 max-sm:pb-0">
                     <x-shop::form.control-group>
                         <!-- Text Field -->
                         <template v-if="option.type == 'text'">

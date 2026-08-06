@@ -2,8 +2,8 @@
     {!! view_render_event('bagisto.shop.products.view.downloadable.before', ['product' => $product]) !!}
 
     @if ($product->downloadable_samples->count())
-        <div class="mt-8 mb-6 sample-list">
-            <label class="flex mb-3 font-medium">
+        <div class="sample-list mb-6 mt-8">
+            <label class="mb-3 flex font-medium">
                 @lang('shop::app.products.view.type.downloadable.samples')
             </label>
 
@@ -31,21 +31,21 @@
 
         <div class="grid gap-4 max-sm:gap-1">
             @foreach ($product->downloadable_links as $link)
-                <div class="flex items-center select-none gap-x-4">
+                <div class="flex select-none items-center gap-x-4">
                     <div class="flex items-center">
                         <v-field
                             type="checkbox"
                             name="links[]"
                             value="{{ $link->id }}"
                             id="{{ $link->id }}"
-                            class="hidden peer"
+                            class="peer hidden"
                             rules="required"
                             label="@lang('shop::app.products.view.type.downloadable.links')"
                         >
                         </v-field>
                         
                         <label
-                            class="text-2xl cursor-pointer icon-uncheck peer-checked:icon-check-box text-navyBlue peer-checked:text-navyBlue"
+                            class="icon-uncheck peer-checked:icon-check-box cursor-pointer text-2xl text-navyBlue peer-checked:text-navyBlue"
                             for="{{ $link->id }}"
                         ></label>
                         
