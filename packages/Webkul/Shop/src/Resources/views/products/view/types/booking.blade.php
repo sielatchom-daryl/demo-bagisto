@@ -27,7 +27,7 @@
 
                             <div class="grid grid-cols-1 gap-3">
                                 <p
-                                    class="text-muted"
+                                    class="text-[#6E6E6E]"
                                     v-pre
                                 >
                                     {{ $bookingProduct->location }}
@@ -36,7 +36,7 @@
                                 <a
                                     href="https://maps.google.com/maps?q={{ $bookingProduct->location }}"
                                     target="_blank"
-                                    class="text-foreground w-fit hover:text-primary"
+                                    class="text-blue-600 w-fit hover:text-blue-800"
                                 >
                                     @lang('shop::app.products.view.type.booking.view-on-map')
                                 </a>
@@ -50,7 +50,7 @@
                 </div>
 
                 @if (! $bookingProduct->allow_cancellation)
-                    <div class="flex items-start gap-3 p-3 text-sm border rounded-md border-accent bg-surface text-primary">
+                    <div class="flex items-start gap-3 p-3 text-sm border rounded-md border-amber-300 bg-amber-50 text-amber-900">
                         <span class="icon-warning mt-0.5 text-lg"></span>
 
                         <div>
