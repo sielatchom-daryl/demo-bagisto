@@ -90,7 +90,7 @@
 
             {!! view_render_event('bagisto.shop.checkout.onepage.address.form.email.after') !!}
 
-            <!-- Vat ID -->
+            <!-- Vat ID 
             <template v-if="controlName=='billing'">
                 <x-shop::form.control-group>
                     <x-shop::form.control-group.label>
@@ -110,6 +110,7 @@
 
                 {!! view_render_event('bagisto.shop.checkout.onepage.address.form.vat_id.after') !!}
             </template>
+            -->
 
             <!-- Street Address -->
             <x-shop::form.control-group>
@@ -151,7 +152,7 @@
 
             {!! view_render_event('bagisto.shop.checkout.onepage.address.form.address.after') !!}
 
-            <div class="grid grid-cols-2 gap-x-5 max-md:grid-cols-1">
+            <div class="grid grid-cols-1 gap-x-5 max-md:grid-cols-1">
                 <!-- Country -->
                 <x-shop::form.control-group class="!mb-4">
                     <x-shop::form.control-group.label class="{{ core()->isCountryRequired() ? 'required' : '' }} !mt-0">
@@ -191,9 +192,9 @@
 
                 {!! view_render_event('bagisto.shop.checkout.onepage.address.form.country.after') !!}
 
-                <!-- State -->
+                <!-- State
                 <x-shop::form.control-group>
-                    <x-shop::form.control-group.label class="{{ core()->isStateRequired() ? 'required' : '' }} !mt-0">
+                    <x-shop::form.control-group.label class=" !mt-0">
                         @lang('shop::app.checkout.onepage.address.state')
                     </x-shop::form.control-group.label>
 
@@ -202,7 +203,7 @@
                             <x-shop::form.control-group.control
                                 type="select"
                                 ::name="controlName + '.state'"
-                                rules="{{ core()->isStateRequired() ? 'required' : '' }}"
+                                rules="nullable"
                                 ::value="address.state"
                                 :label="trans('shop::app.checkout.onepage.address.state')"
                                 :placeholder="trans('shop::app.checkout.onepage.address.state')"
@@ -225,7 +226,7 @@
                                 type="text"
                                 ::name="controlName + '.state'"
                                 ::value="address.state"
-                                rules="{{ core()->isStateRequired() ? 'required' : '' }}"
+                                rules="nullable"
                                 :label="trans('shop::app.checkout.onepage.address.state')"
                                 :placeholder="trans('shop::app.checkout.onepage.address.state')"
                             />
@@ -234,12 +235,14 @@
 
                     <x-shop::form.control-group.error ::name="controlName + '.state'" />
                 </x-shop::form.control-group>
+                -->
 
                 {!! view_render_event('bagisto.shop.checkout.onepage.address.form.state.after') !!}
             </div>
 
+            <!--
             <div class="grid grid-cols-2 gap-x-5 max-md:grid-cols-1">
-                <!-- City -->
+                City
                 <x-shop::form.control-group>
                     <x-shop::form.control-group.label class="required !mt-0">
                         @lang('shop::app.checkout.onepage.address.city')
@@ -259,7 +262,7 @@
 
                 {!! view_render_event('bagisto.shop.checkout.onepage.address.form.city.after') !!}
 
-                <!-- Postcode -->
+                Postcode
                 <x-shop::form.control-group>
                     <x-shop::form.control-group.label class="{{ core()->isPostCodeRequired() ? 'required' : '' }} !mt-0">
                         @lang('shop::app.checkout.onepage.address.postcode')
@@ -279,6 +282,7 @@
 
                 {!! view_render_event('bagisto.shop.checkout.onepage.address.form.postcode.after') !!}
             </div>
+            -->
 
             <!-- Phone Number -->
             <x-shop::form.control-group>
