@@ -1248,13 +1248,13 @@ return [
                 'title' => 'admin::app.configuration.index.customer.address.requirements.state',
                 'type' => 'boolean',
                 'channel_based' => true,
-                'default' => 1,
+                'default' => 0,
             ], [
                 'name' => 'postcode',
                 'title' => 'admin::app.configuration.index.customer.address.requirements.zip',
                 'type' => 'boolean',
                 'channel_based' => true,
-                'default' => 1,
+                'default' => 0,
             ],
         ],
     ], [
@@ -1787,7 +1787,7 @@ return [
                 'name' => 'state',
                 'title' => 'admin::app.configuration.index.sales.shipping-setting.origin.state',
                 'type' => 'state',
-                'validation' => 'required',
+                'validation' => 'nullable',
                 'channel_based' => true,
                 'locale_based' => true,
             ], [
